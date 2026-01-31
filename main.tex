@@ -1,0 +1,775 @@
+% !TEX program = xelatex -> bibtex -> xelatex*2
+
+\documentclass[12pt]{ctexart}  
+% ctexart支持中文编译文档
+%最后全部翻译成英文后可以选择改成article，然后用pdflatex编译，还可以检验一下是不是没有中文了嘿嘿( •̀ ω •́ )✧
+%官方要求字号不小于 12 号，此处选择 12 号字体
+
+\CTEXsetup[format={\Large\bfseries}]{section} %在ctexart中，一级标题是居中的，这里改成左对齐
+
+%% 本模板不需要填写年份，以当前电脑时间自动生成
+
+%% 请在以下的方括号中填写队伍控制号
+\usepackage[2615409]{ldmcm}  % 载入ldmcm模板文件
+\problem{B}  % 请在此处填写题号
+
+%%字体选择
+%\usepackage{mathptmx}  % 这是 Times 字体，中规中矩 
+\usepackage{mathpazo}  % 这是 COMAP 官方杂志采用的更好看的 Palatino 字体，可替代以上的 mathptmx 宏包
+
+%%几处小修改，如无特殊需求可不做更改
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}%这是参考文献引用上标的命令
+\graphicspath{{img/}}          % 此处{img/}为相对路径，注意加上“/”
+\let\itemize\compactitem
+\let\enditemize\endcompactitem%解决列表环境中行距过大的问题
+
+\title{Here is Your Title}  % 标题
+
+% 如需要修改题头（默认为 MCM /ICM），请使用以下命令（此处修改为 MCM）
+%\renewcommand{\contest}{MCM}
+
+\usepackage{lastpage}  % 支持 \pageref{LastPage}
+
+\usepackage{siunitx}
+
+% ----------------------------------------------文档开始---------------------------------------------------------
+\begin{document}
+
+% 此处填写摘要内容-----------摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要
+\begin{abstract}
+	%第一段：2句话背景+2句话概括全文完成的任务
+
+	Introduction of the background and the mission we accomplished.
+
+	Global warming, El Niño... With the emergence of various extreme climates,\textbf{Austral-ia's wildfires} occur more frequently. The greenhouse gases emitted after combustion have exacerbated global warming, which seems to have entered an endless loop. At the same time, hundreds of millions of lives have been killed in the fire, which makes us sad. To better control wildfires, we modeled the \textbf{distribution of drones} assisting in the observation to achieve the best balance between economy and efficiency.
+
+	%第二段：总结我们用了什么模型
+
+	This is our models.
+
+	Several models are established: Model I: Rasterized Multi-Objective Optimization Model; Model II: Model Verification Simulated by Poisson Process; Model III: Hovering Model Based on Tabu Search, etc.
+
+	%接下来分别介绍模型与结果
+	For Model I:
+	Firstly,%首先，我们从哪里收集到了什么样的数据
+	We find data。。。
+	Then,%然后，基于什么样的原因，我们建立了什么模型
+	we establish \textbf{model}。。。
+	Next,%我们选择或者设计了什么算法
+	we use Algorithm。。。
+	Finally,%我们得到了什么样的结果
+	%数值直接写出来，大量数据（表）或图片则说请参见(are shown in ...)图几
+	%注意要用文字，不要使用符号
+	it can be seen that。。。
+
+	For Model II:
+	Firstly,%首先，我们从哪里收集到了什么样的数据
+	We find data。。。
+	Then,%然后，基于什么样的原因，我们建立了什么模型
+	we establish model。。。
+	Next,%我们选择或者设计了什么算法
+	we use Algorithm。。。
+	Finally,%我们得到了什么样的结果
+	%数值直接写出来，大量数据（表）或图片则说请参见(are shown in ...)图几
+	%注意要用文字，不要使用符号
+	it can be seen that。。。
+
+	For Model III:
+	Firstly,%首先，我们从哪里收集到了什么样的数据
+	We find data。。。
+	Then,%然后，基于什么样的原因，我们建立了什么模型
+	we establish model。。。
+	Next,%我们选择或者设计了什么算法
+	we use Algorithm。。。
+	Finally,%我们得到了什么样的结果
+	%数值直接写出来，大量数据（表）或图片则说请参见(are shown in ...)图几
+	%注意要用文字，不要使用符号
+	it can be seen that。。。
+
+	%灵敏度与稳健性分析
+	Finally, sensitivity analysis 。。。 Meanwhile, robustness
+
+	% 美赛论文中无需注明关键词。若一定要使用，
+	% 请将以下两行的注释号 '%' 去除，以使其生效
+	\vspace{5pt}
+	\textbf{Keywords}: MATLAB, mathematics, LaTeX.
+
+\end{abstract}
+
+\maketitle  % 生成 Summary Sheet------------------------------------
+
+\tableofcontents  % 生成目录
+
+
+% -----------------------------------------正文开始-----------------------------------------------------------------------------------------------------------------------------------
+
+
+%==============第一部分===引入=============================================================
+\section{Introduction}
+\subsection{Problem Background}%问题背景问题背景问题背景问题背景问题背景问题背景---------------------------------
+%一些常用的写作缩略语：
+
+%i.e.,。。。也即是。。。（一定加逗号）
+
+%e.g.,。。。例如，。。。
+
+%, etc.    。。。，等等。
+
+%n.b.   特别注意
+
+%cf.  参见
+
+
+%美赛一定要多上图，清晰直观，并且格式上最好是矢量图，例如pdf，而不是位图，例如jpg，png等，在形式上最好是组图，下面列出了利用\verb|subfigure|实现的
+%\verb|1x2,1x3,2x2|的几种组图：
+Some people envision a Space Elevator System, powered by electricity, offering a scalable
+infrastructure for interplanetary logistics, commerce, and exploration.
+
+At its final operating configuration, the Space Elevator System would comprise three Galactic
+Harbours, ideally separated by 120 degrees around the equator. Each Galactic Harbour would 
+include a single Earth port with two100,000 km-long tethers connected to two apex anchors,
+with multiple space elevators operating together, each capable of lifting massive payloads daily
+from Earth to geosynchronous orbit (GEO) and beyond to the apex anchor where they can be
+loaded on a rocket and delivered anywhere using much less fuel.
+
+%% 这是问题背景的概念图
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[b]{.8\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+		\includegraphics[width=\textwidth]{img/background.png}
+		\caption*{}
+		\label{}
+	\end{subfigure}
+	\caption{problem background}\label{subfigure}
+\end{figure}
+
+Based on the plan above,The Moon Colony Management (MCM) Agency is preparing to build a Moon Colony with an
+estimated 100,000 people beginning in the year 2050, after completion of the Space Elevator
+System. 
+
+The agency is also considering using traditional rockets to supply material for construction and
+supplies to the Moon Colony. The Earth current has ten rocket launch sites: Alaska, California,
+Texas, Florida, and Virginia (United States), Kazakhstan, French Guiana, Satish Dhawan Space
+Centre (India), Taiyuan Satellite Launch Center (China), and Mahia Peninsula (New Zealand).
+
+As shown in figure\ref{subfigure},the schematic of the Space Elevator System and Moon Colony is illustrated above.
+
+\newpage
+
+
+%\subsection{Problem Background}%问题重述与文献综述选一个------------------------------------------------------------------------
+\subsection{Literature Review} % 文献综述-----------------
+Three major problems are discussed in this paper, which are:
+\begin{itemize}
+	\item First and foremost, it is necessary to analyze three distinct scenarios for delivering 
+	the 100 million metric tons of materials required for the construction of the 100,000-person 
+	Moon Colony. The three scenarios to be considered include: 
+	(a) relying solely on the three Galactic Harbors of the Space Elevator System for material delivery; 
+	(b) relying exclusively on traditional rocket launches from selected existing space facilities (with 
+	the flexibility to choose specific launch bases); 
+	and (c) adopting a hybrid delivery strategy that combines the Space Elevator System’s Galactic Harbors and traditional rocket launches. 
+	For each scenario, a comprehensive assessment of the material delivery feasibility, efficiency, and rationality must be conducted.
+
+	\item Second, the robustness of the proposed material delivery solutions needs to be evaluated under 
+	the condition that transportation systems are not in perfect working order. Potential anomalies may 
+	include, but are not limited to, tether swaying of the Space Elevator System, rocket launch failures, 
+	and elevator malfunctions. It is required to analyze the extent to which such operational imperfections 
+	would alter the previously proposed delivery strategies and how the solutions should be adjusted to maintain the feasibility of material delivery.
+
+	\item Third, the water demand of the 100,000-person Moon Colony over a one-year period after it is fully 
+	operational must be systematically investigated. Based on the established material delivery model (from 
+	the first research task), the additional costs and extended timeline required to ensure the colony has 
+	sufficient water supply for one full year after its inhabitation should be quantified and analyzed, 
+	thereby supplementing the delivery model with water supply-related constraints and considerations.
+
+	\item Finally, the environmental impacts on Earth associated with achieving the 100,000-person Moon Colony 
+	under each of the three material delivery scenarios must be discussed in depth. On this basis, corresponding 
+	adjustments to the established delivery model should be proposed to minimize the adverse environmental impacts 
+	on Earth while ensuring the successful construction and operation of the Moon Colony.
+\end{itemize}
+
+\newpage
+
+A literatrue\upcite{jones2015water} reviews the water demand of lunar bases: the basic domestic water consumption 
+is 4.17 kg per person per day, covering drinking, sanitation and other uses. A daily wastewater yield of 5.57 kg per person is generated, 
+with condensed water and urinary wastewater recoverable as supplementary water sources. The base is designed with 167 kg of emergency 
+water storage for a 10-day evacuation window, with low reliability requirements for water supply systems. Cost and reliability can be balanced via redundancy 
+design or three-loop systems, and the relevant water system technologies are adaptable to the gravitational environments of the Moon and Mars (data based on NASA Exploration Program assumptions).
+
+A literature\upcite{smitherman2000space} confirm that space elevators have a solid technological and economic feasibility 
+basis. High-strength materials such as carbon nanotubes meet the theoretical strength requirements; Low Earth Orbit (LEO) space elevators 
+are technologically feasible with supporting propulsion solutions. Mature space infrastructure and resource exploitation underpin economic viability. 
+The equator is the optimal location, and space debris removal is a critical safety priority. Space elevators can drastically cut orbital access costs 
+and boost space industrial development. Their realization relies on material breakthroughs, phased verification and global cooperation, with projection 
+for implementation in the late 21st century.
+
+A literatrue\upcite{ross2014radiative}shows:Rocket exhaust produces positive radiative forcing (RF), primarily due to black carbon (BC) and alumina particles.
+Carbon dioxide (CO₂) emissions from rockets contribute negligibly to RF compared to particulate emissions.
+Current global RF from rocket launches is estimated at 16 ± 8 mW m⁻², with BC accounting for 70 percents of this value.
+
+
+
+\subsection{Our work}%-----------------------------------------------------------
+We do such things ...
+这部分直接上图
+
+\begin{enumerate}[\bfseries 1.]
+	\item We do ...
+	\item We do ...
+	\item We do ...
+\end{enumerate}
+%===========================第二部分==模型准备==========================================================
+\section{Preparation of the Models}
+\subsection{Assumptions and Explanations}
+
+%为了简化问题，我们做出了以下假设，其中每一条都有对应的合理解释
+To simplify the problem, we made the following assumptions, each of which has a corresponding reasonable explanation.
+\begin{itemize}
+	\item \textit{\textbf{Assumption 1:}}物资分级连续性：分为关键物资（优先SE运输）和普通物资，均视为准连续流体。
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}工程中物资存在优先级，SE高可靠性适配关键物资，符合调度逻辑。
+
+	\item \textit{\textbf{Assumption 2:}}$\alpha(t)$ 为分段常数函数：将总工期划分为50个时间区间（每区间1-2年），每个区间 $\alpha_i$ 为常数。
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}平衡计算精度与效率，适配MCM竞赛求解需求，易实现且结果直观。
+
+	\item \textit{\textbf{Assumption 3:}}水资源消耗：人均日用水量0.15吨，年人均54.75吨，循环效率 $\gamma=0.85$。
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}参考国际空间站用水标准，循环效率符合2050年技术水平预测。
+
+	\item \textit{\textbf{Assumption 4:}}非完美状态参数：SE缆绳摆动临界角5°，年故障概率基准值2\%；TR发射失败概率3\%，发射窗口关闭导致运力折损30\%。
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}基于航天工程历史数据与题目场景合理设定。
+
+	\item \textit{\textbf{Assumption 5:}}成本参数：SE固定成本1000亿美元，单位可变成本1000美元/吨；TR单次发射成本1亿美元。
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}参考Falcon Heavy当前成本与未来技术迭代趋势，量级合理。
+
+	\item \textit{\textbf{Assumption 6:}}顶端火箭发射失败时成本不计。
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}由于顶端火箭载荷量未知，成本波动计入原成本内。
+
+	\item \textit{\textbf{Assumption 7:}}月球人均用水量近似为地球人均用水量。
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}简化问题，方便计算。
+
+	\item \textit{\textbf{Assumption 8:}}原有的火箭发射中心启用时成本为零。
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}现有发射场启用时不应有成本。
+\end{itemize}
+%这里只列出了主要的假设，其他假设会在专门的小节中单独讨论
+Additional assumptions are made to simplify analysis for individual sections. These assumptions will be discussed at the appropriate locations.
+
+\newpage
+\subsection{Notations}%-----------------------------------------------------------------------------------
+% 三线表（可以直接在excel里编辑好然后用excel2latex插件插入）
+
+Table \ref{tb:notation} lists some important mathematical notations used in this paper.
+\begin{table}[htbp]%----------------------------------------------
+	\begin{center}
+		\caption{Notations used in this paper}
+		\begin{tabular}{cl}
+			\toprule[1.5pt]
+			\multicolumn{1}{m{4cm}}{\centering \textbf{Symbol}}
+			                      & \multicolumn{1}{m{10cm}}{\textbf{ Description} }                       \\
+			\midrule
+			$\alpha_i$            & 第i个时间区间的SE运输比例（ $\alpha(t)$ 分段常数）                      \\
+			$q_i$                 & 第i个时间区间的平均运力                                                \\
+			$I_{safe}$            & 安全冗余系数                                                           \\
+			$M_{tot}$             & 建设物资总量                                                           \\
+			$\kappa_{SE,total}$   & SE系统总年运力                                                         \\
+			$m_{load}$            & TR单次payload基准值                                                    \\
+			$f_{TR}(j)$           & 第j个TR发射场年最大发射频次                                            \\
+			$C_{fix}^{SE}$        & SE系统总固定成本                                                       \\
+			$c_{var}^{SE}$        & SE单位可变成本+顶端火箭单位质量发射成本                                \\
+			$c_{launch}$          & TR单次发射成本                                                         \\
+			$P_{pop}$             & 月球殖民地人口                                                         \\
+			$w_{per}$             & 人均日用水量                                                           \\
+			$\gamma$              & 水资源循环效率                                                         \\
+			$Q_{SE}(i)$           & 前i个区间SE累积运输量                                                  \\
+			$Q_{TR}(i)$           & 前i个区间TR累积运输量                                                  \\
+			$D(i)$                & 第i个区间SE累积损坏因子                                                \\
+			$\kappa_{SE}'(i)$     & 第i个区间SE有效运力（非完美状态）                                     \\
+			$\kappa_{TR}'(i)$     & 第i个区间TR有效运力（非完美状态）                                     \\
+			$f_{cost}$            & 全生命周期总成本                                                       \\
+			$f_{time}$            & 总工期                                                                 \\
+			$f_{env}$             & 综合环境影响指数                                                       \\
+			\bottomrule[1.5pt]
+		\end{tabular}\label{tb:notation}
+		\begin{tablenotes}
+			\footnotesize
+			\item[*] *Some variables are not listed here and will be discussed in detail in each section. %此处加入注释*信息
+		\end{tablenotes}
+	\end{center}
+\end{table}
+\vspace{-1cm}%在\end{table}下加一行\vspace{-1cm} 其中-1的作用是缩短与下方文字距离的 切记！必须是负数
+
+
+
+%数据处理------------------------------------------------------------------------
+
+
+\subsection{Data}
+\subsubsection{Data Collection}
+%下面列出了我们收集数据的来源网站
+Websites, where we collect data, are listed in Table \ref{tb:data}.
+
+\begin{table}[htbp]%----------------------------------------------
+	\begin{center}
+		\caption{Notations used in this paper}
+		\begin{tabular}{c c}
+			\toprule[1.5pt]
+			\multicolumn{1}{m{5cm}}{\centering \textbf{Database Names}}
+			               & \multicolumn{1}{m{10cm}}{\centering \textbf{Database Websites}}   \\
+			\midrule
+			Google Scholar & \href{https://scholar.google.com} {https://scholar.google.com}    \\
+			Wikipedia      & \href{https://www.wikipedia.org}{https://www.wikipedia.org}       \\
+			wolframalpha   & \href{https://www.wolframalpha.com}{https://www.wolframalpha.com} \\
+			\bottomrule[1.5pt]
+		\end{tabular}\label{tb:data}
+	\end{center}
+\end{table}
+\vspace{-1cm}%在\end{table}下加一行\vspace{-1cm} 其中-1的作用是缩短与下方文字距离的 切记！必须是负数
+%\subsubsection{Data Processing}
+%=================================第三部分====================================================================
+\section{Model 1: 静态基准模型}
+\subsection{模型概述}
+
+静态基准模型在完美工作状态下分析三种运输场景，为比较不同物资运输方案的可行性、经济性和工期提供基础。
+
+\subsection[场景一：仅SE模式]{场景一：仅SE模式}
+
+\subsubsection{完美状态运力}
+
+太空电梯系统的年运输能力为：
+\begin{equation}
+	\kappa_{SE,total}=179,000 \text{ 吨/年}
+\end{equation}
+
+\subsubsection{项目工期}
+
+物资全部运输所需的总工期为：
+\begin{equation}
+	T_{SE}=\frac{M_{tot}}{\kappa_{SE,total}}=\frac{1 \times 10^8}{179000} \approx 558.7 \text{ 年}
+\end{equation}
+
+\subsubsection{总成本}
+
+全生命周期成本包括固定基础设施成本和可变运营成本：
+\begin{equation}
+	C_{SE}=C_{fix}^{SE}+M_{tot} \cdot c_{var}^{SE}
+\end{equation}
+
+其中$C_{fix}^{SE}$为太空电梯系统的总固定成本，$c_{var}^{SE}$为单位可变成本（美元/吨）。
+
+\subsection[场景二：仅TR模式]{场景二：仅TR模式}
+
+\subsubsection{完美状态运力}
+
+启用全球10个发射场时，传统火箭系统的年运输能力为：
+\begin{equation}
+	\kappa_{TR}=10 \cdot f_{TR}(j) \cdot m_{load}=10 \times 20 \times 125=25,000 \text{ 吨/年}
+\end{equation}
+
+其中$f_{TR}(j)$为单个发射场年最大发射频次（20次/年），$m_{load}$为单次发射的基准载荷（150吨）。
+
+\subsubsection{项目工期}
+
+物资全部运输所需的总工期为：
+\begin{equation}
+	T_{TR}=\frac{M_{tot}}{\kappa_{TR}}=\frac{1 \times 10^8}{25000}=4000 \text{ 年}
+\end{equation}
+
+\subsubsection{总成本}
+
+成本由所需发射次数决定：
+\begin{equation}
+	C_{TR}=\frac{M_{tot}}{m_{load}} \cdot c_{launch}
+\end{equation}
+
+其中$c_{launch}$为单次发射成本（美元/次）。
+
+\subsection[场景三：混合静态模式]{场景三：混合静态模式}
+
+混合策略结合太空电梯和传统火箭两种运输方式，以优化项目工期和成本。
+
+\subsubsection{项目工期}
+
+混合运输的工期由两种运输方式中耗时较长的决定：
+\begin{equation}
+	T_C(\alpha)=\max\left( \frac{\alpha M_{tot}}{\kappa_{SE,total}}, \frac{(1-\alpha) M_{tot}}{\kappa_{TR}} \right)
+\end{equation}
+
+\subsubsection{最优分配比例}
+
+从工期角度考虑，最优分配比例$\alpha^*$满足两种运输方式的完成时间相等：
+\begin{equation}
+	\frac{\alpha^* M_{tot}}{\kappa_{SE,total}}=\frac{(1-\alpha^*) M_{tot}}{\kappa_{TR}}
+\end{equation}
+
+解得最优分配比例：
+\begin{equation}
+	\alpha^*=\frac{\kappa_{SE,total}}{\kappa_{SE,total}+\kappa_{TR}}=\frac{179000}{179000+25000} \approx 0.417
+\end{equation}
+
+\subsubsection{总成本}
+
+混合策略的全生命周期成本为：
+\begin{equation}
+	C_C=\frac{(1-\alpha) M_{tot}}{m_{load}} \cdot c_{launch}+C_{fix}^{SE}+\alpha M_{tot} \cdot c_{var}^{SE}
+\end{equation}
+
+该成本包括太空电梯固定基础设施成本（一次性）、太空电梯运营可变成本和传统火箭发射成本。
+
+\subsection{三种场景的比较分析}
+
+静态基准模型提供以下重要洞察：
+
+\begin{itemize}
+	\item \textbf{仅SE模式}：需约558.7年完成物资运输，一旦基础设施建成后，运营成本最低。
+	
+	\item \textbf{仅TR模式}：需约4000年完成物资运输，在项目工期和成本约束下经济上不可行。
+	
+	\item \textbf{混合最优模式}（$\alpha^* \approx 0.417$）：采用最优分配比例，工期约为$\max\left(\frac{0.417 \times 10^8}{179000}, \frac{0.583 \times 10^8}{25000}\right) \approx 232$年，在基础设施固定成本和按次发射成本间实现平衡。
+	
+	\item \textbf{决策选择}：三种方案的优劣取决于对工期最小化或成本最小化的优先级权重。
+\end{itemize}
+\newpage
+%===========================================第四部分====================================================================
+\section[Model 2: Dynamic Extended Model]{Model 2: 动态扩展模型（时间自适应策略）}
+
+\subsection[Dynamic Adjustment Logic]{动态调整逻辑}
+
+随着时间的推移和技术的发展，太空电梯系统的单位可变成本$c_{var}^{SE}$逐渐下降。采用如下理想化模型表示这一过程：
+
+\begin{equation}
+	c_{var}^{SE}=0.8c_0+0.2c_0\exp(-0.0139i)
+\end{equation}
+
+其中$c_0$为初始成本，25个时间区间后成本降至原值的0.9倍。
+
+运输分配比例$\alpha(t)$由太空电梯和传统火箭系统的瞬时单位成本比$\rho(t)$驱动：
+
+\begin{equation}
+	\rho(t)=\frac{c_{var}^{SE}(t, Q_{SE}(t))}{c_{TR}(t, Q_{TR}(t))}
+\end{equation}
+
+根据成本比的大小，对$\alpha_i$的决策规则为：
+
+\begin{itemize}
+	\item 当$\rho(t)<0.8$（SE更便宜）时：$\alpha_i=1$
+	
+	\item 当$\rho(t)>1.2$（TR更便宜）时：$\alpha_i=0$
+	
+	\item 当$0.8 \leq \rho(t) \leq 1.2$（成本均衡）时：$\alpha_i \in (0,1)$，为重点优化方向，目标是最小化区间内的成本和环境影响
+\end{itemize}
+
+\subsection{动态目标函数}
+
+\subsubsection{目标1：总项目工期}
+
+总工期是使累积运输量达到要求的最小时间区间数：
+
+\begin{equation}
+	T= \min \left\{ k \cdot \Delta t \mid \sum_{i=1}^k q_i \geq M_{tot} \right\}
+\end{equation}
+
+其中累积运输量递推关系为：
+\begin{align}
+	Q_{SE}(i) &= Q_{SE}(i-1)+\alpha_i \cdot q(i) \cdot \Delta t \\
+	Q_{TR}(i) &= Q_{TR}(i-1)+(1-\alpha_i) \cdot q(i) \cdot \Delta t
+\end{align}
+
+时间区间长度$\Delta t = 5$年，可根据需要调整。
+
+\subsubsection{目标2：全生命周期成本（分段求和）}
+
+全生命周期总成本为：
+
+\begin{equation}
+	f_{cost} = \mathbb{I}\left( \sum_{i=1}^{k} \alpha_i > 0 \right) \cdot C_{fix}^{SE} + \sum_{i=1}^{k} \left[ q_{SE}(i) \cdot c_{var}^{SE}(i) + q_{TR}(i) \cdot c_{TR}(i) \right]\cdot \Delta t
+\end{equation}
+
+其中：
+\begin{equation}
+	c_{TR}(i)=\frac{c_{launch}}{m_{load}}
+\end{equation}
+
+指示函数$\mathbb{I}$确保太空电梯固定成本仅在使用太空电梯时计入一次。
+
+\subsection{动态约束条件}
+
+优化问题受以下约束条件限制：
+
+\begin{equation}
+	\begin{cases}
+		0 \leq \alpha_i \leq 1, \quad \forall i=1,2,\ldots,50 \\[6pt]
+		\alpha_i \cdot q(i) \leq \kappa_{SE}'(i), \quad \forall i \\[6pt]
+		(1-\alpha_i) \cdot q(i) \leq \kappa_{TR}'(i), \quad \forall i \\[6pt]
+		Q_{SE}(50) + Q_{TR}(50) \geq M_{tot}
+	\end{cases}
+\end{equation}
+
+约束条件的含义分别为：
+
+\begin{itemize}
+	\item 分配比例$\alpha_i$必须在有效范围内
+	
+	\item 每个时间区间太空电梯的运输量不能超过其有效运力$\kappa_{SE}'(i)$
+	
+	\item 每个时间区间传统火箭系统的运输量不能超过其有效运力$\kappa_{TR}'(i)$
+	
+	\item 第50个区间结束时，累积运输总量必须达到所需的全部物资
+\end{itemize}
+
+\subsection{模型特点}
+
+动态$\alpha(t)$扩展模型相比静态基准模型的主要优势为：
+
+\begin{enumerate}
+	\item \textbf{时间自适应}：根据技术发展动态调整运输方式比例，充分利用成本下降机遇
+	
+	\item \textbf{成本优化}：通过实时比较两种运输方式的单位成本，在成本均衡区间内进行精细优化
+	
+	\item \textbf{分段规划}：将总工期划分为50个区间，每个区间独立决策，便于实施和调整
+	
+	\item \textbf{多目标平衡}：同时考虑工期、成本和环境影响，寻求综合最优方案
+\end{enumerate}
+
+% 长表格示例，更多用法请参考 longtable 宏包文档
+% 以下环境及对应参数可实现表格内的自动换行与表格的自动断页
+% 您也可以选择自行载入 tabularx 宏包，并通过 X 参数指定对应列自动换行
+\newpage
+%============================================第五部分====================================================================
+\section{Model 3: 随机扰动的修正模型}
+
+\subsection{火箭发射失败的修正}
+
+\subsubsection{失败概率与有效载荷}
+
+传统火箭系统存在发射失败的风险。引入发射失败概率$P_{\mathrm{fail}}$，有效载荷的期望值为：
+
+\begin{equation}
+	E[m] = m_{\mathrm{load}} \cdot (1 - P_{\mathrm{fail}})
+\end{equation}
+
+\subsubsection{发射成本调整}
+
+考虑失败风险导致的成本增加：
+
+\begin{equation}
+	c'_{\mathrm{launch}} = c_{\mathrm{launch}} + P_{\mathrm{fail}} \cdot (c_{\mathrm{launch}} + c_{\mathrm{cargo\_loss}})
+\end{equation}
+
+其中$c_{\mathrm{cargo\_loss}}$为货物损失成本。
+
+\subsubsection{修正运力}
+
+火箭系统的实际运力上限应为：
+
+\begin{equation}
+	\kappa'_{TR}(i) = \kappa_{TR} \cdot (1 - P_{\mathrm{fail}}(i))
+\end{equation}
+
+其中$P_{\mathrm{fail}}(i)$可以是固定值，也可随时间或发射条件变化。
+
+\subsubsection{修正成本公式}
+
+成本公式中，传统火箭的单位成本应修改为：
+
+\begin{equation}
+	c_{TR}(i) = c_{\mathrm{launch}} + P_{\mathrm{fail}}(i) \cdot (c_{\mathrm{launch}} + c_{\mathrm{cargo\_loss}})
+\end{equation}
+
+这样将发射失败的风险成本纳入总成本计算。
+
+\subsection{系绳摇晃的科里奥利力与风切变扰动}
+
+\subsubsection{瞬时可用度函数}
+
+太空电梯系统的可用性受摆动幅度和风速的影响。定义瞬时可用度函数为：
+
+\begin{equation}
+	\eta_{SE}(t) = 
+	\begin{cases}
+		1, & \text{if } \theta(t) < \theta_{\mathrm{crit}} \text{ and } W_{\mathrm{wind}}(t) < v_{\mathrm{safe}} \\
+		0, & \text{otherwise}
+	\end{cases}
+\end{equation}
+
+其中$\theta(t)$为系绳摆动角度，$\theta_{\mathrm{crit}}$为临界摆动角度（5$^\circ$）；$W_{\mathrm{wind}}(t)$为风速，$v_{\mathrm{safe}}$为安全风速限制。风场满足韦布尔分布。
+
+\subsubsection{顶端火箭发射失败概率}
+
+由于太空电梯顶端仍需火箭发射将货物送入轨道，存在失败概率$P_{\mathrm{fail}}'$。
+
+\subsubsection{修正后的年有效运力}
+
+综合考虑摆动限制、维护停机和火箭发射失败，太空电梯的修正后年有效运力为：
+
+\begin{equation}
+	\kappa'_{SE} = \kappa_{SE} \cdot \frac{1}{T_{\mathrm{year}}} \int_{0}^{T_{\mathrm{year}}} \eta_{SE}(t) \, dt \cdot (1 - \beta_{\mathrm{maint}}) \cdot (1-P_{\mathrm{fail}'})
+\end{equation}
+
+其中：
+\begin{itemize}
+	\item $T_{\mathrm{year}}$为一年时长
+	\item $\frac{1}{T_{\mathrm{year}}} \int_{0}^{T_{\mathrm{year}}} \eta_{SE}(t) \, dt$为年可用度因子
+	\item $\beta_{\mathrm{maint}}$为维护停机系数
+	\item $(1-P_{\mathrm{fail}'})$为火箭发射成功率
+\end{itemize}
+
+\subsection{一年用水需求下的运输成本}
+
+\subsubsection{月球殖民地年净用水需求}
+
+月球殖民地一年的净用水需求（考虑水资源循环）为：
+
+\begin{equation}
+	M_{net}=M_{gross}\cdot(1-\gamma)=365P_{pop}\cdot w_{per}\cdot(1-\gamma)
+\end{equation}
+
+其中：
+\begin{itemize}
+	\item $M_{gross}$为年总用水量
+	\item $\gamma=0.85$为水资源循环效率
+	\item $P_{pop}=10$万人为月球殖民地人口
+	\item $w_{per}=0.15$吨/(人·天)为人均日用水量
+\end{itemize}
+
+\subsubsection{额外运输成本}
+
+一年的净用水需求所产生的额外运输成本取决于选用的运输方式。对于仅使用太空电梯的情况：
+
+\begin{equation}
+	C_{water,SE} = M_{net} \cdot c_{var}^{SE}
+\end{equation}
+
+对于仅使用传统火箭的情况：
+
+\begin{equation}
+	C_{water,TR} = \frac{M_{net}}{m_{load}} \cdot c_{launch}
+\end{equation}
+
+对于混合策略，需根据动态模型中的最优分配比例$\alpha$计算。
+
+\newpage
+%===============================================第四部分=============================================
+\section{Test the Model}
+\subsection{Sensitivity  Analysis}
+\subsection{Robustness Analysis}
+\texttt{这部分很重要，不能缺！}
+
+
+
+
+
+
+
+
+%==============================================第五部分================================================
+\section{Conclusion}
+\subsection{Summary of Results}
+
+\subsection{Strengths}%------------------优点----------------
+\begin{itemize}
+	%1. 有灵敏度分析与稳健性分析
+	\item The sensitivity analysis of the model demonstrates the effectiveness of the model under different parameter combinations and prove the robustness of the mod
+	\item Second one ...
+\end{itemize}
+
+\subsection{Weaknesses and Improvements}%---------------缺点与改进---------------------
+\begin{itemize}
+	\item The analysis of fish migration can be more accurate if we have more complete data;
+	\item Some approximate analysis methods are applied to model the management of fishing
+	      companies, which may lead to a situation contrary to the actual one  in extreme cases.
+	\item 此处引用了LLM.\upcite{openai2024chatgpt}
+\end{itemize}
+
+
+
+
+% 以下为信件/备忘录部分，不需要可自行去掉========================================================================
+% 如有需要可将整个 letter 环境移动到文章开头或中间
+% 请在第二个花括号内填写标题，如「信件」（Letter）或「备忘录」（Memorandum）
+\begin{letter}{Memorandum}
+	\begin{flushleft}  % 左对齐环境，无首行缩进
+		\textbf{To:} Heishan Yan\\
+		\textbf{From:} Team 1234567\\
+		\textbf{Date:} October 1st, 2019\\
+		\textbf{Subject:} A better choice than MS Word: \LaTeX
+	\end{flushleft}
+
+	In the memo, we want to introduce you to an alternate typesetting program to the prevailing MS Word: \textbf{\LaTeX}. In fact, the history of \LaTeX\ is even longer than that of MS Word. In the 1970s, the famous computer scientist Donald Knuth first came out with a typesetting program,  named \TeX\ \ldots
+
+	Firstly, \ldots
+
+	Secondly, \ldots
+
+	Lastly, \ldots
+
+	According to all those mentioned above, it is really worth to have a try on \LaTeX!
+\end{letter}
+
+%=================================================================================================================
+
+
+
+
+% 参考文献，直接把bib格式粘贴到References.bib里面，此处无需改动！！！！！！！！！！！！！！！！！！
+\bibliographystyle{unsrt} %规定了参考文献的格式
+\begin{center}
+	\bibliography{references.bib} %调出LaTeX生成参考文献列表
+\end{center}
+%=====================================================================================
+
+
+
+% 以下为附录内容
+% 如您的论文中不需要附录，请自行删除
+\begin{subappendices}  % 附录环境
+
+	\section{Appendix A: Further on \LaTeX}
+	To clarify the importance of using \LaTeX\ in MCM or ICM, several points need to be covered, which are \ldots
+
+	To be more specific, \ldots
+
+	All in all, \ldots
+
+	Anyway, nobody \textbf{really} needs such appendix \ldots
+
+	\section{Appendix B: Program Codes}
+	Here are the program codes we used in our research.
+
+	% 代码环境示例三则
+	% 如您的论文不需要展示代码，请删除
+	% 更多用法，请参考 listings 宏包文档
+
+	% Python 代码示例
+	\lstinputlisting[language=python]{code/example.py}
+
+	% MATLAB 代码示例
+	\lstinputlisting[language=matlab]{code/example.m}
+
+	\section{Appendix C: Report on Use of AI}
+	% 人工智能的报告
+	1. OpenAI ChatGPT (Nov 5, 2023 version, ChatGPT-4)
+
+	Query1: <insert the exact wording you input into the AI tool>
+	
+	Output: <insert the complete output from the AI tool>
+
+	2. OpenAI Ernie (Nov 5, 2023 version, Ernie 4.0)
+	
+	Query1: <insert the exact wording of any subsequent input into the AI tool>
+	
+	Output: <insert the complete output from the second query>
+	
+	3. Github CoPilot (Feb 3, 2024 version)
+	
+	Query1: <insert the exact wording you input into the AI tool>
+	
+	Output: <insert the complete output from the AI tool>
+	
+	4. Google Bard (Feb 2, 2024 version)
+	
+	Query: <insert the exact wording of your query>
+	
+	Output: <insert the complete output from the AI tool>
+	
+
+\end{subappendices}  % 附录内容结束
+
+\end{document}  % 结束
