@@ -443,7 +443,7 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 
 \subsection[Dynamic Adjustment Logic]{动态调整逻辑}
 
-随着时间的推移和技术的发展，太空电梯系统的单位可变成本$c_{var}^{SE}$逐渐下降。采用如下理想化模型表示这一过程：
+由于工期极长，随着材料科学、能源系统和自动化维护技术的提升，若仍以静态的$\alpha$案进行规划，将无法反映运输方案在不同阶段的经济性演化，导致早期或后期资源配置严重失衡。随着时间的推移和技术的发展，太空电梯系统的单位可变成本$c_{var}^{SE}$逐渐下降。采用如下理想化模型表示这一过程：
 
 \begin{equation}
 	c_{var}^{SE}=0.8c_0+0.2c_0\exp(-0.0139i)
@@ -684,26 +684,60 @@ $c_{cargo\_loss}$ 无法查询到准确信息，通过搜集资料触发失败�
 其中：
 \begin{itemize}
 	\item $M_{gross}$为年总用水量
-	\item $\gamma=0.85$为水资源循环效率
+	\item $\gamma=$为水资源循环效率
 	\item $P_{pop}=10$万人为月球殖民地人口
-	\item $w_{per}=0.15$吨/(人·天)为人均日用水量
+	\item $w_{per}=$吨/(人·天)为人均日用水量
 \end{itemize}
 
 \subsubsection{额外运输成本}
 
-一年的净用水需求所产生的额外运输成本取决于选用的运输方式。对于仅使用太空电梯的情况：
-
+在此视角下，不同策略的成本如下：
 \begin{equation}
-	C_{water,SE} = M_{net} \cdot c_{var}^{SE}
+    C_{SEonly}=M_{net}c_{var}^{SE}=  
 \end{equation}
-
-对于仅使用传统火箭的情况：
-
+\begin{equation} 
+	C_{TRonly}=M_{net}c'_{launch}/m_{load}=
+\end{equation}
+\begin{equation} 
+	 C_{static}=\alpha\cdot M_{net}c_{var}^{SE}+(1-\alpha)M_{net}c'_{launch}/m_{load}= 
+\end{equation}
+    
+在工期尾部阶段，动态模型的$\alpha_i$取值基本为1，其成本
 \begin{equation}
-	C_{water,TR} = \frac{M_{net}}{m_{load}} \cdot c_{launch}
+	C_{dynamic}=C_{SEonly}=
 \end{equation}
+    
+\subsection{环境影响模型}
+\subsubsection{环境影响系数的建立}
+TR-only模型的主要环境污染在于火箭发射产生的二氧化碳排放 以及 ⿊碳和氧化铝对臭氧层的破坏，这些排放量均与火箭发射次数成正比，\textbf{环境影响系数}为:
 
-对于混合策略，需根据动态模型中的最优分配比例$\alpha$计算。
+\[ E_{TR-only} = M_{tot} \cdot (\omega_{CO_{2}}\cdot \epsilon_{CO_{2}}+\omega_{BC}\cdot \epsilon_{BC}+\omega_{Al_2 O_3}\cdot \epsilon_{Al_2 O_3})/m_{load}\]
+
+SE-only模型的主要环境污染在于运送货物时耗费的电力，这些电力可能来自于非清洁能源，在生产电力的过程中造成污染，\textbf{环境影响系数}为：
+
+\[ E_{SE-only} = M_{tot} \cdot e_{per}\cdot (1-\eta_{clean})\cdot\epsilon_{coal}\]
+其中$\eta_{clean}$为清洁能源的使用率，$\epsilon_{coal}$为燃煤发电时每千瓦时释放的CO$_2$。
+
+静态混合模型的环境污染同时来自于两种污染，\textbf{环境影响系数}为：
+\begin{equation}
+\begin{split}
+	E_{static} = &M_{tot}\cdot (1-\alpha) \cdot (\omega_{CO_{2}}\cdot \epsilon_{CO_{2}}+\omega_{BC}\cdot \epsilon_{BC}+\omega_{Al_2 O_3}\cdot \epsilon_{Al_2 O_3})/m_{load}\\
+	&+{M_{tot}\cdot \alpha \cdot e_{per}\cdot (1-\eta_{clean})}\cdot\epsilon_{coal}
+\end{split}
+\end{equation}
+而动态模型的\textbf{环境影响系数}类似于上面的式子：
+\begin{equation}
+\begin{split}
+	E_{dynamic} = &\sum_{i=1}^{K} \left[ (1-\alpha_i) \cdot (\omega_{CO_{2}}\cdot \epsilon_{CO_{2}}+\omega_{BC}\cdot \epsilon_{BC}+\omega_{Al_2 O_3}\cdot \epsilon_{Al_2 O_3})/m_{load} \right.\\
+	&\left. +{\alpha_i \cdot e_{per}\cdot (1-\eta_{clean})}\cdot\epsilon_{coal} \right] \cdot q(i) \cdot \Delta t
+\end{split}
+\end{equation}
+\subsubsection{环境影响系数对最优策略的影响}
+TR-only和SE-only模型的策略不会发生变化，各自的环境影响系数为:
+\[E_{TR-only}=\]
+\[E_{SE-only}=\]
+
+而静态混合模型和动态模型在考虑环境影响系数后，最优策略\textbf{发生变化}，分别求解得：
 
 
 %===========================================第五部分====================================================================
@@ -761,7 +795,69 @@ $c_{cargo\_loss}$ 无法查询到准确信息，通过搜集资料触发失败�
 %===============================================第六部分=============================================
 \section{Test the Model}
 \subsection{Sensitivity  Analysis}
+敏感性分析目标：  
+\begin{itemize}
+	\item 量化参数对目标函数的影响程度；
+	\item 识别关键参数，指导决策和优化；
+\end{itemize}
+\subsubsection{选取参数}
+根据模型，选取以下参数进行敏感性分析：
+\begin{itemize}
+	\item SE系统年运力 $\kappa_{SE,total}$
+	\item TR单次有效载荷 $m_{load}$
+	\item SE缆绳摆动导致的可用度 $\eta_{SE}$ 
+	\item 成本参数 $c_{var}^{SE}$、$c'_{launch}$
+	\item 清洁能源使用率 $\eta_{clean}$
+\end{itemize}
+\subsubsection{分析方法}
+采用\textbf{单因素敏感性分析} + \textbf{多因素交互分析}：
+\begin{itemize}
+	\item \textbf{单因素}：每次只改变一个参数的值（±5\%、±10\%、±20\%），保持其他参数不变，计算目标函数的变化率：
+\[
+S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
+\]
+其中 $f$ 是目标函数值（工期、成本），$x$ 是参数值。
+	\item \textbf{多因素}：用拉丁超立方抽样（LHS）方法，在参数的可能范围内随机采样，运行模型，计算 Sobol 灵敏度指数，分析交互效应。
+\end{itemize}
+
+\subsubsection{结果展示}
 \subsection{Robustness Analysis}
+
+鲁棒性分析目标：
+\begin{itemize}
+	\item 判断在输入参数有不确定性波动时，原方案目标值产生的误差大小；
+	\item 确定哪种运输策略（SE-only、TR-only、混合模式、动态模式）对扰动最不敏感。
+\end{itemize}
+
+\subsubsection{不确定性建模}
+根据原有参数，可以有以下不确定性：
+\begin{itemize}
+	\item \textbf{火箭失败概率波动}：设为 Beta 分布（偏向平均值但存在极端值处的风险）。
+	\item \textbf{成本波动}：假设未来价格受通胀和技术进步影响，成本服从正态分布。
+	\item \textbf{技术改进速度波动}：$c_{var}^{SE}$公式中的参数服从正态分布，影响 $c_{var}^{SE}$ 的下降速率。
+\end{itemize}
+\subsubsection{鲁棒性评估指标}
+\begin{itemize}
+	\item 目标函数偏离度：衡量扰动后目标函数值相对于基准值的变化程度:\[
+	R = \frac{|f_{\mathrm{perturbed}} - f_{\mathrm{baseline}}|}{f_{\mathrm{baseline}}}
+	\]
+	\item 最坏情况性能下降幅度：取样本中最差5\%的结果，用于风险评估。
+\end{itemize}
+
+\subsubsection{分析方法}
+先用原始参数求出基准工期$T_0$，基准成本$f_0$，基准环境影响$E_0$。
+然后进行扰动后仿真：
+\begin{itemize}
+	\item 随机抽样不同扰动组合：
+	\item 采用原始参数求出的方案对每个组合运行模型，记录各指标。
+	\item 计算偏离度和最坏情况性能下降幅度：
+\end{itemize}
+
+\subsubsection{结果展示}
+\begin{itemize}
+	\item 各模型的目标偏离度排名
+	\item 各模型的最坏情况性能下降幅度排名（其实基本就是鲁棒性排名）
+\end{itemize}
 \texttt{这部分很重要，不能缺！}
 
 
