@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1769911915.46038 "main.aux" "main.bbl" "main" 1769911922.48098 0
+["bibtex main"] 1769912328.90088 "main.aux" "main.bbl" "main" 1769912333.93431 0
   "./references.bib" 1769904452 2260 e4c715f41338ccd3065457be6b4269b4 ""
   "c:/texlive/2025/texmf-dist/bibtex/bst/base/unsrt.bst" 1769053935 18030 1376b4b231b50c66211e47e42eda2875 ""
-  "main.aux" 1769911920 10648 6e5b8f1742464c4500341e9a5411a3a5 "pdflatex"
+  "main.aux" 1769912332 9313 606d7bd14e53559437257df076a21cb8 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1769911915.86413 "c:/Users/20953/Desktop/MCM/latex/MCM------/main.tex" "main.pdf" "main" 1769911922.48169 0
-  "c:/Users/20953/Desktop/MCM/latex/MCM------/main.tex" 1769911892 40466 318911e9aaedd5c53184ac183b5d64a3 ""
+["pdflatex"] 1769912329.31998 "c:/Users/20953/Desktop/MCM/latex/MCM------/main.tex" "main.pdf" "main" 1769912333.93496 0
+  "c:/Users/20953/Desktop/MCM/latex/MCM------/main.tex" 1769912077 39266 1c167ff0df9711bcc1fc1244c7f7a6ae ""
   "c:/Windows/Fonts/msyh.ttc" 1763807602 19704352 1e10e74402e59d54499af795caf0b135 ""
   "c:/Windows/Fonts/simfang.ttf" 1711630440 10580176 8d3ab7d902eb7dfed8404e2e6cd8d1fb ""
   "c:/Windows/Fonts/simhei.ttf" 1711630440 9755440 983b60188a8e5a7c29c06c674f428b3d ""
@@ -132,7 +132,6 @@
   "c:/texlive/2025/texmf-dist/fonts/tfm/zhmetrics/unisong/unisong5e.tfm" 1769058851 1172 19d2fe591b31a07314df704f4d4d5035 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/zhmetrics/unisong/unisong5f.tfm" 1769058851 1172 e4d92bc2f617835508003ad811702c49 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/zhmetrics/unisong/unisong60.tfm" 1769058852 1172 7b3876cac8e97dc2d0915ac00b6e4c26 ""
-  "c:/texlive/2025/texmf-dist/fonts/tfm/zhmetrics/unisong/unisong61.tfm" 1769058852 1172 0c54aba04f6eca94b3b31a372d096e93 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/zhmetrics/unisong/unisong62.tfm" 1769058852 1172 9ffac14c72fbc4879502782835fb1e0a ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/zhmetrics/unisong/unisong63.tfm" 1769058851 1172 5558042a53f0a34c54eaf1c8af13f377 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/zhmetrics/unisong/unisong64.tfm" 1769058852 1172 9123bc1a52f39fa754022a43a1394244 ""
@@ -342,18 +341,13 @@
   "c:/texlive/2025/texmf.cnf" 1769058868 713 e69b156964470283e0530f5060668171 ""
   "code/example.m" 1769904452 68 bba17d5225bd2fdfb50ca278bd87c05e ""
   "code/example.py" 1769904452 70 27454022593584e24950e666f99e9476 ""
-  "img/Figure_342.png" 1769911892 360429 c8e0b1351b2828ceea1ba8c637c9a13c ""
-  "img/Figure_35.png" 1769911892 950710 4fc6a2ddf16ea57599b8c69f04b452f6 ""
-  "img/Figure_41&42.png" 1769911892 533836 32f5d1042239b5c232360f8c5f47b058 ""
-  "img/Figure_441.png" 1769911892 168212 75588f173d76fbd4e6ce56238e69b87e ""
-  "img/Figure_442.png" 1769911892 220639 696538daaa5113432120e2949363164e ""
   "img/background.png" 1769904452 420963 673149effc9a4ffffdc74e26ec3168c0 ""
   "ldmcm.sty" 1769904452 10439 a61a0bae21a0f994e668111bba931634 ""
-  "main.aux" 1769911920 10648 6e5b8f1742464c4500341e9a5411a3a5 "pdflatex"
-  "main.bbl" 1769911915 908 54802490216af9857e5c9d61979233cd "bibtex main"
-  "main.out" 1769911920 7946 80a8b19652f8dc802578f6e4d58a06ca "pdflatex"
-  "main.tex" 1769911892 40466 318911e9aaedd5c53184ac183b5d64a3 ""
-  "main.toc" 1769911920 5277 5c611a4c57e1dadfbe968c17fec5541c "pdflatex"
+  "main.aux" 1769912332 9313 606d7bd14e53559437257df076a21cb8 "pdflatex"
+  "main.bbl" 1769912329 908 54802490216af9857e5c9d61979233cd "bibtex main"
+  "main.out" 1769912332 8114 c1e06211d777bcb30e5def882d226d43 "pdflatex"
+  "main.tex" 1769912077 39266 1c167ff0df9711bcc1fc1244c7f7a6ae ""
+  "main.toc" 1769912332 5371 7a5a4ea773bda8cbdc9af3bf3ec7bd45 "pdflatex"
   (generated)
   "main.aux"
   "main.log"
