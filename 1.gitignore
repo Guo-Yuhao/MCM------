@@ -1,0 +1,16 @@
+# LaTeX 临时/生成文件
+*.aux
+*.toc
+*.log
+*.out
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.pdf
+
+# 编辑器临时文件
+.vscode/
+*.swp
+*~
