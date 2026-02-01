@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 \contentsline {section}{\numberline {1}Introduction}{5}{section.0.1}%
 \contentsline {subsection}{\numberline {1.1}Problem Background}{5}{subsection.0.1.1}%
 \contentsline {subsection}{\numberline {1.2}Literature Review}{6}{subsection.0.1.2}%
@@ -34,12 +35,51 @@
 \contentsline {subsubsection}{\numberline {4.5.2}发射成本调整}{16}{subsubsection.0.4.5.2}%
 \contentsline {subsubsection}{\numberline {4.5.3}修正运力}{16}{subsubsection.0.4.5.3}%
 \contentsline {subsubsection}{\numberline {4.5.4}修正成本公式}{16}{subsubsection.0.4.5.4}%
+=======
+\contentsline {section}{\numberline {1}Introduction}{4}{section.0.1}%
+\contentsline {subsection}{\numberline {1.1}Problem Background}{4}{subsection.0.1.1}%
+\contentsline {subsection}{\numberline {1.2}Literature Review}{5}{subsection.0.1.2}%
+\contentsline {subsection}{\numberline {1.3}Our work}{6}{subsection.0.1.3}%
+\contentsline {section}{\numberline {2}Preparation of the Models}{7}{section.0.2}%
+\contentsline {subsection}{\numberline {2.1}Assumptions and Explanations}{7}{subsection.0.2.1}%
+\contentsline {subsection}{\numberline {2.2}Notations}{8}{subsection.0.2.2}%
+\contentsline {subsection}{\numberline {2.3}Data}{8}{subsection.0.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Data Collection}{8}{subsubsection.0.2.3.1}%
+\contentsline {section}{\numberline {3}Model 1: 静态基准模型}{9}{section.0.3}%
+\contentsline {subsection}{\numberline {3.1}模型概述}{9}{subsection.0.3.1}%
+\contentsline {subsection}{\numberline {3.2}场景一：仅SE模式}{9}{subsection.0.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}完美状态运力}{9}{subsubsection.0.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}项目工期}{9}{subsubsection.0.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}总成本}{9}{subsubsection.0.3.2.3}%
+\contentsline {subsection}{\numberline {3.3}场景二：仅TR模式}{10}{subsection.0.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}完美状态运力}{10}{subsubsection.0.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}项目工期}{10}{subsubsection.0.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}总成本}{10}{subsubsection.0.3.3.3}%
+\contentsline {subsection}{\numberline {3.4}场景三：混合静态模式}{10}{subsection.0.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}项目工期}{10}{subsubsection.0.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}最优分配比例}{11}{subsubsection.0.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}总成本}{11}{subsubsection.0.3.4.3}%
+\contentsline {subsection}{\numberline {3.5}三种场景的比较分析}{11}{subsection.0.3.5}%
+\contentsline {section}{\numberline {4}Model 2: Dynamic Extended Model}{12}{section.0.4}%
+\contentsline {subsection}{\numberline {4.1}Dynamic Adjustment Logic}{12}{subsection.0.4.1}%
+\contentsline {subsection}{\numberline {4.2}动态目标函数}{12}{subsection.0.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}目标1：总项目工期}{12}{subsubsection.0.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}目标2：全生命周期成本（分段求和）}{13}{subsubsection.0.4.2.2}%
+\contentsline {subsection}{\numberline {4.3}动态约束条件}{13}{subsection.0.4.3}%
+\contentsline {subsection}{\numberline {4.4}模型特点}{13}{subsection.0.4.4}%
+\contentsline {subsection}{\numberline {4.5}火箭发射失败的修正}{14}{subsection.0.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}失败概率与有效载荷}{14}{subsubsection.0.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}发射成本调整}{15}{subsubsection.0.4.5.2}%
+\contentsline {subsubsection}{\numberline {4.5.3}修正运力}{15}{subsubsection.0.4.5.3}%
+\contentsline {subsubsection}{\numberline {4.5.4}修正成本公式}{15}{subsubsection.0.4.5.4}%
+>>>>>>> 582275548e06e4794bfe800e8920e4e631484925
 \contentsline {subsection}{\numberline {4.6}系绳摇晃的科里奥利力与风切变扰动}{16}{subsection.0.4.6}%
 \contentsline {subsubsection}{\numberline {4.6.1}瞬时可用度函数}{16}{subsubsection.0.4.6.1}%
 \contentsline {subsubsection}{\numberline {4.6.2}顶端火箭发射失败概率}{17}{subsubsection.0.4.6.2}%
 \contentsline {subsubsection}{\numberline {4.6.3}修正后的年有效运力}{17}{subsubsection.0.4.6.3}%
 \contentsline {subsection}{\numberline {4.7}一年用水需求下的运输成本}{17}{subsection.0.4.7}%
 \contentsline {subsubsection}{\numberline {4.7.1}月球殖民地年净用水需求}{17}{subsubsection.0.4.7.1}%
+<<<<<<< HEAD
 \contentsline {subsubsection}{\numberline {4.7.2}额外运输成本}{18}{subsubsection.0.4.7.2}%
 \contentsline {subsection}{\numberline {4.8}环境污染模型}{18}{subsection.0.4.8}%
 \contentsline {subsubsection}{\numberline {4.8.1}原有各模型的环境影响因子}{18}{subsubsection.0.4.8.1}%
@@ -62,4 +102,23 @@
 \contentsline {section}{Appendix A: Further on \LaTeX }{25}{section*.7}%
 \contentsline {section}{Appendix B: Program Codes}{25}{section*.8}%
 \contentsline {section}{Appendix C: Report on Use of AI}{25}{section*.9}%
+=======
+\contentsline {subsubsection}{\numberline {4.7.2}额外运输成本}{17}{subsubsection.0.4.7.2}%
+\contentsline {section}{\numberline {5}上述模型的求解}{19}{section.0.5}%
+\contentsline {subsection}{\numberline {5.1}决策变量}{19}{subsection.0.5.1}%
+\contentsline {subsection}{\numberline {5.2}逐阶段扩展搜索算法}{19}{subsection.0.5.2}%
+\contentsline {subsection}{\numberline {5.3}多目标前沿判定}{20}{subsection.0.5.3}%
+\contentsline {section}{\numberline {6}Test the Model}{21}{section.0.6}%
+\contentsline {subsection}{\numberline {6.1}Sensitivity Analysis}{21}{subsection.0.6.1}%
+\contentsline {subsection}{\numberline {6.2}Robustness Analysis}{21}{subsection.0.6.2}%
+\contentsline {section}{\numberline {7}Conclusion}{21}{section.0.7}%
+\contentsline {subsection}{\numberline {7.1}Summary of Results}{21}{subsection.0.7.1}%
+\contentsline {subsection}{\numberline {7.2}Strengths}{21}{subsection.0.7.2}%
+\contentsline {subsection}{\numberline {7.3}Weaknesses and Improvements}{21}{subsection.0.7.3}%
+\contentsline {section}{Memorandum}{22}{section.0.8}%
+\contentsline {section}{References}{22}{section.1.8}%
+\contentsline {section}{Appendix A: Further on \LaTeX }{23}{section*.7}%
+\contentsline {section}{Appendix B: Program Codes}{23}{section*.8}%
+\contentsline {section}{Appendix C: Report on Use of AI}{23}{section*.9}%
+>>>>>>> 582275548e06e4794bfe800e8920e4e631484925
 \contentsfinish 
