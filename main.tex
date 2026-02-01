@@ -392,6 +392,7 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	T_C(\alpha)=\max\left( \frac{\alpha M_{tot}}{\kappa_{SE,total}}, \frac{(1-\alpha) M_{tot}}{\kappa_{TR}} \right)
 \end{equation}
 
+%3.5
 \subsubsection{最优分配比例}
 
 从工期角度考虑，最优分配比例$\alpha^*$满足两种运输方式的完成时间相等：
@@ -426,6 +427,16 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	
 	\item \textbf{决策选择}：三种方案的优劣取决于对工期最小化或成本最小化的优先级权重。
 \end{itemize}
+
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+		\includegraphics[width=\textwidth]{img/Figure_35.png}
+		\caption*{}
+		\label{}
+	\end{subfigure}
+	\caption{35}\label{subfigure}
+\end{figure}
 \newpage
 %===========================================第四部分====================================================================
 \section[Model 2: Dynamic Extended Model]{Model 2: 动态扩展模型（时间自适应策略）}
@@ -440,21 +451,7 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 
 其中$c_0$为初始成本，25个时间区间后成本降至原值的0.9倍。
 
-运输分配比例$\alpha(t)$由太空电梯和传统火箭系统的瞬时单位成本比$\rho(t)$驱动：
-
-\begin{equation}
-	\rho(t)=\frac{c_{var}^{SE}(t, Q_{SE}(t))}{c_{TR}(t, Q_{TR}(t))}
-\end{equation}
-
-根据成本比的大小，对$\alpha_i$的决策规则为：
-
-\begin{itemize}
-	\item 当$\rho(t)<0.8$（SE更便宜）时：$\alpha_i=1$
-	
-	\item 当$\rho(t)>1.2$（TR更便宜）时：$\alpha_i=0$
-	
-	\item 当$0.8 \leq \rho(t) \leq 1.2$（成本均衡）时：$\alpha_i \in (0,1)$，为重点优化方向，目标是最小化区间内的成本和环境影响
-\end{itemize}
+%4.2
 
 \subsection{动态目标函数}
 
@@ -514,6 +511,17 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	\item 第50个区间结束时，累积运输总量必须达到所需的全部物资
 \end{itemize}
 
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[b]{.8\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+		\includegraphics[width=\textwidth]{img/Figure_41&42.png}
+		\caption*{}
+		\label{}
+	\end{subfigure}
+	\caption{43}\label{subfigure}
+\end{figure}
+
+%4.4================================动态模型特点====================================================================
 \subsection{模型特点}
 
 动态$\alpha(t)$扩展模型相比静态基准模型的主要优势为：
@@ -530,7 +538,7 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 
 \begin{figure}[htbp]
 	\centering
-	\begin{subfigure}[b]{.8\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
 		\includegraphics[width=\textwidth]{img/Figure_44.png}
 		\caption*{}
 		\label{}
