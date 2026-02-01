@@ -107,31 +107,16 @@
 %==============第一部分===引入=============================================================
 \section{Introduction}
 \subsection{Problem Background}%问题背景问题背景问题背景问题背景问题背景问题背景---------------------------------
-%一些常用的写作缩略语：
-
-%i.e.,。。。也即是。。。（一定加逗号）
-
-%e.g.,。。。例如，。。。
-
-%, etc.    。。。，等等。
-
-%n.b.   特别注意
-
-%cf.  参见
-
-
 %美赛一定要多上图，清晰直观，并且格式上最好是矢量图，例如pdf，而不是位图，例如jpg，png等，在形式上最好是组图，下面列出了利用\verb|subfigure|实现的
 %\verb|1x2,1x3,2x2|的几种组图：
-Some people envision a Space Elevator System, powered by electricity, offering a scalable
+Some researchers envision an electrically powered Space Elevator System, which would provide a scalable 
 infrastructure for interplanetary logistics, commerce, and exploration.
 
-At its final operating configuration, the Space Elevator System would comprise three Galactic
-Harbours, ideally separated by 120 degrees around the equator. Each Galactic Harbour would 
-include a single Earth port with two100,000 km-long tethers connected to two apex anchors,
-with multiple space elevators operating together, each capable of lifting massive payloads daily
-from Earth to geosynchronous orbit (GEO) and beyond to the apex anchor where they can be
-loaded on a rocket and delivered anywhere using much less fuel.
-
+In its final operational configuration, the Space Elevator System will consist of three Galactic Harbours, 
+preferably spaced 120 degrees apart along the equator. Each Galactic Harbour will include a single Earth port, 
+connected to two 100,000 km-long tethers that link to two apex anchors. Multiple space elevators will operate 
+collaboratively, each capable of transporting massive payloads from Earth to geosynchronous orbit (GEO) on a 
+daily basis, and further to the apex anchors—where payloads can be loaded onto rockets for delivery to any destination with significantly reduced fuel consumption.
 %% 这是问题背景的概念图
 \begin{figure}[htbp]
 	\centering
@@ -143,19 +128,16 @@ loaded on a rocket and delivered anywhere using much less fuel.
 	\caption{problem background}\label{subfigure}
 \end{figure}
 
-Based on the plan above,The Moon Colony Management (MCM) Agency is preparing to build a Moon Colony with an
-estimated 100,000 people beginning in the year 2050, after completion of the Space Elevator
-System. 
-
-The agency is also considering using traditional rockets to supply material for construction and
-supplies to the Moon Colony. The Earth current has ten rocket launch sites: Alaska, California,
-Texas, Florida, and Virginia (United States), Kazakhstan, French Guiana, Satish Dhawan Space
-Centre (India), Taiyuan Satellite Launch Center (China), and Mahia Peninsula (New Zealand).
+Based on this proposed system, the Moon Colony Management (MCM) Agency intends to construct
+ a lunar colony capable of accommodating 100,000 people, with construction scheduled to 
+ commence in 2050 following the completion of the Space Elevator System. 
+  Additionally, the agency is considering the use of traditional rockets to supply construction materials 
+ and daily provisions to the lunar colony. Currently, there are ten rocket launch sites 
+ on Earth, located in Alaska, California, Texas, Florida, and Virginia (United States), 
+ as well as in Kazakhstan, French Guiana, the Satish Dhawan Space Centre (India), the 
+ Taiyuan Satellite Launch Center (China), and the Mahia Peninsula (New Zealand).
 
 As shown in figure\ref{subfigure},the schematic of the Space Elevator System and Moon Colony is illustrated above.
-
-\newpage
-
 
 %\subsection{Problem Background}%问题重述与文献综述选一个------------------------------------------------------------------------
 \subsection{Literature Review} % 文献综述-----------------
@@ -188,14 +170,14 @@ Three major problems are discussed in this paper, which are:
 	on Earth while ensuring the successful construction and operation of the Moon Colony.
 \end{itemize}
 
-\newpage
-
+%月球水
 A literatrue\upcite{jones2015water} reviews the water demand of lunar bases: the basic domestic water consumption 
 is 4.17 kg per person per day, covering drinking, sanitation and other uses. A daily wastewater yield of 5.57 kg per person is generated, 
 with condensed water and urinary wastewater recoverable as supplementary water sources. The base is designed with 167 kg of emergency 
 water storage for a 10-day evacuation window, with low reliability requirements for water supply systems. Cost and reliability can be balanced via redundancy 
 design or three-loop systems, and the relevant water system technologies are adaptable to the gravitational environments of the Moon and Mars (data based on NASA Exploration Program assumptions).
 
+%太空电梯
 A literature\upcite{smitherman2000space} confirm that space elevators have a solid technological and economic feasibility 
 basis. High-strength materials such as carbon nanotubes meet the theoretical strength requirements; Low Earth Orbit (LEO) space elevators 
 are technologically feasible with supporting propulsion solutions. Mature space infrastructure and resource exploitation underpin economic viability. 
@@ -203,6 +185,13 @@ The equator is the optimal location, and space debris removal is a critical safe
 and boost space industrial development. Their realization relies on material breakthroughs, phased verification and global cooperation, with projection 
 for implementation in the late 21st century.
 
+%地月运输
+In the literature\upcite{ishimatsu2016generalized}, a generalized multi-commodity network flow (GMCNF) model has been proposed to optimize logistics within the Earth–Moon–Mars system.
+ It incorporates multi-commodity flows like propellant, crew, and equipment, with in-situ resource utilization (ISRU) such as lunar water production2. Leveraging lunar resources reduces 
+ total mass launched from Earth (TLMLEO) when combined with LOX/LH₂ propulsion and aerocapture2. Sensitivity analysis shows lunar ISRU becomes economically viable above 1.8 kg/year/kg productivity, 
+ supporting sustainable cislunar supply chains2. This approach provides a foundational framework for efficient interplanetary transport networks2.
+
+%火箭污染
 A literatrue\upcite{ross2014radiative}shows:Rocket exhaust produces positive radiative forcing (RF), primarily due to black carbon (BC) and alumina particles.
 Carbon dioxide (CO₂) emissions from rockets contribute negligibly to RF compared to particulate emissions.
 Current global RF from rocket launches is estimated at 16 ± 8 mW m⁻², with BC accounting for 70 percents of this value.
@@ -221,7 +210,6 @@ We do such things ...
 %===========================第二部分==模型准备==========================================================
 \section{Preparation of the Models}
 \subsection{Assumptions and Explanations}
-
 %为了简化问题，我们做出了以下假设，其中每一条都有对应的合理解释
 To simplify the problem, we made the following assumptions, each of which has a corresponding reasonable explanation.
 \begin{itemize}
@@ -308,15 +296,17 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 
 \begin{table}[htbp]%----------------------------------------------
 	\begin{center}
-		\caption{Notations used in this paper}
+		\caption{Data Sources used in this paper}
 		\begin{tabular}{c c}
 			\toprule[1.5pt]
 			\multicolumn{1}{m{5cm}}{\centering \textbf{Database Names}}
 			               & \multicolumn{1}{m{10cm}}{\centering \textbf{Database Websites}}   \\
 			\midrule
-			Google Scholar & \href{https://scholar.google.com} {https://scholar.google.com}    \\
-			Wikipedia      & \href{https://www.wikipedia.org}{https://www.wikipedia.org}       \\
-			wolframalpha   & \href{https://www.wolframalpha.com}{https://www.wolframalpha.com} \\
+			Semantic Scholar & \href{https://www.semanticscholar.org}{https://www.semanticscholar.org} \\
+			NASA & \href{https://www.nasa.gov}{https://www.nasa.gov} \\
+			USGS & \href{https://www.usgs.gov}{https://www.usgs.gov} \\
+			Nature & \href{https://www.nature.com}{https://www.nature.com} \\
+			UNFAO & \href{https://www.fao.org}{https://www.fao.org} \\
 			\bottomrule[1.5pt]
 		\end{tabular}\label{tb:data}
 	\end{center}
