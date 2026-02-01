@@ -392,6 +392,7 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	T_C(\alpha)=\max\left( \frac{\alpha M_{tot}}{\kappa_{SE,total}}, \frac{(1-\alpha) M_{tot}}{\kappa_{TR}} \right)
 \end{equation}
 
+%3.4.2 最优分配比例与总成本--------------------------------------------------------------------------------
 \subsubsection{最优分配比例}
 
 从工期角度考虑，最优分配比例$\alpha^*$满足两种运输方式的完成时间相等：
@@ -413,6 +414,18 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 
 该成本包括太空电梯固定基础设施成本（一次性）、太空电梯运营可变成本和传统火箭发射成本。
 
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[b]{.8\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+		\includegraphics[width=\textwidth]{img/Figure_342.png}
+		\caption*{}
+		\label{}
+	\end{subfigure}
+	\caption{}\label{subfigure}
+\end{figure}
+
+
+%3.4.3 比较分析--------------------------------------------------------------------------------
 \subsection{三种场景的比较分析}
 
 静态基准模型提供以下重要洞察：
@@ -426,6 +439,17 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	
 	\item \textbf{决策选择}：三种方案的优劣取决于对工期最小化或成本最小化的优先级权重。
 \end{itemize}
+
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+		\includegraphics[width=\textwidth]{img/Figure_35.png}
+		\caption*{}
+		\label{}
+	\end{subfigure}
+	\caption{35}\label{subfigure}
+\end{figure}
+
 \newpage
 %===========================================第四部分====================================================================
 \section[Model 2: Dynamic Extended Model]{Model 2: 动态扩展模型（时间自适应策略）}
@@ -439,22 +463,6 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 \end{equation}
 
 其中$c_0$为初始成本，25个时间区间后成本降至原值的0.9倍。
-
-运输分配比例$\alpha(t)$由太空电梯和传统火箭系统的瞬时单位成本比$\rho(t)$驱动：
-
-\begin{equation}
-	\rho(t)=\frac{c_{var}^{SE}(t, Q_{SE}(t))}{c_{TR}(t, Q_{TR}(t))}
-\end{equation}
-
-根据成本比的大小，对$\alpha_i$的决策规则为：
-
-\begin{itemize}
-	\item 当$\rho(t)<0.8$（SE更便宜）时：$\alpha_i=1$
-	
-	\item 当$\rho(t)>1.2$（TR更便宜）时：$\alpha_i=0$
-	
-	\item 当$0.8 \leq \rho(t) \leq 1.2$（成本均衡）时：$\alpha_i \in (0,1)$，为重点优化方向，目标是最小化区间内的成本和环境影响
-\end{itemize}
 
 \subsection{动态目标函数}
 
@@ -472,7 +480,7 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	Q_{TR}(i) &= Q_{TR}(i-1)+(1-\alpha_i) \cdot q(i) \cdot \Delta t
 \end{align}
 
-时间区间长度$\Delta t = 5$年，可根据需要调整。
+时间区间长度$\Delta t = 10$年，可根据需要调整。
 
 \subsubsection{目标2：全生命周期成本（分段求和）}
 
@@ -489,6 +497,7 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 
 指示函数$\mathbb{I}$确保太空电梯固定成本仅在使用太空电梯时计入一次。
 
+%4.3 约束条件--------------------------------------------------------------------------------
 \subsection{动态约束条件}
 
 优化问题受以下约束条件限制：
@@ -514,6 +523,17 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	\item 第50个区间结束时，累积运输总量必须达到所需的全部物资
 \end{itemize}
 
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[b]{.8\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+		\includegraphics[width=\textwidth]{img/Figure_41&42.png}
+		\caption*{}
+		\label{}
+	\end{subfigure}
+	\caption{示意图}\label{subfigure}
+\end{figure}
+
+%4.4 模型求解与分析--------------------------------------------------------------------------------
 \subsection{模型特点}
 
 动态$\alpha(t)$扩展模型相比静态基准模型的主要优势为：
@@ -527,6 +547,20 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	
 	\item \textbf{多目标平衡}：同时考虑工期、成本和环境影响，寻求综合最优方案
 \end{enumerate}
+
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[b]{.45\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+		\includegraphics[width=\textwidth]{img/Figure_441.png}
+		\caption{left}\label{subfig:left}
+	\end{subfigure}
+	\hspace{10mm} %%%%%%%%%%%%%%%%%%调整子图间距
+	\begin{subfigure}[b]{.45\textwidth}
+		\includegraphics[width=\textwidth]{img/Figure_442.png}
+		\caption{right}\label{subfig:right}
+	\end{subfigure}
+	\caption{Two images}\label{subfigure}
+\end{figure}
 
 % 长表格示例，更多用法请参考 longtable 宏包文档
 % 以下环境及对应参数可实现表格内的自动换行与表格的自动断页
