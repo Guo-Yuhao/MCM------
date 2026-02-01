@@ -641,14 +641,16 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 其中：
 \begin{itemize}
 	\item $M_{gross}$为年总用水量
-	\item $\gamma=0.85$为水资源循环效率
+	\item $\gamma=0$为水资源循环效率
 	\item $P_{pop}=10$万人为月球殖民地人口
-	\item $w_{per}=0.15$吨/(人·天)为人均日用水量
+	\item $w_{per}=0$吨/(人·天)为人均日用水量
 \end{itemize}
 
 \subsubsection{额外运输成本}
 
-一年的净用水需求所产生的额外运输成本取决于选用的运输方式。对于仅使用太空电梯的情况：
+一年的净用水需求所产生的额外运输成本取决于选用的运输方式。在此视角下，不同策略的成本如下：
+
+对于仅使用太空电梯的情况：
 
 \begin{equation}
 	C_{water,SE} = M_{net} \cdot c_{var}^{SE}
@@ -660,12 +662,105 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	C_{water,TR} = \frac{M_{net}}{m_{load}} \cdot c_{launch}
 \end{equation}
 
-对于混合策略，需根据动态模型中的最优分配比例$\alpha$计算。
+对于静态混合策略，成本为：
+
+\begin{equation}
+	C_{water,static} = \alpha \cdot M_{net} \cdot c_{var}^{SE} + (1-\alpha) \cdot \frac{M_{net}}{m_{load}} \cdot c_{launch}
+\end{equation}
+
+其中$\alpha$为太空电梯的运输比例。
+
+在动态模型中，工期尾部阶段的$\alpha_i$取值基本为1，其对应的成本为：
+
+\begin{equation}
+	C_{water,dynamic} = M_{net} \cdot c_{var}^{SE}
+\end{equation}
+
+这反映了在工期后期，当太空电梯成本优势明显时，倾向于优先采用太空电梯运输水资源的策略。
+
+\subsection{环境污染模型}
+
+\subsubsection{原有各模型的环境影响因子}
+
+传统火箭系统（TR-only模式）的主要环境污染源自火箭发射产生的二氧化碳排放以及黑碳和氧化铝对臭氧层的破坏。这些排放量与火箭发射次数成正比，其环境影响系数为：
+
+\begin{equation}
+E_{TR-only} = \frac{M_{tot}}{m_{load}} \cdot (\omega_{CO_{2}}\cdot \epsilon_{CO_{2}}+\omega_{BC}\cdot \epsilon_{BC}+\omega_{Al_2O_3}\cdot \epsilon_{Al_2O_3})
+\end{equation}
+
+其中：
+\begin{itemize}
+	\item $\omega_{CO_{2}}$、$\omega_{BC}$、$\omega_{Al_2O_3}$分别为单次发射中各污染物的排放量
+	\item $\epsilon_{CO_{2}}$、$\epsilon_{BC}$、$\epsilon_{Al_2O_3}$分别为各污染物的环境影响权重
+\end{itemize}
+
+太空电梯系统（SE-only模式）的主要环境污染源自运送货物时耗费的电力。这些电力可能来自于非清洁能源，在生产电力的过程中造成污染。其环境影响系数为：
+
+\begin{equation}
+E_{SE-only} = M_{tot} \cdot e_{per}\cdot (1-\eta_{clean})
+\end{equation}
+
+其中：
+\begin{itemize}
+	\item $e_{per}$为单位货物运输的能源消耗环境影响系数
+	\item $\eta_{clean}$为清洁能源的使用率
+\end{itemize}
+
+静态混合模式的环境污染同时来自于两种污染源，其环境影响系数为：
+
+\begin{equation}
+E_{static} = \frac{(1-\alpha) \cdot M_{tot}}{m_{load}} \cdot (\omega_{CO_{2}}\cdot \epsilon_{CO_{2}}+\omega_{BC}\cdot \epsilon_{BC}+\omega_{Al_2O_3}\cdot \epsilon_{Al_2O_3}) + \alpha \cdot M_{tot} \cdot e_{per}\cdot (1-\eta_{clean})
+\end{equation}
+
+其中$\alpha$为太空电梯的运输比例。
+
+\subsubsection{动态模型中的环境影响}
+
+动态模型中，各阶段的环境影响系数取决于该阶段的具体运输方式分配。定义第$i$阶段的环境影响为：
+
+\begin{equation}
+E_{dynamic}(i) = \frac{Q_{TR}(i) - Q_{TR}(i-1)}{m_{load}} \cdot (\omega_{CO_{2}}\cdot \epsilon_{CO_{2}}+\omega_{BC}\cdot \epsilon_{BC}+\omega_{Al_2O_3}\cdot \epsilon_{Al_2O_3}) + (Q_{SE}(i) - Q_{SE}(i-1)) \cdot e_{per}\cdot (1-\eta_{clean})
+\end{equation}
+
+其中：
+\begin{itemize}
+	\item $Q_{SE}(i)$为截止第$i$阶段的太空电梯累积运输量
+	\item $Q_{TR}(i)$为截止第$i$阶段的传统火箭累积运输量
+\end{itemize}
+
+全生命周期的总环境影响为：
+
+\begin{equation}
+E_{total} = \sum_{i=1}^{k} E_{dynamic}(i)
+\end{equation}
+
+其中$k$为所需的总阶段数。
+
+\subsubsection{环境影响最小化策略}
+
+为了最小化环保影响，应优先采用以下措施：
+
+\begin{enumerate}
+	\item \textbf{增加清洁能源使用率}：通过扩大太空电梯的清洁能源供电比例$\eta_{clean}$，可有效降低SE系统的环境污染。
+	\item \textbf{优化发射场选择}：优先选择低纬度发射场以减少火箭升空过程中对臭氧层的破坏。
+	\item \textbf{改进火箭技术}：采用更环保的火箭燃料和推进系统，减少单位发射的污染物排放。
+	\item \textbf{合理规划运输比例}：在满足工期和成本约束的前提下，根据环境影响系数动态调整SE和TR的运输比例。
+\end{enumerate}
+
+\subsubsection{环保-成本-工期的多目标平衡}
+
+将环境影响纳入优化目标后，混合策略和动态模型的最优$\alpha_i$可能需要调整。通过帕累托前沿分析，可识别在环境污染、运输成本和建设工期之间达到最佳平衡的方案。
+
+定义综合目标函数为：
+
+\begin{equation}
+F = w_1 \cdot f_{cost} + w_2 \cdot f_{time} + w_3 \cdot E_{total}
+\end{equation}
+
+其中$w_1$、$w_2$、$w_3$分别为成本、工期和环境影响的权重系数，满足$w_1+w_2+w_3=1$。
 
 \newpage
-<<<<<<< HEAD
-%===============================================第六部分=============================================
-=======
+%===========================================第五部分====================================================================
 \section{上述模型的求解}
 为解决上述非线性、多目标、多阶段的优化问题，我们采用逐阶段扩展搜索算法（Stage-wise Extended Search Algorithm, SESA）。该算法结合动态规划和启发式搜索的优势，适用于复杂的决策问题。并采用贪心变动成本法（Greedy Marginal Cost Method, GMCM）对模型进行求解和优化。为求解多目标优化问题，我们采用帕累托前沿分析（Pareto Front Analysis）方法，识别在工期、成本和环境影响之间的最佳权衡方案。
 \subsection{决策变量}
@@ -716,8 +811,8 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 
 
 \newpage
-%===============================================第四部分=============================================
->>>>>>> c50d6c0d6a24a51b76158cccc6273f7dd0119408
+
+%===============================================第六部分=============================================
 \section{Test the Model}
 \subsection{Sensitivity  Analysis}
 \subsection{Robustness Analysis}
