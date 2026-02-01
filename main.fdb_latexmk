@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1769910583.6111 "main.aux" "main.bbl" "main" 1769910768.32734 0
+["bibtex main"] 1769911526.12232 "main.aux" "main.bbl" "main" 1769911531.40207 0
   "./references.bib" 1769904452 2260 e4c715f41338ccd3065457be6b4269b4 ""
   "c:/texlive/2025/texmf-dist/bibtex/bst/base/unsrt.bst" 1769053935 18030 1376b4b231b50c66211e47e42eda2875 ""
-  "main.aux" 1769910766 9313 606d7bd14e53559437257df076a21cb8 "pdflatex"
+  "main.aux" 1769911529 9313 606d7bd14e53559437257df076a21cb8 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1769910763.41493 "c:/Users/20953/Desktop/MCM/latex/MCM------/main.tex" "main.pdf" "main" 1769910768.32792 0
-  "c:/Users/20953/Desktop/MCM/latex/MCM------/main.tex" 1769910762 39266 1c167ff0df9711bcc1fc1244c7f7a6ae ""
+["pdflatex"] 1769911526.54088 "c:/Users/20953/Desktop/MCM/latex/MCM------/main.tex" "main.pdf" "main" 1769911531.40265 0
+  "c:/Users/20953/Desktop/MCM/latex/MCM------/main.tex" 1769911438 39266 1c167ff0df9711bcc1fc1244c7f7a6ae ""
   "c:/Windows/Fonts/msyh.ttc" 1763807602 19704352 1e10e74402e59d54499af795caf0b135 ""
   "c:/Windows/Fonts/simfang.ttf" 1711630440 10580176 8d3ab7d902eb7dfed8404e2e6cd8d1fb ""
   "c:/Windows/Fonts/simhei.ttf" 1711630440 9755440 983b60188a8e5a7c29c06c674f428b3d ""
@@ -343,11 +343,11 @@
   "code/example.py" 1769904452 70 27454022593584e24950e666f99e9476 ""
   "img/background.png" 1769904452 420963 673149effc9a4ffffdc74e26ec3168c0 ""
   "ldmcm.sty" 1769904452 10439 a61a0bae21a0f994e668111bba931634 ""
-  "main.aux" 1769910766 9313 606d7bd14e53559437257df076a21cb8 "pdflatex"
-  "main.bbl" 1769910583 908 54802490216af9857e5c9d61979233cd "bibtex main"
-  "main.out" 1769910766 8114 c1e06211d777bcb30e5def882d226d43 "pdflatex"
-  "main.tex" 1769910762 39266 1c167ff0df9711bcc1fc1244c7f7a6ae ""
-  "main.toc" 1769910766 5371 7a5a4ea773bda8cbdc9af3bf3ec7bd45 "pdflatex"
+  "main.aux" 1769911529 9313 606d7bd14e53559437257df076a21cb8 "pdflatex"
+  "main.bbl" 1769911526 908 54802490216af9857e5c9d61979233cd "bibtex main"
+  "main.out" 1769911529 8114 c1e06211d777bcb30e5def882d226d43 "pdflatex"
+  "main.tex" 1769911438 39266 1c167ff0df9711bcc1fc1244c7f7a6ae ""
+  "main.toc" 1769911529 5371 7a5a4ea773bda8cbdc9af3bf3ec7bd45 "pdflatex"
   (generated)
   "main.aux"
   "main.log"
