@@ -580,7 +580,6 @@ $c_{cargo\_loss}$ 无法查询到准确信息，通过搜集资料触发失败�
 \subsubsection{修正运力}
 
 火箭系统的实际运力上限应为：
-
 \begin{equation}
 	\kappa'_{TR}(i) = \kappa_{TR} \cdot (1 - P_{\mathrm{fail}}(i))
 \end{equation}
@@ -792,6 +791,15 @@ TR-only和SE-only模型的策略不会发生变化，各自的环境影响系数
 
 
 \newpage
+
+Respected Lunar Base Management (LBM) Agency:
+Greetings! Regarding your agency's planned construction and operation task of a 100,000-person lunar base to be launched in 2050, based on multi-dimensional modeling analysis and feasibility demonstration, we aim to recommend a comprehensive action plan that balances efficiency, economy, and robustness to contribute to the success of the task.
+Firstly, through modeling analysis, a single-mode transportation scheme would result in a relatively long construction period. The optimal transportation strategy is a hybrid dynamic transportation mode, wherein 41.7% of construction materials are transported via SE and 58.3% via TR. This approach can shorten the total construction period to approximately 232 years while achieving a significant cost reduction compared to the sole use of TR. Furthermore, a dynamic adjustment mechanism has been established, incorporating a time-adaptive dynamic expansion model. The total construction period is divided into multiple time intervals, and the α(i) allocation ratio is real-time optimized to maximize the cost advantages brought by technological iteration.
+Secondly, considering the potential failure risks of the transportation system, the proposed plan includes correction strategies. On one hand, accounting for the launch failure probability of TR, the model reliability is ensured through effective payload expectation calculation, risk cost superposition, and transportation capacity reduction. On the other hand, addressing the tether sway control of SE, a Weibull distribution wind field model is adopted to set critical swing angles and safe wind speed thresholds. Combined with the maintenance downtime coefficient and the launch success rate of the top rocket, the annual transportation capacity of SE remains stable after correction.
+Thirdly, in accordance with the water use standards of the International Space Station and 2050 technological forecasts, the annual net water demand of the 100,000-person base is [to be supplemented]. We recommend adopting a "transportation + recycling" mode, integrating the net water demand into the hybrid transportation plan, and calculating the additional transportation costs to achieve cost reduction and efficiency improvement.
+Finally, considering the potential impacts of the overall plan on the Earth's ecological environment, the optimal comprehensive objective function is achieved through Pareto frontier analysis and Knee point identification.
+The proposed plan boasts the following core advantages: Firstly, strong feasibility— the hybrid dynamic mode breaks through the efficiency bottleneck of a single transportation method; Secondly, high robustness— the correction model incorporating risk factors ensures uninterrupted transportation tasks under extreme scenarios; Thirdly, excellent sustainability— ecological impacts are actively considered, aligning with the concept of low-carbon space development.
+This plan is derived from mathematical modeling and validated through multiple rounds of sensitivity and robustness tests to ensure scientific reliability. If your agency requires further refinement of the model, please feel free to contact us. We will make every effort to contribute to the cause of human space exploration.
 %===============================================第六部分=============================================
 \section{Test the Model}
 \subsection{Sensitivity  Analysis}
@@ -927,30 +935,7 @@ S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
 
 % 以下为附录内容
 % 如您的论文中不需要附录，请自行删除
-\begin{subappendices}  % 附录环境
-
-	\section{Appendix A: Further on \LaTeX}
-	To clarify the importance of using \LaTeX\ in MCM or ICM, several points need to be covered, which are \ldots
-
-	To be more specific, \ldots
-
-	All in all, \ldots
-
-	Anyway, nobody \textbf{really} needs such appendix \ldots
-
-	\section{Appendix B: Program Codes}
-	Here are the program codes we used in our research.
-
-	% 代码环境示例三则
-	% 如您的论文不需要展示代码，请删除
-	% 更多用法，请参考 listings 宏包文档
-
-	% Python 代码示例
-	\lstinputlisting[language=python]{code/example.py}
-
-	% MATLAB 代码示例
-	\lstinputlisting[language=matlab]{code/example.m}
-
+\begin{subappendices}  % 附录环境开始
 	\section{Appendix C: Report on Use of AI}
 	% 人工智能的报告
 	1. OpenAI ChatGPT (Nov 5, 2023 version, ChatGPT-4)
