@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.1.28)  1 FEB 2026 08:22
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.1.28)  1 FEB 2026 08:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -711,8 +711,38 @@ Package color Info: Driver file: xetex.def on input line 149.
 LaTeX Font Info:    Trying to load font information for T1+ppl on input line 36.
  (d:/texlive/2025/texmf-dist/tex/latex/psnfss/t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
+) (./main.aux
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `sub@' multiply defined.
+
+
+LaTeX Warning: Label `subfigure' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `sub@' multiply defined.
+
+
+LaTeX Warning: Label `subfigure' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `sub@' multiply defined.
+
+
+LaTeX Warning: Label `subfigure' multiply defined.
+
+
+LaTeX Warning: Label `subfigure' multiply defined.
+
 )
-No file main.aux.
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
@@ -735,6 +765,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
 LaTeX Font Info:    ... okay on input line 36.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
 LaTeX Font Info:    ... okay on input line 36.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -778,15 +809,12 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring ON on input line 36.
+ (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
-
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
 \c@lstlisting=\count375
-(d:/texlive/2025/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
+ (d:/texlive/2025/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 36.
@@ -794,29 +822,52 @@ Package translations Info: loading dictionary `translations-basic-dictionary' fo
 
 [1
 
-]
-No file main.toc.
+] (./main.toc
+LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 2.
+ (d:/texlive/2025/texmf-dist/tex/latex/psnfss/ot1ppl.fd
+File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
+)
+LaTeX Font Info:    Trying to load font information for OML+zplm on input line 2.
+ (d:/texlive/2025/texmf-dist/tex/latex/psnfss/omlzplm.fd
+File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
+)
+LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 2.
+ (d:/texlive/2025/texmf-dist/tex/latex/psnfss/omszplm.fd
+File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
+)
+LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 2.
+ (d:/texlive/2025/texmf-dist/tex/latex/psnfss/omxzplm.fd
+File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
+)
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 12.50409pt on input line 2.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 9.37807pt on input line 2.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.29405pt on input line 2.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 12.50409pt on input line 2.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 9.37807pt on input line 2.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.29405pt on input line 2.
+LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 2.
+ (d:/texlive/2025/texmf-dist/tex/latex/psnfss/ot1zplm.fd
+File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
+)
+
+[2])
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
 
 
-
-LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 101.
-
-[2]
+[3]
 File: img/background.png Graphic file (type bmp)
 <img/background.png>
 
 
-LaTeX Warning: Reference `subfigure' on page 3 undefined on input line 155.
-
-
-
-
-LaTeX Warning: Reference `LastPage' on page 3 undefined on input line 157.
-
-[3
+[4
 
 ]
 LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 164.
@@ -824,149 +875,66 @@ LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 16
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
 
-
-LaTeX Warning: Reference `LastPage' on page 4 undefined on input line 191.
-
-[4]
-LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 193.
- (d:/texlive/2025/texmf-dist/tex/latex/psnfss/ot1ppl.fd
-File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
-)
-LaTeX Font Info:    Trying to load font information for OML+zplm on input line 193.
- (d:/texlive/2025/texmf-dist/tex/latex/psnfss/omlzplm.fd
-File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
-)
-LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 193.
- (d:/texlive/2025/texmf-dist/tex/latex/psnfss/omszplm.fd
-File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
-)
-LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 193.
- (d:/texlive/2025/texmf-dist/tex/latex/psnfss/omxzplm.fd
-File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
-)
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 193.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 193.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 193.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 193.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 193.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 193.
-LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 193.
- (d:/texlive/2025/texmf-dist/tex/latex/psnfss/ot1zplm.fd
-File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
-)
+[5]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
 (Font)              scaled to size 5.21004pt on input line 193.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 5.21004pt on input line 193.
 
 
-LaTeX Warning: Citation `jones2015water' on page 5 undefined on input line 193.
+LaTeX Warning: Citation `jones2015water' on page 6 undefined on input line 193.
 
 
-LaTeX Warning: Citation `smitherman2000space' on page 5 undefined on input line 199.
+LaTeX Warning: Citation `smitherman2000space' on page 6 undefined on input line 199.
 
 
-LaTeX Warning: Citation `ross2014radiative' on page 5 undefined on input line 206.
+LaTeX Warning: Citation `ross2014radiative' on page 6 undefined on input line 206.
 
 Missing character: There is no ₂ ("2082) in font pplr8t!
 Missing character: There is no ⁻ ("207B) in font pplr8t!
 
 
-
-LaTeX Warning: Reference `LastPage' on page 5 undefined on input line 228.
-
-[5]
-
-
-LaTeX Warning: Reference `LastPage' on page 6 undefined on input line 255.
-
 [6]
-
-LaTeX Warning: Reference `tb:notation' on page 7 undefined on input line 259.
-
-
-LaTeX Warning: Reference `tb:data' on page 7 undefined on input line 307.
-
-
-
-
-LaTeX Warning: Reference `LastPage' on page 7 undefined on input line 332.
 
 [7]
 
-
-LaTeX Warning: Reference `LastPage' on page 8 undefined on input line 364.
-
 [8]
 
-
-LaTeX Warning: Reference `LastPage' on page 9 undefined on input line 406.
-
 [9]
+
+[10]
 File: img/Figure_342.png Graphic file (type bmp)
 <img/Figure_342.png>
 
 
-
-LaTeX Warning: Reference `LastPage' on page 10 undefined on input line 436.
-
-[10]
+[11]
 File: img/Figure_35.png Graphic file (type bmp)
 <img/Figure_35.png>
 
 
-
-LaTeX Warning: Reference `LastPage' on page 11 undefined on input line 453.
-
-[11]
+[12]
 LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 490.
  (d:/texlive/2025/texmf-dist/tex/latex/psnfss/ufplmbb.fd
 File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
 )
 
-
-LaTeX Warning: Reference `LastPage' on page 12 undefined on input line 505.
-
-[12]
+[13]
 File: img/Figure_41&42.png Graphic file (type bmp)
 <img/Figure_41&42.png>
 
 
-
-LaTeX Warning: Reference `LastPage' on page 13 undefined on input line 546.
-
-[13]
-File: img/Figure_441.png Graphic file (type bmp)
-<img/Figure_441.png>
-File: img/Figure_442.png Graphic file (type bmp)
-<img/Figure_442.png>
-
-
-
-LaTeX Warning: Reference `LastPage' on page 14 undefined on input line 568.
-
 [14]
+File: img/Figure_44.png Graphic file (type bmp)
+<img/Figure_44.png>
 
-
-LaTeX Warning: Reference `LastPage' on page 15 undefined on input line 624.
 
 [15]
 
-
-LaTeX Warning: Reference `LastPage' on page 16 undefined on input line 670.
-
 [16]
 
-
-LaTeX Warning: Reference `LastPage' on page 17 undefined on input line 682.
-
 [17]
+
+[18]
 
 Package fontspec Info: 
 (fontspec)             Could not resolve font "FangSong/BI" (it probably
@@ -982,7 +950,7 @@ Package fontspec Info:
 (fontspec)             Could not resolve font "FangSong/I" (it probably
 (fontspec)             doesn't exist).
 
-LaTeX Font Info:    Trying to load font information for T1+txtt on input line 687.
+LaTeX Font Info:    Trying to load font information for T1+txtt on input line 683.
  (d:/texlive/2025/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
 )
@@ -999,39 +967,29 @@ Package fontspec Info:
 
 
 
-LaTeX Warning: Citation `openai2024chatgpt' on page 18 undefined on input line 712.
-
-
-
-
-LaTeX Warning: Reference `LastPage' on page 18 undefined on input line 721.
-
-[18] (./main.bbl
+[19] (./main.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 1--1
 []\T1/ppl/b/n/17.28 References|
  []
 
 )
 
-
-LaTeX Warning: Reference `LastPage' on page 19 undefined on input line 756.
-
-[19
+[20
 
 ]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 18.00587pt on input line 758.
+(Font)              scaled to size 18.00587pt on input line 754.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 758.
+(Font)              scaled to size 10.42007pt on input line 754.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 18.00587pt on input line 758.
+(Font)              scaled to size 18.00587pt on input line 754.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 758.
+(Font)              scaled to size 10.42007pt on input line 754.
  (d:/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
 LaTeX Font Info:    Font shape `T1/txtt/b/n' in size <10.95> not available
-(Font)              Font shape `T1/txtt/bx/n' tried instead on input line 775.
+(Font)              Font shape `T1/txtt/bx/n' tried instead on input line 771.
  (./code/example.py
 LaTeX Font Info:    Font shape `T1/txtt/m/it' in size <10.95> not available
 (Font)              Font shape `T1/txtt/m/sl' tried instead on input line 1.
@@ -1039,17 +997,11 @@ LaTeX Font Info:    Font shape `T1/txtt/m/it' in size <10.95> not available
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 ) (./code/example.m)
 
-
-LaTeX Warning: Reference `LastPage' on page 20 undefined on input line 796.
-
-[20
+[21
 
 ]
 
-
-LaTeX Warning: Reference `LastPage' on page 21 undefined on input line 809.
-
-[21] 
+[22] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (./main.aux)
  ***********
@@ -1061,27 +1013,18 @@ L3 programming layer <2022/08/05>
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  8039B7B38986F8A0F7E31F2ABABBA5AE;8743.
-
-Package lastpage Warning: Rerun to get the references right on input line 809.
-
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 8039B7B38986F8A0F7E31F2ABABBA5AE;8743.
  ) 
 Here is how much of TeX's memory you used:
- 26529 strings out of 473832
- 584572 string characters out of 5733158
- 1128251 words of memory out of 5000000
- 49215 multiletter control sequences out of 15000+600000
+ 26546 strings out of 473832
+ 584716 string characters out of 5733158
+ 1128859 words of memory out of 5000000
+ 49225 multiletter control sequences out of 15000+600000
  594670 words of font info for 134 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  93i,13n,111p,1220b,1728s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (21 pages).
+Output written on main.pdf (22 pages).
