@@ -528,12 +528,21 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	\item \textbf{多目标平衡}：同时考虑工期、成本和环境影响，寻求综合最优方案
 \end{enumerate}
 
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[b]{.8\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+		\includegraphics[width=\textwidth]{img/Figure_44.png}
+		\caption*{}
+		\label{}
+	\end{subfigure}
+	\caption{44}\label{subfigure}
+\end{figure}
+
 % 长表格示例，更多用法请参考 longtable 宏包文档
 % 以下环境及对应参数可实现表格内的自动换行与表格的自动断页
 % 您也可以选择自行载入 tabularx 宏包，并通过 X 参数指定对应列自动换行
-\newpage
-%============================================第五部分====================================================================
-\section{Model 3: 随机扰动的修正模型}
+
+%\section{Model 3: 随机扰动的修正模型}
 
 \subsection{火箭发射失败的修正}
 
@@ -646,6 +655,9 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 对于混合策略，需根据动态模型中的最优分配比例$\alpha$计算。
 
 \newpage
+<<<<<<< HEAD
+%===============================================第六部分=============================================
+=======
 \section{上述模型的求解}
 为解决上述非线性、多目标、多阶段的优化问题，我们采用逐阶段扩展搜索算法（Stage-wise Extended Search Algorithm, SESA）。该算法结合动态规划和启发式搜索的优势，适用于复杂的决策问题。并采用贪心变动成本法（Greedy Marginal Cost Method, GMCM）对模型进行求解和优化。为求解多目标优化问题，我们采用帕累托前沿分析（Pareto Front Analysis）方法，识别在工期、成本和环境影响之间的最佳权衡方案。
 \subsection{决策变量}
@@ -697,6 +709,7 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 
 \newpage
 %===============================================第四部分=============================================
+>>>>>>> c50d6c0d6a24a51b76158cccc6273f7dd0119408
 \section{Test the Model}
 \subsection{Sensitivity  Analysis}
 \subsection{Robustness Analysis}
@@ -709,7 +722,7 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 
 
 
-%==============================================第五部分================================================
+%==============================================第七部分================================================
 \section{Conclusion}
 \subsection{Summary of Results}
 
