@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2026.1.22)  1 FEB 2026 14:46
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.1.28)  1 FEB 2026 17:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -871,8 +871,8 @@ Package hyperref Info: Link coloring ON on input line 36.
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
-\c@lstlisting=\count361
- (c:/texlive/2025/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
+\c@lstlisting=\count375
+ (d:/texlive/2025/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 36.
@@ -887,21 +887,22 @@ Package CJKpunct Info: use punctuation spaces for family 'rm' with punctstyle (q
 File: ctex-zhmap-windows.tex 2022/07/14 v2.5.10 Windows font map loader for pdfTeX and DVIPDFMx (CTEX)
 {c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{UGBK.sfd}{Unicode.sfd}) [1
 
+] (./main.toc
 {c:/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}] (./main.toc
 LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 2.
- (c:/texlive/2025/texmf-dist/tex/latex/psnfss/ot1ppl.fd
+ (d:/texlive/2025/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
 LaTeX Font Info:    Trying to load font information for OML+zplm on input line 2.
- (c:/texlive/2025/texmf-dist/tex/latex/psnfss/omlzplm.fd
+ (d:/texlive/2025/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 2.
- (c:/texlive/2025/texmf-dist/tex/latex/psnfss/omszplm.fd
+ (d:/texlive/2025/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 2.
- (c:/texlive/2025/texmf-dist/tex/latex/psnfss/omxzplm.fd
+ (d:/texlive/2025/texmf-dist/tex/latex/psnfss/omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
@@ -917,7 +918,7 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 7.29405pt on input line 2.
 LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 2.
- (c:/texlive/2025/texmf-dist/tex/latex/psnfss/ot1zplm.fd
+ (d:/texlive/2025/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
 
@@ -957,7 +958,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 228--230
 
 
 Overfull \hbox (1.96619pt too wide) in paragraph at lines 240--242
-[]\T1/ppl/b/it/12 Assumption 5:\C70/rm/m/n/12/62 ^^P \C70/rm/m/n/12/67 , \C70/rm/m/n/12/53 Â \C70/rm/m/n/12/65 p|\C70/rm/m/n/12/ff ^^Z| \T1/ppl/m/n/12 SE\C70/rm/m/n/12/56 ú \C70/rm/m/n/12/5b š \C70/rm/m/n/12/62 ^^P \C70/rm/m/n/12/67 ,\T1/ppl/m/n/12 1000\C70/rm/m/n/12/4e ¿ \C70/rm/m/n/12/7f Ž \C70/rm/m/n/12/51 C|\C70/rm/m/n/12/ff ^^L| \C70/rm/m/n/12/53 U \C70/rm/m/n/12/4f M \C70/rm/m/n/12/53 ï Ø \C70/rm/m/n/12/62 ^^P \C70/rm/m/n/12/67 ,\T1/ppl/m/n/12 1000\C70/rm/m/n/12/7f Ž \C70/rm/m/n/12/51 C\T1/ppl/m/n/12 /\C70/rm/m/n/12/54 (|\C70/rm/m/n/12/ff ^^[| \T1/ppl/m/n/12 TR\C70/rm/m/n/12/53 U
+[]\T1/ppl/b/it/12 Assumption 5:\C70/rm/m/n/12/62 ^^P \C70/rm/m/n/12/67 , \C70/rm/m/n/12/53 ï¿½ \C70/rm/m/n/12/65 p|\C70/rm/m/n/12/ff ^^Z| \T1/ppl/m/n/12 SE\C70/rm/m/n/12/56 ï¿½ \C70/rm/m/n/12/5b ï¿½ \C70/rm/m/n/12/62 ^^P \C70/rm/m/n/12/67 ,\T1/ppl/m/n/12 1000\C70/rm/m/n/12/4e ï¿½ \C70/rm/m/n/12/7f ï¿½ \C70/rm/m/n/12/51 C|\C70/rm/m/n/12/ff ^^L| \C70/rm/m/n/12/53 U \C70/rm/m/n/12/4f M \C70/rm/m/n/12/53 ï¿½ ï¿½ \C70/rm/m/n/12/62 ^^P \C70/rm/m/n/12/67 ,\T1/ppl/m/n/12 1000\C70/rm/m/n/12/7f ï¿½ \C70/rm/m/n/12/51 C\T1/ppl/m/n/12 /\C70/rm/m/n/12/54 (|\C70/rm/m/n/12/ff ^^[| \T1/ppl/m/n/12 TR\C70/rm/m/n/12/53 U
  []
 
 
@@ -970,7 +971,7 @@ Overfull \hbox (1.96619pt too wide) in paragraph at lines 240--242
 
 [10]
 Overfull \hbox (12.83829pt too wide) in paragraph at lines 426--427
-[]\C70/rm/b/n/12/6d ÷ \C70/rm/b/n/12/54 ^^H \C70/rm/b/n/12/67 ^^@ \C70/rm/b/n/12/4f ^^X \C70/rm/b/n/12/6a ! \C70/rm/b/n/12/5f ^^O |\C70/rm/m/n/12/ff ^^H|$\OML/zplm/m/it/12 [] \OMS/zplm/m/n/12 ^^Y \OT1/ppl/m/n/12 0.417$|\C70/rm/m/n/12/ff 	||^^Z| \C70/rm/m/n/12/91 Ç \C70/rm/m/n/12/75 ( \C70/rm/m/n/12/67 ^^@ \C70/rm/m/n/12/4f ^^X \C70/rm/m/n/12/52 ^^F \C70/rm/m/n/12/91 M \C70/rm/m/n/12/6b Ô \C70/rm/m/n/12/4f ‹|\C70/rm/m/n/12/ff ^^L| \C70/rm/m/n/12/5d å \C70/rm/m/n/12/67 ^^_ \C70/rm/m/n/12/7e ¦ \C70/rm/m/n/12/4e :$[] [] \OMS/zplm/m/n/12 ^^Y
+[]\C70/rm/b/n/12/6d ï¿½ \C70/rm/b/n/12/54 ^^H \C70/rm/b/n/12/67 ^^@ \C70/rm/b/n/12/4f ^^X \C70/rm/b/n/12/6a ! \C70/rm/b/n/12/5f ^^O |\C70/rm/m/n/12/ff ^^H|$\OML/zplm/m/it/12 [] \OMS/zplm/m/n/12 ^^Y \OT1/ppl/m/n/12 0.417$|\C70/rm/m/n/12/ff 	||^^Z| \C70/rm/m/n/12/91 ï¿½ \C70/rm/m/n/12/75 ( \C70/rm/m/n/12/67 ^^@ \C70/rm/m/n/12/4f ^^X \C70/rm/m/n/12/52 ^^F \C70/rm/m/n/12/91 M \C70/rm/m/n/12/6b ï¿½ \C70/rm/m/n/12/4f ï¿½|\C70/rm/m/n/12/ff ^^L| \C70/rm/m/n/12/5d ï¿½ \C70/rm/m/n/12/67 ^^_ \C70/rm/m/n/12/7e ï¿½ \C70/rm/m/n/12/4e :$[] [] \OMS/zplm/m/n/12 ^^Y
  []
 
 <img/Figure_35.png, id=547, 1802.1729pt x 662.2341pt>
@@ -1012,8 +1013,8 @@ Package pdftex.def Info: img/Figure_44.png  used on input line 542.
 
 [18]
 Overfull \hbox (11.79611pt too wide) in paragraph at lines 712--713
-[]\C70/rm/m/n/12/4e : \C70/rm/m/n/12/89 ã \C70/rm/m/n/12/51 ³ \C70/rm/m/n/12/4e 
- \C70/rm/m/n/12/8f ð \C70/rm/m/n/12/97 ^ \C70/rm/m/n/12/7e ¿ \C70/rm/m/n/12/60 '|\C70/rm/m/n/12/30 ^^A| \C70/rm/m/n/12/59 ^^Z \C70/rm/m/n/12/76 î \C70/rm/m/n/12/68 ^^G|\C70/rm/m/n/12/30 ^^A| \C70/rm/m/n/12/59 ^^Z \C70/rm/m/n/12/96 6 \C70/rm/m/n/12/6b µ \C70/rm/m/n/12/76 „ \C70/rm/m/n/12/4f ^^X \C70/rm/m/n/12/53 ^^V \C70/rm/m/n/12/95 î \C70/rm/m/n/12/98 ˜|\C70/rm/m/n/12/ff ^^L| \C70/rm/m/n/12/62 ^^Q \C70/rm/m/n/12/4e ì \C70/rm/m/n/12/91 Ç \C70/rm/m/n/12/75 ( \C70/rm/m/n/12/90 ^^P \C70/rm/m/n/12/96 6 \C70/rm/m/n/12/6b µ \C70/rm/m/n/12/62 i \C70/rm/m/n/12/5c U \C70/rm/m/n/12/64 ^^\ \C70/rm/m/n/12/7d " \C70/rm/m/n/12/7b — \C70/rm/m/n/12/6c Õ |\C70/rm/m/n/12/ff ^^H|\T1/ppl/m/n/12 Stage-
+[]\C70/rm/m/n/12/4e : \C70/rm/m/n/12/89 ï¿½ \C70/rm/m/n/12/51 ï¿½ \C70/rm/m/n/12/4e 
+ \C70/rm/m/n/12/8f ï¿½ \C70/rm/m/n/12/97 ^ \C70/rm/m/n/12/7e ï¿½ \C70/rm/m/n/12/60 '|\C70/rm/m/n/12/30 ^^A| \C70/rm/m/n/12/59 ^^Z \C70/rm/m/n/12/76 ï¿½ \C70/rm/m/n/12/68 ^^G|\C70/rm/m/n/12/30 ^^A| \C70/rm/m/n/12/59 ^^Z \C70/rm/m/n/12/96 6 \C70/rm/m/n/12/6b ï¿½ \C70/rm/m/n/12/76 ï¿½ \C70/rm/m/n/12/4f ^^X \C70/rm/m/n/12/53 ^^V \C70/rm/m/n/12/95 ï¿½ \C70/rm/m/n/12/98 ï¿½|\C70/rm/m/n/12/ff ^^L| \C70/rm/m/n/12/62 ^^Q \C70/rm/m/n/12/4e ï¿½ \C70/rm/m/n/12/91 ï¿½ \C70/rm/m/n/12/75 ( \C70/rm/m/n/12/90 ^^P \C70/rm/m/n/12/96 6 \C70/rm/m/n/12/6b ï¿½ \C70/rm/m/n/12/62 i \C70/rm/m/n/12/5c U \C70/rm/m/n/12/64 ^^\ \C70/rm/m/n/12/7d " \C70/rm/m/n/12/7b ï¿½ \C70/rm/m/n/12/6c ï¿½ |\C70/rm/m/n/12/ff ^^H|\T1/ppl/m/n/12 Stage-
  []
 
 
