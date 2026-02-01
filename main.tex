@@ -469,7 +469,7 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	Q_{TR}(i) &= Q_{TR}(i-1)+(1-\alpha_i) \cdot q(i) \cdot \Delta t
 \end{align}
 
-时间区间长度$\Delta t = 5$年，可根据需要调整。
+时间区间长度$\Delta t = 10$年，可根据需要调整。
 
 \subsubsection{目标2：全生命周期成本（分段求和）}
 
@@ -571,6 +571,11 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 \end{equation}
 
 其中$c_{\mathrm{cargo\_loss}}$为货物损失成本。
+$c_{cargo\_loss}$ 无法查询到准确信息，通过搜集资料触发失败后一般是提供一次\textbf{Reflight（再飞）且客户无需再支付该次发射服务费}（相当于“用服务替代现金赔付”，覆盖的是发射服务成本），也就是可以认为上面公式可以写成：
+
+\begin{equation}
+	c'_{\mathrm{launch}} = c_{\mathrm{launch}} + P_{\mathrm{fail}} \cdot c_{\mathrm{launch}} = c_{\mathrm{launch}} (1 + 2 P_{\mathrm{fail}})
+\end{equation}
 
 \subsubsection{修正运力}
 
@@ -580,14 +585,17 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	\kappa'_{TR}(i) = \kappa_{TR} \cdot (1 - P_{\mathrm{fail}}(i))
 \end{equation}
 
-其中$P_{\mathrm{fail}}(i)$可以是固定值，也可随时间或发射条件变化。
+其中 $P_{\mathrm{fail}}(i)$ 为经15个时间间隔（即150年）从 1\% 下降至 0.1\% 的学习曲线，呈负指数形状。
+\begin{equation}
+	P_{\mathrm{fail}}(i) = 0.01 \cdot \exp(-\frac{\ln(10)}{15} \cdot i)
+\end{equation}
+
 
 \subsubsection{修正成本公式}
 
-成本公式中，传统火箭的单位成本应修改为：
-
+成本公式中，TR 的单位成本 $c_{TR}(i)$ 应改为：
 \begin{equation}
-	c_{TR}(i) = c_{\mathrm{launch}} + P_{\mathrm{fail}}(i) \cdot (c_{\mathrm{launch}} + c_{\mathrm{cargo\_loss}})
+	c_{TR}(i) = \frac{c'_{\mathrm{launch}}}{m_{load}} = \frac{c_{\mathrm{launch}} (1 + 2 P_{\mathrm{fail}}(i))}{m_{load}}
 \end{equation}
 
 这样将发射失败的风险成本纳入总成本计算。
@@ -606,7 +614,42 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	\end{cases}
 \end{equation}
 
-其中$\theta(t)$为系绳摆动角度，$\theta_{\mathrm{crit}}$为临界摆动角度（5$^\circ$）；$W_{\mathrm{wind}}(t)$为风速，$v_{\mathrm{safe}}$为安全风速限制。风场满足韦布尔分布。
+其中系绳横向受风截，通过物理低阶近似，我们不妨将偏转角拟合为
+\[
+\theta(t) = k \cdot v_{wind}(t)^2
+\]
+
+通过查找资料，常规地面系绳可拟合出 $k$ 约为 0.019，来自 \href{https://www3.eng.cam.ac.uk/~hemh1/SPICE/papers/Coulombe-Pontbriand_2005_MastersThesis.pdf}{Simulation and Experimental Validation of Tethered Aerostat Model}，但是显然不符合当前系绳材质与高空环境，当前为强约束/高张力/高抗风设计，通过查找资料，可以确定 $\theta_{\mathrm{crit}}$ 为 $0.1\ \mathrm{rad}$ ($5.73^\circ$), $v_{\mathrm{safe}}$ 确定为 $15\ \mathrm{m/s}$，进而反解出当前 $k$ 为 $4.44\times10^{-4}$，即当 $v_{wind}(t) = v_{\mathrm{safe}}$ 时，$\theta(t) \approx \theta_{\mathrm{crit}}$，设计点是一致的。可以合并为单一阈值影响，故下文仅讨论风速的影响。
+
+\begin{equation}
+	\eta_{SE}(t)=
+	\begin{cases}
+	1, & \text{if }  v_{\mathrm{wind}}(t) < v_{\mathrm{safe}} \\
+	0, & \text{otherwise}
+	\end{cases}
+\end{equation}
+
+其中风场满足参数为$k=3$，$\lambda=8$的韦布尔分布。其次同时还要建立年代系统受风影响的的状态转变，将风环境抽象为两类状态：
+
+\begin{itemize}
+	\item \textbf{Normal State (正常状态)}：可用度围绕一个低频背景缓慢波动；
+	\item \textbf{Extreme State (极端状态)}：代表长期风暴年代/异常环流时期，可用度显著降低并持续若干区间。
+\end{itemize}
+
+
+其中极端期的开始阶段建模为泊松过程，持续过程建模为指数分布
+
+先建立低频背景可用度年代可变率：
+\begin{equation}
+	\eta_\mathrm{base}(i)=\mu+A\sin\left(\frac{2\pi(i-1)}{P}\right)
+\end{equation}
+
+建立极端期示性变量$I_{ext}$表示是否处于极端状态
+\begin{equation}
+	\bar{\eta}_{SE}(i)=\mathrm{clip}\left(\eta_{\mathrm{base}}(i)-\Delta\cdot I_{\mathrm{ext}}(i),0,1\right)
+\end{equation}
+
+其中 clip 是为了保证 [0,1]合理范围。
 
 \subsubsection{顶端火箭发射失败概率}
 
@@ -617,16 +660,16 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 综合考虑摆动限制、维护停机和火箭发射失败，太空电梯的修正后年有效运力为：
 
 \begin{equation}
-	\kappa'_{SE} = \kappa_{SE} \cdot \frac{1}{T_{\mathrm{year}}} \int_{0}^{T_{\mathrm{year}}} \eta_{SE}(t) \, dt \cdot (1 - \beta_{\mathrm{maint}}) \cdot (1-P_{\mathrm{fail}'})
+	\kappa_{SE}^{\prime}=\kappa_{SE}\cdot\bar{\eta}_{SE}\cdot(1-\beta_{\mathrm{maint}})\cdot(1-P_{\mathrm{fail}})
 \end{equation}
 
 其中：
 \begin{itemize}
-	\item $T_{\mathrm{year}}$为一年时长
-	\item $\frac{1}{T_{\mathrm{year}}} \int_{0}^{T_{\mathrm{year}}} \eta_{SE}(t) \, dt$为年可用度因子
-	\item $\beta_{\mathrm{maint}}$为维护停机系数
-	\item $(1-P_{\mathrm{fail}'})$为火箭发射成功率
+	\item $\bar{\eta}_{SE}$为太空电梯系统的平均可用度
+	\item $\beta_{\mathrm{maint}}$为维护停机系数，在本工作中维护停机系数简化为$\beta_{maint}=0$
+	\item $P_{\mathrm{fail}}$为顶端火箭发射失败概率，取常数$P_{fail}=0.005$
 \end{itemize}
+
 
 \subsection{一年用水需求下的运输成本}
 
@@ -662,10 +705,9 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 
 对于混合策略，需根据动态模型中的最优分配比例$\alpha$计算。
 
+
+%===========================================第五部分====================================================================
 \newpage
-<<<<<<< HEAD
-%===============================================第六部分=============================================
-=======
 \section{上述模型的求解}
 为解决上述非线性、多目标、多阶段的优化问题，我们采用逐阶段扩展搜索算法（Stage-wise Extended Search Algorithm, SESA）。该算法结合动态规划和启发式搜索的优势，适用于复杂的决策问题。并采用贪心变动成本法（Greedy Marginal Cost Method, GMCM）对模型进行求解和优化。为求解多目标优化问题，我们采用帕累托前沿分析（Pareto Front Analysis）方法，识别在工期、成本和环境影响之间的最佳权衡方案。
 \subsection{决策变量}
@@ -716,8 +758,7 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 
 
 \newpage
-%===============================================第四部分=============================================
->>>>>>> c50d6c0d6a24a51b76158cccc6273f7dd0119408
+%===============================================第六部分=============================================
 \section{Test the Model}
 \subsection{Sensitivity  Analysis}
 \subsection{Robustness Analysis}
