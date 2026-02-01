@@ -392,7 +392,6 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	T_C(\alpha)=\max\left( \frac{\alpha M_{tot}}{\kappa_{SE,total}}, \frac{(1-\alpha) M_{tot}}{\kappa_{TR}} \right)
 \end{equation}
 
-%3.4.2 最优分配比例与总成本--------------------------------------------------------------------------------
 \subsubsection{最优分配比例}
 
 从工期角度考虑，最优分配比例$\alpha^*$满足两种运输方式的完成时间相等：
@@ -414,18 +413,6 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 
 该成本包括太空电梯固定基础设施成本（一次性）、太空电梯运营可变成本和传统火箭发射成本。
 
-\begin{figure}[htbp]
-	\centering
-	\begin{subfigure}[b]{.8\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
-		\includegraphics[width=\textwidth]{img/Figure_342.png}
-		\caption*{}
-		\label{}
-	\end{subfigure}
-	\caption{}\label{subfigure}
-\end{figure}
-
-
-%3.4.3 比较分析--------------------------------------------------------------------------------
 \subsection{三种场景的比较分析}
 
 静态基准模型提供以下重要洞察：
@@ -439,17 +426,6 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	
 	\item \textbf{决策选择}：三种方案的优劣取决于对工期最小化或成本最小化的优先级权重。
 \end{itemize}
-
-\begin{figure}[htbp]
-	\centering
-	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
-		\includegraphics[width=\textwidth]{img/Figure_35.png}
-		\caption*{}
-		\label{}
-	\end{subfigure}
-	\caption{35}\label{subfigure}
-\end{figure}
-
 \newpage
 %===========================================第四部分====================================================================
 \section[Model 2: Dynamic Extended Model]{Model 2: 动态扩展模型（时间自适应策略）}
@@ -463,6 +439,22 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 \end{equation}
 
 其中$c_0$为初始成本，25个时间区间后成本降至原值的0.9倍。
+
+运输分配比例$\alpha(t)$由太空电梯和传统火箭系统的瞬时单位成本比$\rho(t)$驱动：
+
+\begin{equation}
+	\rho(t)=\frac{c_{var}^{SE}(t, Q_{SE}(t))}{c_{TR}(t, Q_{TR}(t))}
+\end{equation}
+
+根据成本比的大小，对$\alpha_i$的决策规则为：
+
+\begin{itemize}
+	\item 当$\rho(t)<0.8$（SE更便宜）时：$\alpha_i=1$
+	
+	\item 当$\rho(t)>1.2$（TR更便宜）时：$\alpha_i=0$
+	
+	\item 当$0.8 \leq \rho(t) \leq 1.2$（成本均衡）时：$\alpha_i \in (0,1)$，为重点优化方向，目标是最小化区间内的成本和环境影响
+\end{itemize}
 
 \subsection{动态目标函数}
 
@@ -480,7 +472,7 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	Q_{TR}(i) &= Q_{TR}(i-1)+(1-\alpha_i) \cdot q(i) \cdot \Delta t
 \end{align}
 
-时间区间长度$\Delta t = 10$年，可根据需要调整。
+时间区间长度$\Delta t = 5$年，可根据需要调整。
 
 \subsubsection{目标2：全生命周期成本（分段求和）}
 
@@ -497,7 +489,6 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 
 指示函数$\mathbb{I}$确保太空电梯固定成本仅在使用太空电梯时计入一次。
 
-%4.3 约束条件--------------------------------------------------------------------------------
 \subsection{动态约束条件}
 
 优化问题受以下约束条件限制：
@@ -523,17 +514,6 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	\item 第50个区间结束时，累积运输总量必须达到所需的全部物资
 \end{itemize}
 
-\begin{figure}[htbp]
-	\centering
-	\begin{subfigure}[b]{.8\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
-		\includegraphics[width=\textwidth]{img/Figure_41&42.png}
-		\caption*{}
-		\label{}
-	\end{subfigure}
-	\caption{示意图}\label{subfigure}
-\end{figure}
-
-%4.4 模型求解与分析--------------------------------------------------------------------------------
 \subsection{模型特点}
 
 动态$\alpha(t)$扩展模型相比静态基准模型的主要优势为：
@@ -675,7 +655,61 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 对于混合策略，需根据动态模型中的最优分配比例$\alpha$计算。
 
 \newpage
+<<<<<<< HEAD
 %===============================================第六部分=============================================
+=======
+\section{上述模型的求解}
+为解决上述非线性、多目标、多阶段的优化问题，我们采用逐阶段扩展搜索算法（Stage-wise Extended Search Algorithm, SESA）。该算法结合动态规划和启发式搜索的优势，适用于复杂的决策问题。并采用贪心变动成本法（Greedy Marginal Cost Method, GMCM）对模型进行求解和优化。为求解多目标优化问题，我们采用帕累托前沿分析（Pareto Front Analysis）方法，识别在工期、成本和环境影响之间的最佳权衡方案。
+\subsection{决策变量}
+
+算法中的核心决策变量为各阶段、各技术模式下的产能分配量。具体而言：
+\begin{itemize}
+	\item \( x_{i}^{SE} \)：第 \(i\) 阶段采用 SE 技术分配的产能（吨）。
+	\item \( x_{i}^{TR} \)：第 \(i\) 阶段采用 TR 技术分配的产能（吨）。
+\end{itemize}
+
+这些变量受各阶段技术对应的最大产能容量约束限制，即：
+
+\begin{equation}
+0 \leq x_{i}^{SE} \leq C_{i}^{SE}, \quad 0 \leq x_{i}^{TR} \leq C_{i}^{TR}
+\end{equation}
+
+满足总需求约束：
+\begin{equation}
+\sum_{i=1}^{K} (x_{i}^{SE} + x_{i}^{TR}) \geq M_{tot}
+\end{equation}
+
+其中，\(K\) 表示考虑的最大时间阶段数量，动态变化。
+\subsection{逐阶段扩展搜索算法}
+
+算法通过从早期阶段开始，逐步增加考虑的时间区间长度，实现对动态产能建设计划的搜索：
+
+\begin{enumerate}
+	\item \textbf{阶段容量累积验证}：在每一轮迭代中，计算截止当前阶段的总可用产能（SE和TR两种模式）之和，判断是否足以满足总需求，若不足则直接跳过，避免无效计算。
+	\item \textbf{方案选项构造与排序}：对每个阶段的两种技术产能与对应单位变动成本进行整合，形成供分配的选项集合，按单位成本升序排列，确保优先利用成本较低的产能资源。
+	\item \textbf{贪心填充分配}：按照排序后的选项，逐项分配产能以满足当前阶段的需求，优先消耗低成本产能，直至需求满足或资源耗尽。
+	\item \textbf{混合技术约束处理}：在分配过程中，若需保证两种技术均有投入，先为每种技术预留最小需求量，之后对剩余需求执行贪心分配，确保方案符合混合使用的业务规则。
+	\item \textbf{成本累计和记录}：计算当前阶段的总变，加上可能存在的固定成本，保存当前阶段对应的可行方案及成本信息，供后续筛选。
+\end{enumerate}
+这种逐阶段动态搜索方式兼顾了时间进度与资源约束，逐步逼近满足需求的最优方案空间。
+
+\subsection{多目标前沿判定}
+
+为辅助决策，算法在时间和成本两个目标维度上筛选关键方案，具体实现包括：
+\begin{enumerate}
+	\item \textbf{帕累托前沿筛选}：从所有可行方案中筛选不被其他方案在成本和时间上同时优越的非劣解，形成方案的 Pareto 前沿，保证所选方案在一定的时间范围内成本最优。
+	\item \textbf{Knee 点识别}：对 Pareto 前沿方案进行归一化处理，将时间和成本标准化至相同尺度后，计算曲线与两端连接直线的垂直距离。最大距离点即为 Knee 点，通常代表成本效益显著改善的折中方案。
+	\item \textbf{关键方案输出}：同时记录最短可行方案（Star 点），用于比较Knee点与Star点的差异，为决策者提供更全面的参考信息。
+	\item \textbf{可视化展示}：将帕累托前沿以图形方式展示，直观反映不同方案在多目标空间中的分布情况。
+\end{enumerate}
+
+
+
+
+
+\newpage
+%===============================================第四部分=============================================
+>>>>>>> c50d6c0d6a24a51b76158cccc6273f7dd0119408
 \section{Test the Model}
 \subsection{Sensitivity  Analysis}
 \subsection{Robustness Analysis}
