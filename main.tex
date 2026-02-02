@@ -293,7 +293,7 @@ conditions, providing a foundation for comparing the feasibility, economy, and c
 duration of different material transportation schemes.
 \subsection{Scenario 1: SE-Only Mode}
 
-\subsubsection{Transportation Capacity under Perfect Conditions}
+%\subsubsection{Transportation Capacity under Perfect Conditions}
 %太空电梯系统的年运输能力为：
 
 The annual transportation capacity of the Space Elevator (SE) system is:
@@ -301,7 +301,7 @@ The annual transportation capacity of the Space Elevator (SE) system is:
 	\kappa_{SE,total}=179,000 \text{ tons/year}
 \end{equation}
 
-\subsubsection{Project Duration}
+%\subsubsection{Project Duration}
 %物资全部运输所需的总工期为：
 
 The total duration required to transport all materials is:
@@ -309,7 +309,7 @@ The total duration required to transport all materials is:
 	T_{SE}=\frac{M_{tot}}{\kappa_{SE,total}}=\frac{1 \times 10^8}{179000} \approx 558.7 \text{ years}
 \end{equation}
 
-\subsubsection{Total Cost}
+%\subsubsection{Total Cost}
 
 %全生命周期成本包括固定基础设施成本和可变运营成本：
 The life-cycle cost includes fixed infrastructure costs and variable operational costs:
@@ -322,7 +322,7 @@ and $c_{var}^{SE}$ represents the variable cost per unit (USD/ton).
 
 \subsection{Scenario 2: TR-Only Mode}
 
-\subsubsection{Transportation Capacity under Perfect Conditions}
+%\subsubsection{Transportation Capacity under Perfect Conditions}
 
 %启用全球10个发射场时，传统火箭系统的年运输能力为：
 When 10 global launch sites are activated, the annual transportation capacity of 
@@ -335,7 +335,7 @@ the Traditional Rocket (TR) system is:
 Where $f_{TR}(j)$is the maximum annual launch frequency of a single launch site (20 launches/year), 
 and $m_{load}$ is the baseline payload per launch (150 tons).
 
-\subsubsection{Project Duration}
+%\subsubsection{Project Duration}
 
 %物资全部运输所需的总工期为：
 The total duration required to transport all materials is:
@@ -343,7 +343,7 @@ The total duration required to transport all materials is:
 	T_{TR}=\frac{M_{tot}}{\kappa_{TR}}=\frac{1 \times 10^8}{30000}=3333\text{ years}
 \end{equation}
 
-\subsubsection{Total Cost}
+%\subsubsection{Total Cost}
 
 %成本由所需发射次数决定：
 The cost is determined by the number of launches required:
@@ -359,7 +359,7 @@ where $c_{launch}$ represents the cost per launch (USD/launch).
 %混合策略结合太空电梯和传统火箭两种运输方式，以优化项目工期和成本。
 The hybrid strategy combines SE and TR transportation methods to optimize project duration and cost.
 
-\subsubsection{Project Duration}
+%\subsubsection{Project Duration}
 
 %混合运输的工期由两种运输方式中耗时较长的决定：
 The duration of hybrid transportation is determined by the longer time-consuming of the two methods:
@@ -368,14 +368,14 @@ The duration of hybrid transportation is determined by the longer time-consuming
 \end{equation}
 
 %3.5
-\subsubsection{Optimal Allocation Ratio}
+%\subsubsection{Optimal Allocation Ratio}
 
 %通过Pareto前沿分析，可计算得出仅时间最优分配比例$\alpha_{static}^*=0.499$以及时间成本双目标最优分配比例$\alpha_{static}^{knee}=0.750$：
 Through Pareto Frontier Analysis, the time-optimal allocation ratio $\alpha_{static}^*=0.499$ 
 and the time-cost bi-objective optimal allocation ratio $\alpha_{static}^{knee}=0.750$ can be calculated:
 \begin{figure}[htbp]
 	\centering
-	\begin{subfigure}[b]{0.75\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+	\begin{subfigure}[b]{0.65\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
 		\includegraphics[width=\textwidth]{img/Figure_342.png}
 		\caption*{}
 		\label{}
@@ -384,7 +384,7 @@ and the time-cost bi-objective optimal allocation ratio $\alpha_{static}^{knee}=
 \end{figure}
 
 
-\subsubsection{Total Cost}
+%\subsubsection{Total Cost}
 
 %混合策略的全生命周期成本为：
 The life-cycle cost of the hybrid strategy is:
@@ -397,6 +397,16 @@ This cost includes the one-time fixed infrastructure cost of the SE, the variabl
 operational cost of the SE, and the launch cost of traditional rockets.
 
 \subsection{Comparative Analysis of the Three Scenarios}
+
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+		\includegraphics[width=\textwidth]{img/Figure_35.png}
+		\caption*{}
+		\label{}
+	\end{subfigure}
+	\caption{35}\label{subfigure}
+\end{figure}
 
 %静态基准模型提供以下重要洞察：
 The static benchmark model provides the following key insights:
@@ -418,18 +428,10 @@ The static benchmark model provides the following key insights:
 	The superiority of the three schemes depends on the priority weight assigned to minimizing duration or cost.
 \end{itemize}
 
-\begin{figure}[htbp]
-	\centering
-	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
-		\includegraphics[width=\textwidth]{img/Figure_35.png}
-		\caption*{}
-		\label{}
-	\end{subfigure}
-	\caption{35}\label{subfigure}
-\end{figure}
+
 
 %===========================================第四部分====================================================================
-\section[Model 2: Dynamic Extended Model]{Model 2: Dynamic Extended Model (Time-Adaptive Strategy)}
+\section[Model 2: Dynamic Extended Model]{Model 2: Dynamic Extended Model}
 
 \subsection[Dynamic Adjustment Logic]{Dynamic Adjustment Logic}
 
@@ -450,7 +452,7 @@ where $c_0$ is the initial cost,
 
 \subsection{Dynamic Objective Functions}
 
-\subsubsection{Objective 1: Total Project Duration}
+%\subsubsection{Objective 1: Total Project Duration}
 
 %总工期是使累积运输量达到要求的最小时间区间数：
 The total duration is the minimum number of time intervals required for the cumulative transportation volume to meet the demand:
@@ -468,7 +470,7 @@ where the recursive relationship of cumulative transportation volume is:
 
 %时间区间长度$\Delta t = 10$年，可根据需要调整。
 The length of each time interval $\Delta t = 10$ years, which can be adjusted as needed.
-\subsubsection{Objective 2: Life-Cycle Cost (Piecewise Summation)}
+%\subsubsection{Objective 2: Life-Cycle Cost (Piecewise Summation)}
 
 %全生命周期总成本为：
 The total life-cycle cost is:
@@ -526,13 +528,13 @@ The meanings of the constraints are as follows:
 Compared with the static benchmark model, the dynamic $\alpha(t)$ expansion model has the following key advantages:
 \begin{enumerate}
 	\item \textbf{Time-Adaptive}：Dynamically adjusts the proportion of transportation methods based on technological 
-	development to fully leverage the opportunities brought by cost reduction.%根据技术发展动态调整运输方式比例，充分利用成本下降机遇
+	development to use the opportunities brought by cost reduction.%根据技术发展动态调整运输方式比例，充分利用成本下降机遇
 	
 	\item \textbf{Cost Optimization}：Achieves refined optimization within the cost balance interval by real-time 
 	comparing the unit costs of the two transportation methods.%通过实时比较两种运输方式的单位成本，在成本均衡区间内进行精细优化
 	
 	\item \textbf{Segmented Planning}：Divides the total construction period into 50 intervals, with independent 
-	decision-making for each interval, facilitating implementation and adjustment.%将总工期划分为50个区间，每个区间独立决策，便于实施和调整
+	decision for each interval, facilitating implementation and adjustment.%将总工期划分为50个区间，每个区间独立决策，便于实施和调整
 	
 	\item \textbf{Multi-Objective Balance}：Simultaneously considers duration, cost, and environmental impact 
 	to seek a comprehensive optimal solution.%同时考虑工期、成本和环境影响，寻求综合最优方案
@@ -577,7 +579,7 @@ Considering the cost increase caused by failure risks:
 \end{equation}
 
 %其中$c_{\mathrm{cargo\_loss}}$为货物损失成本。触发失败后一般是提供一次再飞且客户无需再支付该次发射服务费，也就是可以认为上面公式可以写成：
-where $c_{\mathrm{cargo\_loss}}$ is the cargo loss cost. Typically, a re-launch is provided at no additional cost to the customer in the event of a failure, so the formula can be simplified as:
+where $c_{\mathrm{cargo\_loss}}$ is the cargo loss cost. Typically, a re-launch is provided at no additional cost in the event of a failure, so the formula can be simplified as:
 
 \begin{equation}
 	c'_{\mathrm{launch}} = c_{\mathrm{launch}} + P_{\mathrm{fail}} \cdot c_{\mathrm{launch}} = c_{\mathrm{launch}} (1 + 2 P_{\mathrm{fail}})
@@ -601,7 +603,7 @@ where $P_{\mathrm{fail}}(i)$ follows a negative exponential learning curve, decr
 \paragraph{Corrected Cost Formula}
 
 %成本公式中，TR 的单位成本 $c_{TR}(i)$ 应改为：
-In the cost formula, the unit cost of TR $c_{TR}(i)$ should be revised to:
+In the formula, the unit cost of TR $c_{TR}(i)$ should be revised to:
 \begin{equation}
 	c_{TR}(i) = \frac{c'_{\mathrm{launch}}}{m_{load}} = \frac{c_{\mathrm{launch}} (1 + 2 P_{\mathrm{fail}}(i))}{m_{load}}
 \end{equation}
@@ -651,13 +653,8 @@ $\theta(t) \approx \theta_{\mathrm{crit}}$. This can be combined into a single t
 %其中风场满足参数为$k=3$，$\lambda=8$的韦布尔分布。其次同时还要建立年代系统受风影响的的状态转变，将风环境抽象为两类状态：
 The wind field follows a Weibull distribution with parameters $k=3$ and $\lambda=8$. 
 Furthermore, we need to establish the state transitions of the era system affected by wind, 
-abstracting the wind environment into two categories of states:
+abstracting the wind environment into two categories of states: \textbf{Normal State}：Availability fluctuates slowly around a low-frequency baseline; \textbf{Extreme State}：Represents long-term storm eras or abnormal circulation periods, with significantly reduced availability lasting for several intervals.
 
-\begin{itemize}
-	\item \textbf{Normal State}：Availability fluctuates slowly around a low-frequency baseline.
-	\item \textbf{Extreme State}：Represents long-term storm eras or abnormal circulation periods, 
-	with significantly reduced availability lasting for several intervals.
-\end{itemize}
 
 The onset of extreme periods is modeled as a Poisson process, and the duration is modeled 
 as an exponential distribution. 
@@ -711,29 +708,21 @@ The time-adaptive optimal transportation ratio $\alpha_i$ is obtained through so
 	\end{subfigure}
 	\caption{453}\label{subfigure}
 \end{figure}
-
-
 \subsection{Transportation Cost Under One-Year Water Demand}
-
 \subsubsection{Annual Net Water Demand of the Lunar Colony}
-
 %月球殖民地一年的净用水需求（考虑水资源循环）为：
 The annual net water demand of the lunar colony (considering water recycling) is:
-
 \begin{equation}
 	M_{net}=M_{gross}\cdot(1-\gamma)=365P_{pop}\cdot w_{per}\cdot(1-\gamma)
 \end{equation}
-
-其中：
+where:
 \begin{itemize}
 	\item $M_{gross}$  is the annual total water consumption.%为年总用水量
 	\item $\gamma=0.95$ is the water recycling efficiency.%为水资源循环效率
 	\item $P_{pop}=100000$ is the population of the lunar colony.%万人为月球殖民地人口
 	\item $w_{per}=0.35$ is the daily water consumption per person (tons/(person·day)).%吨/(人·天)为人均日用水量
 \end{itemize}
-
 \subsubsection{Additional Cost on Transportation}
-
 %在此视角下，不同策略的成本如下：
 From this perspective, the costs of different strategies are as follows:
 \begin{equation}
@@ -745,17 +734,14 @@ From this perspective, the costs of different strategies are as follows:
 \begin{equation} 
 	 C_{static}=\alpha\cdot M_{net}c_{var}^{SE}+(1-\alpha)M_{net}c'_{launch}/m_{load}= 224.1 \text{ Billion USD} 
 \end{equation}
-    
 %在工期尾部阶段，动态模型的$\alpha_i$取值基本为1，其成本
 In the later stages of the construction period, the $\alpha_i$ value of the dynamic model is basically 1, so its cost is:
-
 \begin{equation}
 	C_{dynamic}=C_{SEonly}=159.7 \text{ Billion USD}
 \end{equation}
-
 \begin{figure}[htbp]
 	\centering
-	\begin{subfigure}[b]{.6\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+	\begin{subfigure}[b]{.5\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
 		\includegraphics[width=\textwidth]{img/Figure_462.png}
 		\caption*{}
 		\label{}
@@ -773,7 +759,7 @@ These emissions are proportional to the number of rocket launches, and the envir
 \[ E_{TR-only} = M_{tot} \cdot (\omega_{CO_{2}}\cdot \epsilon_{CO_{2}}+\omega_{BC}\cdot \epsilon_{BC}+\omega_{Al_2 O_3}\cdot \epsilon_{Al_2 O_3})/m_{load}\]
 
 %SE-only模型的主要环境污染在于运送货物时耗费的电力，这些电力可能来自于非清洁能源，在生产电力的过程中造成污染，\textbf{环境影响系数}为：
-The main environmental pollution of the SE-only model comes from the electricity consumed during cargo transportation, 
+The main environmental pollution of the SE-only model comes from the electricity consumed, 
 which may be derived from non-clean energy sources, causing pollution during power generation. 
 The environmental impact coefficient is:
 \[ E_{SE-only} = M_{tot} \cdot e_{per}\cdot (1-\eta_{clean})\cdot\epsilon_{coal}\]
@@ -788,7 +774,7 @@ The environmental pollution of the static hybrid model comes from both sources, 
 \end{split}
 \end{equation}
 %而动态模型的\textbf{环境影响系数}类似于上面的式子：
-The environmental impact coefficient of the dynamic model is similar to the above formula:
+The environmental impact coefficient of the dynamic model is similar to the above:
 \begin{equation}
 \begin{split}
 	E_{dynamic} = &\sum_{i=1}^{K} \left[ (1-\alpha_i) \cdot (\omega_{CO_{2}}\cdot \epsilon_{CO_{2}}+\omega_{BC}\cdot \epsilon_{BC}+\omega_{Al_2 O_3}\cdot \epsilon_{Al_2 O_3})/m_{load} \right.\\
@@ -847,30 +833,30 @@ Among them, \(K\) represents the maximum number of time stages to be considered 
 
 The algorithm conducts the search for the dynamic capacity planning scheme by gradually increasing the length of the considered time interval from the early stage:
 
-\begin{enumerate}
+\begin{itemize}
 	\item \textbf{Cumulative capacity check}: At each iteration, sum available SE and TR capacity up to the current stage; terminate the iteration if this cumulative capacity cannot meet total demand.
 	\item \textbf{Option set and cost ordering}: Create a combined option set (SE and TR) with their unit variable costs, and sort options by increasing cost to prioritize cheaper sources.
 	\item \textbf{Greedy allocation}: Fulfill stage demand by allocating sequentially from the lowest-cost option until the demand is met or capacity is exhausted.
-	\item \textbf{Mixed-technology constraints}: If minimum deployment levels for SE and TR are required, reserve those minima first, then apply the greedy allocation to remaining demand.
+	\item \textbf{Mixed-tech constraints}: If minimum deployment levels for SE and TR are required, reserve those minima, and apply the greedy allocation to remaining demand.
 	\item \textbf{Cost aggregation and logging}: For each stage compute variable and fixed costs, record the capacity assignments and total cost, and store the solution for subsequent feasibility screening and optimization.
-\end{enumerate}
+\end{itemize}
 
 the Stage-wise Extended Search Algorithm takes into account both the time schedule and resource constraints, gradually approaching the optimal solution space that meets the requirements.
 
 \subsection{Multi-objective Pareto Front Analysis}
 
 To assist in decision-making, the algorithm selects key solutions based on two target dimensions of time and cost. The specific implementation includes:
-\begin{enumerate}
+\begin{itemize}
 	\item \textbf{Pareto-front filtering}: Retain nondominated solutions in the cost–time objective space to form the Pareto frontier, ensuring cost efficiency within specified time bounds.
 	\item \textbf{Knee-point detection}: Normalize objectives and compute perpendicular distances from each frontier point to the line connecting the endpoints; the point of maximal distance is the knee, representing a high-value cost–time tradeoff.
 	\item \textbf{Star-point reporting}: Also record the minimum-time feasible solution (Star point) to facilitate comparison with the Knee point for decision support.
 	\item \textbf{Visualization}: Plot the Pareto frontier and annotate the Knee and Star points to visually convey multi-objective tradeoffs.
-\end{enumerate}
+\end{itemize}
 
 %===============================================第六部分=============================================
 \section{Test the Model}
-
-\subsubsection{Parameter selection}
+\subsection{Sensitivity Analysis}
+\paragraph{Parameter selection}
 According to the model, the following parameters are selected for sensitivity analysis
 \begin{itemize}
 	\item SE system annual capacity $\kappa_{SE,total}$
@@ -879,7 +865,7 @@ According to the model, the following parameters are selected for sensitivity an
 	\item Cost parameters $c_{var}^{SE}$, $c'_{launch}$
 	\item Clean energy usage rate $\eta_{clean}$
 \end{itemize}
-\subsubsection{Analysis Method}
+\paragraph{Analysis Method}
 Using \textbf{one-factor sensitivity analysis} + \textbf{multi-factor interaction analysis}:
 \begin{itemize}
 	\item \textbf{one-factor sensitivity analysis}：Each time, only change the value of one parameter (±5\%, ±10\%, ±20\%), keep other parameters unchanged, and calculate the change rate of the objective function:
@@ -889,10 +875,8 @@ S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
 where $f$ is the objective function value (duration, cost), and $x$ is the parameter value.
 	\item \textbf{multi-factor interaction analysis}：Use Latin Hypercube Sampling (LHS) method to randomly sample within the possible range of parameters, run the model, calculate Sobol sensitivity indices, and analyze interaction effects.
 \end{itemize}
-
-\subsubsection{Results Presentation}
-
-As shown in Figure 10, the visualization of the impact of the dynamic $\alpha$ strategy on sensitivity analysis after applying multi-factor analysis is presented. Figure 11 shows the performance comparison of different strategies under sensitivity analysis.
+\paragraph{Results Presentation}
+As shown in Figure 10, the impact of the dynamic $\alpha$ strategy on sensitivity analysis after applying multi-factor analysis is presented. Figure 11 shows the performance comparison of different strategies under sensitivity analysis.
 
 \begin{figure}[htbp]
 	\centering
@@ -906,7 +890,7 @@ As shown in Figure 10, the visualization of the impact of the dynamic $\alpha$ s
 
 \begin{figure}[htbp]
 	\centering
-	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+	\begin{subfigure}[b]{0.8\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
 		\includegraphics[width=\textwidth]{img/Figure_6132.png}
 		\caption*{}
 		\label{}
@@ -921,23 +905,21 @@ Robustness analysis objective:
 	\item Determine the magnitude of error in the original scheme's objective values when input parameters have uncertainty fluctuations;
 	\item Identify which transportation strategy (SE-only, TR-only, mixed mode, dynamic mode) is least sensitive to disturbances.
 \end{itemize}
-
-\subsubsection{Uncertainty Modeling}
+\paragraph{Uncertainty Modeling}
 Based on the original parameters, the following uncertainties can be identified:
 \begin{itemize}
 	\item \textbf{Rocket failure probability fluctuations}: Modeled as a Beta distribution (biased towards the mean but with risk at extreme values).
 	\item \textbf{Cost fluctuations}: Assuming future prices are influenced by inflation and technological progress, costs follow a normal distribution.
 	\item \textbf{Technological improvement rate fluctuations}: Parameters in the $c_{var}^{SE}$ formula follow a normal distribution, affecting the decline rate of $c_{var}^{SE}$.
 \end{itemize}
-\subsubsection{Robustness evaluation metrics}
+\paragraph{Robustness evaluation metrics}
 \begin{itemize}
 	\item Objective function deviation: Measures the degree of change in the objective function value after perturbation relative to the baseline value:\[
 	R = \frac{|f_{\mathrm{perturbed}} - f_{\mathrm{baseline}}|}{f_{\mathrm{baseline}}}
 	\]
 	\item Worst-case performance degradation: Takes the worst 5\% of the sample results for risk assessment.
 \end{itemize}
-
-\subsubsection{Analysis Method}
+\paragraph{Analysis Method}
 First, use the original parameters to obtain the baseline duration $T_0$, baseline cost $f_0$, and baseline environmental impact $E_0$.
 Then perform simulations with perturbations:
 \begin{itemize}
@@ -945,11 +927,8 @@ Then perform simulations with perturbations:
 	\item Use the scheme obtained with the original parameters to run the model for each combination, recording various indicators.
 	\item Calculate deviation and worst-case performance degradation:
 \end{itemize}
-
-\subsubsection{Results Presentation}
-
+\paragraph{Results Presentation}
 As shown in the figure, it is a comparison of the robustness analysis of the four strategies.
-
 \begin{figure}[htbp]
 	\centering
 	\begin{subfigure}[b]{.8\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
@@ -1024,6 +1003,12 @@ As shown in the figure, it is a comparison of the robustness analysis of the fou
 	\item Combine the Stage‑wise Extended Search Algorithm (SESA) with metaheuristics such as Particle Swarm Optimization or NSGA‑II to improve convergence speed and optimize over higher‑dimensional objectives.
 \end{itemize}
 
+% 参考文献，直接把bib格式粘贴到References.bib里面，此处无需改动！！！！！！！！！！！！！！！！！！
+\bibliographystyle{unsrt} %规定了参考文献的格式
+\begin{center}
+	\bibliography{references.bib} %调出LaTeX生成参考文献列表
+\end{center}
+
 \newpage
 %===============================================第八部分=============================================
 
@@ -1063,16 +1048,11 @@ This proposal offers superior feasibility, verified robustness, and low-carbon s
 \end{letter}
 
 %=================================================================================================================
-
 \newpage
 %===============================================参考文献部分=============================================
 \backgroundsetup{contents={}} 
 
-% 参考文献，直接把bib格式粘贴到References.bib里面，此处无需改动！！！！！！！！！！！！！！！！！！
-\bibliographystyle{unsrt} %规定了参考文献的格式
-\begin{center}
-	\bibliography{references.bib} %调出LaTeX生成参考文献列表
-\end{center}
+
 %=====================================================================================
 
 
