@@ -4,6 +4,7 @@
 % ctexart支持中文编译文档
 %最后全部翻译成英文后可以选择改成article，然后用pdflatex编译，还可以检验一下是不是没有中文了嘿嘿( •̀ ω •́ )✧
 %官方要求字号不小于 12 号，此处选择 12 号字体
+\usepackage{makecell} % Added for \makecell support
 
 \CTEXsetup[format={\Large\bfseries}]{section} %在ctexart中，一级标题是居中的，这里改成左对齐
 
@@ -188,24 +189,30 @@ for implementation in the late 21st century.
 %地月运输
 In the literature\upcite{ishimatsu2016generalized}, a generalized multi-commodity network flow (GMCNF) model has been proposed to optimize logistics within the Earth–Moon–Mars system.
  It incorporates multi-commodity flows like propellant, crew, and equipment, with in-situ resource utilization (ISRU) such as lunar water production2. Leveraging lunar resources reduces 
- total mass launched from Earth (TLMLEO) when combined with LOX/LH₂ propulsion and aerocapture2. Sensitivity analysis shows lunar ISRU becomes economically viable above 1.8 kg/year/kg productivity, 
+ total mass launched from Earth (TLMLEO) when combined with$LOX/LH_2$propulsion and aerocapture2. Sensitivity analysis shows lunar ISRU becomes economically viable above 1.8 kg/year/kg productivity, 
  supporting sustainable cislunar supply chains2. This approach provides a foundational framework for efficient interplanetary transport networks2.
 
 %火箭污染
 A literatrue\upcite{ross2014radiative}shows:Rocket exhaust produces positive radiative forcing (RF), primarily due to black carbon (BC) and alumina particles.
-Carbon dioxide (CO₂) emissions from rockets contribute negligibly to RF compared to particulate emissions.
-Current global RF from rocket launches is estimated at 16 ± 8 mW m⁻², with BC accounting for 70 percents of this value.
-
-
+Carbon dioxide ($CO_{2}$) emissions from rockets contribute negligibly to RF compared to particulate emissions.
+Current global RF from rocket launches is estimated at 16±8$mWm^{-2}$, with BC accounting for 70 percents of this value.
 
 \subsection{Our work}%-----------------------------------------------------------
-We do such things ...
-这部分直接上图
+We do such things as follows:
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+		\includegraphics[width=\textwidth]{img/our_work.png}
+		\caption*{}
+		\label{}
+	\end{subfigure}
+	\caption{13}\label{subfigure}
+\end{figure}
 
 \begin{enumerate}[\bfseries 1.]
-	\item We do ...
-	\item We do ...
-	\item We do ...
+	\item \textbf{We do model construction.} We build a series of mathematical models to analyze and optimize the lunar material delivery system. Starting from a static baseline model, we compare three transportation scenarios—Space Elevator only, Traditional Rocket only, and a hybrid strategy. On this basis, we further establish a dynamic extended model that allows the transportation ratio $\alpha_i$ to evolve over time, incorporating technical progress and cost reduction. Finally, we introduce stochastic elements, such as rocket launch failure and elevator tether swaying, to ensure the model reflects realistic uncertainty.
+	\item \textbf{We do extended tasks.} We integrate additional requirements into the core framework, including one-year water supply planning and environmental impact assessment. The water demand model quantifies the annual net water requirement under different recycling efficiencies, while the environmental impact model evaluates $CO_2$ and black carbon emissions from rockets, as well as energy use from the Space Elevator. This extension allows the model to balance cost, time, and ecological sustainability.
+	\item \textbf{We do model solving and evaluation.} We design a Stage-wise Extended Search Algorithm (SESA) combined with a Greedy Marginal Cost Method (GMCM) to solve the nonlinear, multi-objective optimization problem. Pareto front analysis and knee-point detection are applied to identify optimal trade-offs between construction time, cost, and environmental impact. Additionally, sensitivity and robustness analyses verify model reliability and demonstrate that the dynamic hybrid strategy achieves the best performance among all schemes.
 \end{enumerate}
 %===========================第二部分==模型准备==========================================================
 \section{Preparation of the Models}
@@ -213,34 +220,33 @@ We do such things ...
 %为了简化问题，我们做出了以下假设，其中每一条都有对应的合理解释
 To simplify the problem, we made the following assumptions, each of which has a corresponding reasonable explanation.
 \begin{itemize}
-	\item \textit{\textbf{Assumption 1:}}物资分级连续性：分为关键物资（优先SE运输）和普通物资，均视为准连续流体。
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}工程中物资存在优先级，SE高可靠性适配关键物资，符合调度逻辑。
+	\item \textit{\textbf{Assumption 1:}}Consistency of materials: Materials are treated as quasi-continuous fluids and can be infinitely subdivided.
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}The project involves a large volume of materials, which are treated as fluids to align with scheduling logic.
 
-	\item \textit{\textbf{Assumption 2:}}$\alpha(t)$ 为分段常数函数：将总工期划分为50个时间区间（每区间1-2年），每个区间 $\alpha_i$ 为常数。
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}平衡计算精度与效率，适配MCM竞赛求解需求，易实现且结果直观。
+	\item \textit{\textbf{Assumption 2:}}$\alpha_i$ is a piecewise constant function: The total project duration is divided into 50 time intervals (each interval spanning 1–2 years), with $\alpha_i$ being a constant for each interval.
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Balancing computational accuracy and efficiency, tailored to meet the requirements of MCM competition solutions, easy to implement with intuitive results.
 
-	\item \textit{\textbf{Assumption 3:}}水资源消耗：人均日用水量吨，循环效率 $\gamma=$。
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}参考国际空间站用水标准，循环效率符合2050年技术水平预测。
+	\item \textit{\textbf{Assumption 3:}}Water consumption: Daily per capita water usage of 0.35 tons, with a water recycling efficiency of $\gamma=0.95$.
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Referencing the water usage standards of the International Space Station, the recycling efficiency aligns with projected technological levels for 2050.
 
-	\item \textit{\textbf{Assumption 4:}}太空电梯清洁能源使用率为，会随着技术进步不断升高直至100\%。
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}于绿色科学原理与题目场景合理设定
+	\item \textit{\textbf{Assumption 4:}}The space elevator's clean energy utilization rate is 0.3, and it will steadily increase with technological advancements until it reaches 100%.
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Based on green science principles and reasonable scenario settings.
 
-	\item \textit{\textbf{Assumption 5:}}非完美状态参数：TR发射失败概率\%，会随着技术的进步不断降低至阈值。
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}基于航天工程历史数据与题目场景合理设定。
+	\item \textit{\textbf{Assumption 5:}}Imperfect state parameters: TR transmission failure probability of 1%, which will decrease to 0.1% with technological advancement.
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Based on historical aerospace engineering data and the scenario of the question, a reasonable setting is established.
 
-	\item \textit{\textbf{Assumption 6:}}成本参数：SE固定成本亿美元，单位可变成本美元/吨；TR单次发射成本亿美元。
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}参考Falcon Heavy当前成本与未来技术迭代趋势，量级合理。
+	\item \textit{\textbf{Assumption 6:}}Cost Parameters: SE fixed cost: \$6.2 billion; Unit variable cost: \$250,000 per ton; TR single launch cost: \$67 million.
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Considering Falcon Heavy's current cost and future technological iteration trends, the scale is reasonable.
 
-	\item \textit{\textbf{Assumption 7:}}顶端火箭发射失败时成本不计。
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}由于顶端火箭载荷量未知，成本波动计入原成本内。
+	\item \textit{\textbf{Assumption 7:}}The cost of an apex rocket launch failure is not counted.
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Due to the unknown payload capacity of the apex stage rocket, cost fluctuations are factored into the original cost.
 
-	\item \textit{\textbf{Assumption 8:}}原有的火箭发射中心启用时成本为零。
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}现有发射场启用时不应有成本。
+	\item \textit{\textbf{Assumption 8:}}The original rocket launch center had zero startup costs.
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Given the existing launch site's sufficiently large daily throughput capacity, there should be no cost associated with its activation.
 \end{itemize}
 %这里只列出了主要的假设，其他假设会在专门的小节中单独讨论
 Additional assumptions are made to simplify analysis for individual sections. These assumptions will be discussed at the appropriate locations.
 
-\newpage
 \subsection{Notations}%-----------------------------------------------------------------------------------
 % 三线表（可以直接在excel里编辑好然后用excel2latex插件插入）
 
@@ -253,27 +259,27 @@ Table \ref{tb:notation} lists some important mathematical notations used in this
 			\multicolumn{1}{m{4cm}}{\centering \textbf{Symbol}}
 			                      & \multicolumn{1}{m{10cm}}{\textbf{ Description} }                       \\
 			\midrule
-			$\alpha_i$            & 第i个时间区间的SE运输比例（ $\alpha(t)$ 分段常数）                      \\
-			$q_i$                 & 第i个时间区间的平均运力                                                      \\
-			$M_{tot}$             & 建设物资总量                                                           \\
-			$\kappa_{SE,total}$   & SE系统总年运力                                                         \\
-			$m_{load}$            & TR单次payload基准值                                                    \\
-			$f_{TR}(j)$           & 第j个TR发射场年最大发射频次                                            \\
-			$C_{fix}^{SE}$        & SE系统总固定成本                                                       \\
-			$c_{var}^{SE}$        & SE单位可变成本+顶端火箭单位质量发射成本                                \\
-			$c_{launch}$          & TR单次发射成本                                                         \\
-			$P_{pop}$             & 月球殖民地人口                                                         \\
-			$w_{per}$             & 人均日用水量                                                           \\
-			$\gamma$              & 水资源循环效率                                                         \\
-			$\eta_{clean}$        & 清洁能源使用率                                                         \\
-			$Q_{SE}(i)$           & 前i个区间SE累积运输量                                                  \\
-			$Q_{TR}(i)$           & 前i个区间TR累积运输量                                                  \\
-			$D(i)$                & 第i个区间SE累积损坏因子                                                \\
-			$\kappa_{SE}'(i)$     & 第i个区间SE有效运力（非完美状态）                                     \\
-			$\kappa_{TR}'(i)$     & 第i个区间TR有效运力（非完美状态）                                     \\
-			$f_{cost}$            & 全生命周期总成本                                                       \\
-			$f_{time}$            & 总工期                                                                 \\
-			$f_{env}$             & 综合环境影响指数                                                       \\
+			$\alpha_i$            & SE transport proportion interval at stage i(piecewise constant $\alpha(t)$)                      \\
+			$q_i$                 & Average capacity at stage i                                                  \\
+			$M_{tot}$             & Total Construction Materials                                                           \\
+			$\kappa_{SE,total}$   & SE System Total Annual Capacity                                                         \\
+			$m_{load}$            & TR Single-Payload Benchmark Value                                                    \\
+			$f_{TR}(j)$           & Annual maximum launch frequency of the j-th TR launch site                                            \\
+			$C_{fix}^{SE}$        & SE system total fixed cost                                                       \\
+			$c_{var}^{SE}$        & SE unit variable cost + apex rocket unit mass launch cost                                \\
+			$c_{launch}$          & TR single launch cost                                                         \\
+			$P_{pop}$             & Lunar colony population                                                         \\
+			$w_{per}$             & Daily per capita water consumption                                                           \\
+			$\gamma$              & Water Resource Cycle Efficiency                                                         \\
+			$\eta_{clean}$        & Clean Energy Utilization Rate                                                         \\
+			$Q_{SE}(i)$           & Cumulative transport volume for the previous i intervals                                                  \\
+			$Q_{TR}(i)$           & Cumulative transport volume for the previous i intervals of TR                                                  \\
+			$D(i)$                & Cumulative damage factor for the i-th interval of SE                                                \\
+			$\kappa_{SE}'(i)$     & Effective transport capacity of SE in the i-th interval (non-perfect state)                                     \\
+			$\kappa_{TR}'(i)$     & Effective transport capacity of TR in the i-th interval (non-perfect state)                                     \\
+			$f_{cost}$            & Total lifecycle cost                                                       \\
+			$T$            & Total construction period                                                                 \\
+			$E$             & Comprehensive Environmental Impact Index                                                       \\
 			\bottomrule[1.5pt]
 		\end{tabular}\label{tb:notation}
 		\begin{tablenotes}
@@ -920,14 +926,14 @@ S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
   \centering
   \caption{results}
   \label{tab:results}
-  \begin{tabular}{lcccc}
+   \begin{tabular}{lcccc}
     \toprule
     参数 & TR-Only & SE-Only & Static Mixing & Dynamic Mixing \\
     \midrule
-    $\alpha \in (0,1)$ & 0 & 1 & Constant & Constant on 50 Intervals \\
+    $\alpha \in (0,1)$ & 0 & 1 & Constant & \makecell{Constant on\\50 Intervals} \\
     Durations(year) & & & & \\
     Cost(BD) & & & & \\
-    Cost of maintaining water supply(BD) & & & & \\
+	\makecell{Cost of maintaining water supply (BD)} & & & & \\
     Environmental Impact & 4 & 3 & 2 & 1 \\
     Robustness(rank) & 4 & 3 & 2 & 1 \\
     \bottomrule
