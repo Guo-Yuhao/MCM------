@@ -183,11 +183,9 @@ To simplify the problem, we made the following assumptions, each of which has a 
 \begin{itemize}
 	\item \textit{\textbf{Assumption 1:}}Consistency of materials: Materials are treated as quasi-continuous fluids and can be infinitely subdivided.
 	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}The project involves a large volume of materials, which are treated as fluids to align with scheduling logic.
-	\item \textit{\textbf{Assumption 2:}}The space elevator's clean energy utilization rate is 0.3, and it will steadily increase with technological advancements until it reaches 100%.
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Based on green science principles and reasonable scenario settings.
-	\item \textit{\textbf{Assumption 3:}}Imperfect state parameters: TR transmission failure probability of 1%, which will decrease to 0.1% with technological advancement.
+	\item \textit{\textbf{Assumption 2:}}Imperfect state parameters: TR transmission failure probability of 1%, which will decrease to 0.1% with technological advancement.
 	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Based on historical aerospace engineering data and the scenario of the question, a reasonable setting is established.
-	\item \textit{\textbf{Assumption 4:}}The cost of an apex rocket launch failure is not counted.
+	\item \textit{\textbf{Assumption 3:}}The cost of an apex rocket launch failure is not counted.
 	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Due to the unknown payload capacity of the apex stage rocket, cost fluctuations are factored into the original cost.
 \end{itemize}
 %这里只列出了主要的假设，其他假设会在专门的小节中单独讨论
@@ -323,7 +321,7 @@ and $m_{load}$ is the baseline payload per launch (150 tons).
 %物资全部运输所需的总工期为：
 The total duration required to transport all materials is:
 \begin{equation}
-	T_{TR}=\frac{M_{tot}}{\kappa_{TR}}=\frac{1 \times 10^8}{30000}=3333\text{ years}
+	T_{TR}=\frac{M_{tot}}{\kappa_{TR}}=\frac{1 \times 10^8}{30000}=3333.3\text{ years}
 \end{equation}
 
 %\subsubsection{Total Cost}
@@ -475,8 +473,7 @@ The optimization problem is subject to the following constraints:
 \begin{equation}
 	\begin{cases}
 		0 \leq \alpha_i \leq 1, \quad \forall i=1,2,\ldots,50 \\[6pt]
-		\alpha_i \cdot q(i) \leq \kappa_{SE}'(i), \quad \forall i \\[6pt]
-		(1-\alpha_i) \cdot q(i) \leq \kappa_{TR}'(i), \quad \forall i \\[6pt]
+		\alpha_i \cdot q(i) \leq \kappa_{SE}'(i),\quad (1-\alpha_i) \cdot q(i) \leq \kappa_{TR}'(i),\quad \forall i \\[6pt]
 		Q_{SE}(50) + Q_{TR}(50) \geq M_{tot}
 	\end{cases}
 \end{equation}
@@ -719,16 +716,6 @@ In the later stages of the construction period, the $\alpha_i$ value of the dyna
 \begin{equation}
 	C_{dynamic}=C_{SEonly}=159.7 \text{ Billion USD}
 \end{equation}
-\begin{figure}[htbp]
-	\centering
-	\begin{subfigure}[b]{.5\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
-		\includegraphics[width=\textwidth]{img/Figure_462.png}
-		\caption*{}
-		\label{}
-	\end{subfigure}
-	\caption{462}\label{subfigure}
-\end{figure}
-
     
 \subsection{Environmental Impact Model}
 \subsubsection{Establishment of Environmental Impact Coefficients}
