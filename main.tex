@@ -930,6 +930,8 @@ where $f$ is the objective function value (duration, cost), and $x$ is the param
 
 \subsubsection{Results Presentation}
 
+As shown in Figure 10, the visualization of the impact of the dynamic $\alpha$ strategy on sensitivity analysis after applying multi-factor analysis is presented. Figure 11 shows the performance comparison of different strategies under sensitivity analysis.
+
 \begin{figure}[htbp]
 	\centering
 	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
@@ -952,37 +954,37 @@ where $f$ is the objective function value (duration, cost), and $x$ is the param
 
 \subsection{Robustness Analysis}
 
-鲁棒性分析目标：
+Robustness analysis objective:
 \begin{itemize}
-	\item 判断在输入参数有不确定性波动时，原方案目标值产生的误差大小；
-	\item 确定哪种运输策略（SE-only、TR-only、混合模式、动态模式）对扰动最不敏感。
+	\item Determine the magnitude of error in the original scheme's objective values when input parameters have uncertainty fluctuations;
+	\item Identify which transportation strategy (SE-only, TR-only, mixed mode, dynamic mode) is least sensitive to disturbances.
 \end{itemize}
 
-\subsubsection{不确定性建模}
-根据原有参数，可以有以下不确定性：
+\subsubsection{Uncertainty Modeling}
+Based on the original parameters, the following uncertainties can be identified:
 \begin{itemize}
-	\item \textbf{火箭失败概率波动}：设为 Beta 分布（偏向平均值但存在极端值处的风险）。
-	\item \textbf{成本波动}：假设未来价格受通胀和技术进步影响，成本服从正态分布。
-	\item \textbf{技术改进速度波动}：$c_{var}^{SE}$公式中的参数服从正态分布，影响 $c_{var}^{SE}$ 的下降速率。
+	\item \textbf{Rocket failure probability fluctuations}: Modeled as a Beta distribution (biased towards the mean but with risk at extreme values).
+	\item \textbf{Cost fluctuations}: Assuming future prices are influenced by inflation and technological progress, costs follow a normal distribution.
+	\item \textbf{Technological improvement rate fluctuations}: Parameters in the $c_{var}^{SE}$ formula follow a normal distribution, affecting the decline rate of $c_{var}^{SE}$.
 \end{itemize}
-\subsubsection{鲁棒性评估指标}
+\subsubsection{Robustness evaluation metrics}
 \begin{itemize}
-	\item 目标函数偏离度：衡量扰动后目标函数值相对于基准值的变化程度:\[
+	\item Objective function deviation: Measures the degree of change in the objective function value after perturbation relative to the baseline value:\[
 	R = \frac{|f_{\mathrm{perturbed}} - f_{\mathrm{baseline}}|}{f_{\mathrm{baseline}}}
 	\]
-	\item 最坏情况性能下降幅度：取样本中最差5\%的结果，用于风险评估。
+	\item Worst-case performance degradation: Takes the worst 5\% of the sample results for risk assessment.
 \end{itemize}
 
-\subsubsection{分析方法}
-先用原始参数求出基准工期$T_0$，基准成本$f_0$，基准环境影响$E_0$。
-然后进行扰动后仿真：
+\subsubsection{Analysis Method}
+First, use the original parameters to obtain the baseline duration $T_0$, baseline cost $f_0$, and baseline environmental impact $E_0$.
+Then perform simulations with perturbations:
 \begin{itemize}
-	\item 随机抽样不同扰动组合：
-	\item 采用原始参数求出的方案对每个组合运行模型，记录各指标。
-	\item 计算偏离度和最坏情况性能下降幅度：
+	\item Randomly sample different perturbation combinations:
+	\item Use the scheme obtained with the original parameters to run the model for each combination, recording various indicators.
+	\item Calculate deviation and worst-case performance degradation:
 \end{itemize}
 
-\subsubsection{结果展示}
+\subsubsection{Results Presentation}
 
 \begin{figure}[htbp]
 	\centering
