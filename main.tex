@@ -870,33 +870,30 @@ To assist in decision-making, the algorithm selects key solutions based on two t
 
 %===============================================第六部分=============================================
 \section{Test the Model}
-\subsection{Sensitivity  Analysis}
-敏感性分析目标：  
+
+\subsubsection{Parameter selection}
+According to the model, the following parameters are selected for sensitivity analysis
 \begin{itemize}
-	\item 量化参数对目标函数的影响程度；
-	\item 识别关键参数，指导决策和优化；
+	\item SE system annual capacity $\kappa_{SE,total}$
+	\item TR single effective payload $m_{load}$
+	\item SE cable swing induced availability $\eta_{SE}$ 
+	\item Cost parameters $c_{var}^{SE}$, $c'_{launch}$
+	\item Clean energy usage rate $\eta_{clean}$
 \end{itemize}
-\subsubsection{选取参数}
-根据模型，选取以下参数进行敏感性分析：
+\subsubsection{Analysis Method}
+Using \textbf{one-factor sensitivity analysis} + \textbf{multi-factor interaction analysis}:
 \begin{itemize}
-	\item SE系统年运力 $\kappa_{SE,total}$
-	\item TR单次有效载荷 $m_{load}$
-	\item SE缆绳摆动导致的可用度 $\eta_{SE}$ 
-	\item 成本参数 $c_{var}^{SE}$、$c'_{launch}$
-	\item 清洁能源使用率 $\eta_{clean}$
-\end{itemize}
-\subsubsection{分析方法}
-采用\textbf{单因素敏感性分析} + \textbf{多因素交互分析}：
-\begin{itemize}
-	\item \textbf{单因素}：每次只改变一个参数的值（±5\%、±10\%、±20\%），保持其他参数不变，计算目标函数的变化率：
+	\item \textbf{one-factor sensitivity analysis}：Each time, only change the value of one parameter (±5\%, ±10\%, ±20\%), keep other parameters unchanged, and calculate the change rate of the objective function:
 \[
 S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
 \]
-其中 $f$ 是目标函数值（工期、成本），$x$ 是参数值。
-	\item \textbf{多因素}：用拉丁超立方抽样（LHS）方法，在参数的可能范围内随机采样，运行模型，计算 Sobol 灵敏度指数，分析交互效应。
+where $f$ is the objective function value (duration, cost), and $x$ is the parameter value.
+	\item \textbf{multi-factor interaction analysis}：Use Latin Hypercube Sampling (LHS) method to randomly sample within the possible range of parameters, run the model, calculate Sobol sensitivity indices, and analyze interaction effects.
 \end{itemize}
 
-\subsubsection{结果展示}
+\subsubsection{Results Presentation}
+
+As shown in Figure 10, the visualization of the impact of the dynamic $\alpha$ strategy on sensitivity analysis after applying multi-factor analysis is presented. Figure 11 shows the performance comparison of different strategies under sensitivity analysis.
 
 \begin{figure}[htbp]
 	\centering
@@ -920,41 +917,43 @@ S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
 
 \subsection{Robustness Analysis}
 
-鲁棒性分析目标：
+Robustness analysis objective:
 \begin{itemize}
-	\item 判断在输入参数有不确定性波动时，原方案目标值产生的误差大小；
-	\item 确定哪种运输策略（SE-only、TR-only、混合模式、动态模式）对扰动最不敏感。
+	\item Determine the magnitude of error in the original scheme's objective values when input parameters have uncertainty fluctuations;
+	\item Identify which transportation strategy (SE-only, TR-only, mixed mode, dynamic mode) is least sensitive to disturbances.
 \end{itemize}
 
-\subsubsection{不确定性建模}
-根据原有参数，可以有以下不确定性：
+\subsubsection{Uncertainty Modeling}
+Based on the original parameters, the following uncertainties can be identified:
 \begin{itemize}
-	\item \textbf{火箭失败概率波动}：设为 Beta 分布（偏向平均值但存在极端值处的风险）。
-	\item \textbf{成本波动}：假设未来价格受通胀和技术进步影响，成本服从正态分布。
-	\item \textbf{技术改进速度波动}：$c_{var}^{SE}$公式中的参数服从正态分布，影响 $c_{var}^{SE}$ 的下降速率。
+	\item \textbf{Rocket failure probability fluctuations}: Modeled as a Beta distribution (biased towards the mean but with risk at extreme values).
+	\item \textbf{Cost fluctuations}: Assuming future prices are influenced by inflation and technological progress, costs follow a normal distribution.
+	\item \textbf{Technological improvement rate fluctuations}: Parameters in the $c_{var}^{SE}$ formula follow a normal distribution, affecting the decline rate of $c_{var}^{SE}$.
 \end{itemize}
-\subsubsection{鲁棒性评估指标}
+\subsubsection{Robustness evaluation metrics}
 \begin{itemize}
-	\item 目标函数偏离度：衡量扰动后目标函数值相对于基准值的变化程度:\[
+	\item Objective function deviation: Measures the degree of change in the objective function value after perturbation relative to the baseline value:\[
 	R = \frac{|f_{\mathrm{perturbed}} - f_{\mathrm{baseline}}|}{f_{\mathrm{baseline}}}
 	\]
-	\item 最坏情况性能下降幅度：取样本中最差5\%的结果，用于风险评估。
+	\item Worst-case performance degradation: Takes the worst 5\% of the sample results for risk assessment.
 \end{itemize}
 
-\subsubsection{分析方法}
-先用原始参数求出基准工期$T_0$，基准成本$f_0$，基准环境影响$E_0$。
-然后进行扰动后仿真：
+\subsubsection{Analysis Method}
+First, use the original parameters to obtain the baseline duration $T_0$, baseline cost $f_0$, and baseline environmental impact $E_0$.
+Then perform simulations with perturbations:
 \begin{itemize}
-	\item 随机抽样不同扰动组合：
-	\item 采用原始参数求出的方案对每个组合运行模型，记录各指标。
-	\item 计算偏离度和最坏情况性能下降幅度：
+	\item Randomly sample different perturbation combinations:
+	\item Use the scheme obtained with the original parameters to run the model for each combination, recording various indicators.
+	\item Calculate deviation and worst-case performance degradation:
 \end{itemize}
 
-\subsubsection{结果展示}
+\subsubsection{Results Presentation}
+
+As shown in the figure, it is a comparison of the robustness analysis of the four strategies.
 
 \begin{figure}[htbp]
 	\centering
-	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+	\begin{subfigure}[b]{.8\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
 		\includegraphics[width=\textwidth]{img/Figure_624.png}
 		\caption*{}
 		\label{}
@@ -976,7 +975,7 @@ S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
   \label{tab:results}
    \begin{tabular}{lcccc}
     \toprule
-    parameters & TR-Only & SE-Only & Static Mixing & Dynamic Mixing \\
+    Parameters & TR-Only & SE-Only & Static Mixing & Dynamic Mixing \\
     \midrule
     $\alpha \in (0,1)$ & 0 & 1 & Constant & \makecell{Constant on\\50 Intervals} \\
     Durations(year) &4000 &558.7 &419 &380 \\
@@ -993,7 +992,7 @@ S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
   \label{tab:sensitivity} % 可自定义引用标签，用于\ref{}引用
   \begin{tabular}{lcccc} % 列格式：l=左对齐（参数列），cccc=居中对齐（4个对比列）
     \toprule % 顶部粗线
-    parameters & TR-Only & SE-Only & Static Mixing & Dynamic Mixing \\
+    Parameters & TR-Only & SE-Only & Static Mixing & Dynamic Mixing \\
     \midrule % 中间细线
     $c_{launch}$ & +++ & $\pm$ & ++ & + \\
     $\kappa_{se\_total}$ & - - & ++ & - & - - \\
