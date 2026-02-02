@@ -261,17 +261,17 @@ Table \ref{tb:notation} lists some important mathematical notations used in this
 			\midrule
 			$\alpha_i$            & SE transport proportion interval at stage i(piecewise constant $\alpha(t)$)                      \\
 			$q_i$                 & Average capacity at stage i                                                  \\
-			$M_{tot}$             & Total Construction Materials                                                           \\
-			$\kappa_{SE,total}$   & SE System Total Annual Capacity                                                         \\
-			$m_{load}$            & TR Single-Payload Benchmark Value                                                    \\
+			$M_{tot}$             & Total construction materials                                                           \\
+			$\kappa_{SE,total}$   & SE system total annual capacity                                                         \\
+			$m_{load}$            & TR single-payload benchmark value                                                    \\
 			$f_{TR}(j)$           & Annual maximum launch frequency of the j-th TR launch site                                            \\
 			$C_{fix}^{SE}$        & SE system total fixed cost                                                       \\
 			$c_{var}^{SE}$        & SE unit variable cost + apex rocket unit mass launch cost                                \\
 			$c_{launch}$          & TR single launch cost                                                         \\
 			$P_{pop}$             & Lunar colony population                                                         \\
 			$w_{per}$             & Daily per capita water consumption                                                           \\
-			$\gamma$              & Water Resource Cycle Efficiency                                                         \\
-			$\eta_{clean}$        & Clean Energy Utilization Rate                                                         \\
+			$\gamma$              & Water resource cycle efficiency                                                         \\
+			$\eta_{clean}$        & Clean energy utilization rate                                                         \\
 			$Q_{SE}(i)$           & Cumulative transport volume for the previous i intervals                                                  \\
 			$Q_{TR}(i)$           & Cumulative transport volume for the previous i intervals of TR                                                  \\
 			$D(i)$                & Cumulative damage factor for the i-th interval of SE                                                \\
@@ -279,7 +279,7 @@ Table \ref{tb:notation} lists some important mathematical notations used in this
 			$\kappa_{TR}'(i)$     & Effective transport capacity of TR in the i-th interval (non-perfect state)                                     \\
 			$f_{cost}$            & Total lifecycle cost                                                       \\
 			$T$            & Total construction period                                                                 \\
-			$E$             & Comprehensive Environmental Impact Index                                                       \\
+			$E$             & Comprehensive environmental impact index                                                       \\
 			\bottomrule[1.5pt]
 		\end{tabular}\label{tb:notation}
 		\begin{tablenotes}
@@ -366,7 +366,7 @@ and $c_{var}^{SE}$ represents the variable cost per unit (USD/ton).
 When 10 global launch sites are activated, the annual transportation capacity of 
 the Traditional Rocket (TR) system is:
 \begin{equation}
-	\kappa_{TR}=10 \cdot f_{TR}(j) \cdot m_{load}=10 \times 20 \times 125=25,000 \text{ tons/year}
+	\kappa_{TR}=10 \cdot f_{TR}(j) \cdot m_{load}=10 \times 20 \times 150=30,000 \text{ tons/year}
 \end{equation}
 
 %其中$f_{TR}(j)$为单个发射场年最大发射频次（20次/年），$m_{load}$为单次发射的基准载荷（150吨）。
@@ -378,7 +378,7 @@ and $m_{load}$ is the baseline payload per launch (150 tons).
 %物资全部运输所需的总工期为：
 The total duration required to transport all materials is:
 \begin{equation}
-	T_{TR}=\frac{M_{tot}}{\kappa_{TR}}=\frac{1 \times 10^8}{25000}=4000 \text{ years}
+	T_{TR}=\frac{M_{tot}}{\kappa_{TR}}=\frac{1 \times 10^8}{30000}=3333\text{ years}
 \end{equation}
 
 \subsubsection{Total Cost}
@@ -1013,9 +1013,9 @@ Then perform simulations with perturbations:
     参数 & TR-Only & SE-Only & Static Mixing & Dynamic Mixing \\
     \midrule
     $\alpha \in (0,1)$ & 0 & 1 & Constant & \makecell{Constant on\\50 Intervals} \\
-    Durations(year) & & & & \\
-    Cost(BD) & & & & \\
-	\makecell{Cost of maintaining water supply (BD)} & & & & \\
+    Durations(year) &4000 &558.7 &419 &380 \\
+    Cost(TD) &64.667 &8.125 &23.7 &27.99 \\
+	\makecell{Cost of maintaining water supply (BD)} &417.2 &159.7 &224.1 &159.7 \\
     Environmental Impact & 4 & 3 & 2 & 1 \\
     Robustness(rank) & 4 & 3 & 2 & 1 \\
     \bottomrule
