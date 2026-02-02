@@ -986,9 +986,11 @@ Then perform simulations with perturbations:
 
 \subsubsection{Results Presentation}
 
+As shown in the figure, it is a comparison of the robustness analysis of the four strategies.
+
 \begin{figure}[htbp]
 	\centering
-	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+	\begin{subfigure}[b]{.8\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
 		\includegraphics[width=\textwidth]{img/Figure_624.png}
 		\caption*{}
 		\label{}
@@ -1010,7 +1012,7 @@ Then perform simulations with perturbations:
   \label{tab:results}
    \begin{tabular}{lcccc}
     \toprule
-    参数 & TR-Only & SE-Only & Static Mixing & Dynamic Mixing \\
+    Parameters & TR-Only & SE-Only & Static Mixing & Dynamic Mixing \\
     \midrule
     $\alpha \in (0,1)$ & 0 & 1 & Constant & \makecell{Constant on\\50 Intervals} \\
     Durations(year) &4000 &558.7 &419 &380 \\
@@ -1027,7 +1029,7 @@ Then perform simulations with perturbations:
   \label{tab:sensitivity} % 可自定义引用标签，用于\ref{}引用
   \begin{tabular}{lcccc} % 列格式：l=左对齐（参数列），cccc=居中对齐（4个对比列）
     \toprule % 顶部粗线
-    参数 & TR-Only & SE-Only & Static Mixing & Dynamic Mixing \\
+    Parameters & TR-Only & SE-Only & Static Mixing & Dynamic Mixing \\
     \midrule % 中间细线
     $c_{launch}$ & +++ & $\pm$ & ++ & + \\
     $\kappa_{se\_total}$ & - - & ++ & - & - - \\
