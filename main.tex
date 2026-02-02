@@ -474,17 +474,13 @@ Compared with the static benchmark model, the dynamic $\alpha(t)$ expansion mode
 \begin{itemize}
 	\item \textbf{Time-Adaptive}：Dynamically adjusts the proportion of transportation methods based on technological 
 	development to use the opportunities brought by cost reduction.%根据技术发展动态调整运输方式比例，充分利用成本下降机遇
-	
 	\item \textbf{Cost Optimization}：Achieves refined optimization within the cost balance interval by real-time 
 	comparing the unit costs of the two transportation methods.%通过实时比较两种运输方式的单位成本，在成本均衡区间内进行精细优化
-	
 	\item \textbf{Segmented Planning}：Divides the total construction period into 50 intervals, with independent 
 	decision for each interval, facilitating implementation and adjustment.%将总工期划分为50个区间，每个区间独立决策，便于实施和调整
-	
 	\item \textbf{Multi-Objective Balance}：Simultaneously considers duration, cost, and environmental impact 
 	to seek a comprehensive optimal solution.%同时考虑工期、成本和环境影响，寻求综合最优方案
 \end{itemize}
-
 \begin{figure}[htbp]
 	\centering
 	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
@@ -494,72 +490,51 @@ Compared with the static benchmark model, the dynamic $\alpha(t)$ expansion mode
 	\end{subfigure}
 	\caption{44}\label{subfigure}
 \end{figure}
-
 % 长表格示例，更多用法请参考 longtable 宏包文档
 % 以下环境及对应参数可实现表格内的自动换行与表格的自动断页
 % 您也可以选择自行载入 tabularx 宏包，并通过 X 参数指定对应列自动换行
-
 %\section{Model 3: 随机扰动的修正模型}
-
 \subsection{Model Correction Under Random Disturbances}
-
 \subsubsection{Correction for Rocket Launch Failures}
-
 \paragraph{Failure Probability and Effective Payload}
-
 %传统火箭系统存在发射失败的风险。引入发射失败概率$P_{\mathrm{fail}}$，有效载荷的期望值为：
 The TR system faces the risk of launch failures. Introducing the launch failure probability $P_{\mathrm{fail}}$, 
 the expected value of the effective payload is:
 \begin{equation}
 	E[m] = m_{\mathrm{load}} \cdot (1 - P_{\mathrm{fail}})
 \end{equation}
-
 \paragraph{Launch Cost Adjustment}
-
 %考虑失败风险导致的成本增加：
 Considering the cost increase caused by failure risks:
-
 \begin{equation}
 	c'_{\mathrm{launch}} = c_{\mathrm{launch}} + P_{\mathrm{fail}} \cdot (c_{\mathrm{launch}} + c_{\mathrm{cargo\_loss}})
 \end{equation}
-
 %其中$c_{\mathrm{cargo\_loss}}$为货物损失成本。触发失败后一般是提供一次再飞且客户无需再支付该次发射服务费，也就是可以认为上面公式可以写成：
 where $c_{\mathrm{cargo\_loss}}$ is the cargo loss cost. Typically, a re-launch is provided at no additional cost in the event of a failure, so the formula can be simplified as:
-
 \begin{equation}
 	c'_{\mathrm{launch}} = c_{\mathrm{launch}} + P_{\mathrm{fail}} \cdot c_{\mathrm{launch}} = c_{\mathrm{launch}} (1 + 2 P_{\mathrm{fail}})
 \end{equation}
-
 \paragraph{Corrected Capacity}
-
 %火箭系统的实际运力上限应为：
 The actual capacity limit of the TR system should be:
 \begin{equation}
 	\kappa'_{TR}(i) = \kappa_{TR} \cdot (1 - P_{\mathrm{fail}}(i))
 \end{equation}
-
 %其中 $P_{\mathrm{fail}}(i)$ 为经15个时间间隔（即150年）从 1\% 下降至 0.1\% 的学习曲线，呈负指数形状。
 where $P_{\mathrm{fail}}(i)$ follows a negative exponential learning curve, decreasing from 1\% to 0.1\% over 15 time intervals (i.e., 150 years):
 \begin{equation}
 	P_{\mathrm{fail}}(i) = 0.01 \cdot \exp(-\frac{\ln(10)}{15} \cdot i)
 \end{equation}
-
-
 \paragraph{Corrected Cost Formula}
-
 %成本公式中，TR 的单位成本 $c_{TR}(i)$ 应改为：
 In the formula, the unit cost of TR $c_{TR}(i)$ should be revised to:
 \begin{equation}
 	c_{TR}(i) = \frac{c'_{\mathrm{launch}}}{m_{load}} = \frac{c_{\mathrm{launch}} (1 + 2 P_{\mathrm{fail}}(i))}{m_{load}}
 \end{equation}
-
 %这样将发射失败的风险成本纳入总成本计算。
 This incorporates the risk cost of launch failures into the total cost calculation.
-
 \subsubsection{Tether Sway Disturbances from Coriolis Force and Wind Shear}
-
 \paragraph{Instantaneous Availability Function}
-
 %太空电梯系统的可用性受摆动幅度和风速的影响。定义瞬时可用度函数为：
 The availability of the SE system is affected by sway amplitude and wind speed. 
 The instantaneous availability function is defined as:
@@ -570,23 +545,14 @@ The instantaneous availability function is defined as:
 		0, & \text{otherwise}
 	\end{cases}
 \end{equation}
-
 %其中系绳横向受风截，通过物理低阶近似，我们不妨将偏转角拟合为
 where the tether is subjected to lateral wind loads. 
 Through low-order physical approximation, the deflection angle is fitted as:
 \[
 \theta(t) = k \cdot v_{wind}(t)^2
 \]
-
 %常规地面系绳可拟合出 $k$ 约为 0.019，，不符合当前系绳材质与高空环境，当前为强约束/高张力/高抗风设计，可以通过高度确定 $\theta_{\mathrm{crit}}$ 为 $0.1\ \mathrm{rad}$, $v_{\mathrm{safe}}$ 为 $15\ \mathrm{m/s}$，进而反解出当前 $k$ 为 $4.44\times10^{-4}$，即当 $v_{wind}(t) = v_{\mathrm{safe}}$ 时，$\theta(t) \approx \theta_{\mathrm{crit}}$，可以合并为单一阈值影响。
-Conventional ground-based tethers can be fitted with $k$ approximately 0.019, 
-which does not match the current tether material and high-altitude environment. 
-The current design is for strong constraint/high tension/high wind resistance. 
-$\theta_{\mathrm{crit}}$ can be determined as $0.1\ \mathrm{rad}$ and $v_{\mathrm{safe}}$ 
-as $15\ \mathrm{m/s}$ based on altitude. Furthermore, the current $k$ is back-calculated 
-as $4.44\times10^{-4}$. This means that when $v_{wind}(t) = v_{\mathrm{safe}}$, 
-$\theta(t) \approx \theta_{\mathrm{crit}}$. This can be combined into a single threshold effect.
-
+Conventional ground-based tethers typically assume $k\approx0.019$, which is inconsistent with current tether materials and high-altitude conditions. Under a strong-constraint/high-tension/high-wind design we adopt $\theta_{\mathrm{crit}}=0.1\ \mathrm{rad}$ and $v_{\mathrm{safe}}=15\ \mathrm{m/s}$ by altitude; back-calculation yields $k=4.44\times10^{-4}$, so that $v_{wind}(t)=v_{\mathrm{safe}}$ implies $\theta(t)\approx\theta_{\mathrm{crit}}$, i.e. a single combined threshold effect.
 \begin{equation}
 	\eta_{SE}(t)=
 	\begin{cases}
@@ -600,7 +566,6 @@ The wind field follows a Weibull distribution with parameters $k=3$ and $\lambda
 Furthermore, we need to establish the state transitions of the era system affected by wind, 
 abstracting the wind environment into two categories of states: \textbf{Normal State}：Availability fluctuates slowly around a low-frequency baseline; \textbf{Extreme State}：Represents long-term storm eras or abnormal circulation periods, with significantly reduced availability lasting for several intervals.
 
-
 The onset of extreme periods is modeled as a Poisson process, and the duration is modeled 
 as an exponential distribution. 
 
@@ -610,16 +575,12 @@ The indicator variable $I_{ext}$ denotes whether the system is in an extreme sta
 \begin{equation}
 	\bar{\eta}_{SE}(i)=\mathrm{clip}\left(\eta_{\mathrm{base}}(i)-\Delta\cdot I_{\mathrm{ext}}(i),0,1\right)
 \end{equation}
-
 where the clip function ensures the value is within the valid range [0,1].
 %是为了保证 [0,1]合理范围。
-
 \paragraph{Launch Failure Probability of Apex Rockets}
-
 %由于太空电梯顶端仍需火箭发射将货物送入轨道，存在失败概率$P_{\mathrm{fail}}'$。
 Rockets at the apex of the SE are still required to deliver cargo to orbit, 
 with a failure probability of $P_{\mathrm{fail}}'$.
-
 \paragraph{Corrected Annual Effective Capacity}
 %综合考虑摆动限制、维护停机和火箭发射失败，太空电梯的修正后年有效运力为：
 Considering sway constraints, maintenance downtime, and apex rocket launch failures,
@@ -627,7 +588,6 @@ Considering sway constraints, maintenance downtime, and apex rocket launch failu
 \begin{equation}
 	\kappa_{SE}^{\prime}=\kappa_{SE}\cdot\bar{\eta}_{SE}\cdot(1-\beta_{\mathrm{maint}})\cdot(1-P_{\mathrm{fail}})
 \end{equation}
-
 where：
 \begin{itemize}
 	\item $\bar{\eta}_{SE}$is the average availability of the SE system.
@@ -684,7 +644,6 @@ In the later stages of the construction period, the $\alpha_i$ value of the dyna
 \begin{equation}
 	C_{dynamic}=C_{SEonly}=159.7 \text{ Billion USD}
 \end{equation}
-    
 \subsection{Environmental Impact Model}
 \subsubsection{Establishment of Environmental Impact Coefficients}
 %TR-only模型的主要环境污染在于火箭发射产生的二氧化碳排放 以及黑碳和氧化铝对臭氧层的破坏，这些排放量均与火箭发射次数成正比，\textbf{环境影响系数}为:
@@ -739,35 +698,27 @@ The solutions are obtained separately, and the comparison under the three-dimens
 	\caption{472}\label{subfigure}
 \end{figure}
 
-
 %===========================================第五部分====================================================================
 \newpage
 \section{The solution of the aforementioned model}
 To address the aforementioned nonlinear, multi-objective, and multi-stage optimization challenges, we propose a hybrid solution framework comprising three complementary components: (1) the Stage-wise Extended Search Algorithm (SESA), which integrates dynamic programming principles with heuristic search strategies to enhance computational efficiency and solution robustness in sequential decision-making contexts; (2) the Greedy Marginal Cost Method (GMCM), employed for efficient model solving and local optimization; and (3) Pareto Front Analysis, applied to systematically identify non-dominated trade-off solutions across the competing objectives of project duration, total cost, and environmental impact.
 \subsection{Decision Variables}
-
 The core decision variables in the algorithm are the production capacity allocation amounts for each stage and each technical mode. Specifically:
 \begin{itemize}
 	\item \( x_{i}^{SE} \)：Production capacity allocated using SE technology at stage \(i\) (tons).
 	\item \( x_{i}^{TR} \)：Production capacity allocated using TR technology at stage \(i\) (tons).
 \end{itemize}
-
 These variables are subject to the constraints imposed by the maximum production capacity corresponding to each stage of technology, namely:
-
 \begin{equation}
 0 \leq x_{i}^{SE} \leq C_{i}^{SE}, \quad 0 \leq x_{i}^{TR} \leq C_{i}^{TR}
 \end{equation}
-
 Satisfy the overall demand constraint:
 \begin{equation}
 \sum_{i=1}^{K} (x_{i}^{SE} + x_{i}^{TR}) \geq M_{tot}
 \end{equation}
-
 Among them, \(K\) represents the maximum number of time stages to be considered and it varies dynamically.
 \subsection{ Stage-wise Extended Search Algorithm}
-
 The algorithm conducts the search for the dynamic capacity planning scheme by gradually increasing the length of the considered time interval from the early stage:
-
 \begin{itemize}
 	\item \textbf{Cumulative capacity check}: At each iteration, sum available SE and TR capacity up to the current stage; terminate the iteration if this cumulative capacity cannot meet total demand.
 	\item \textbf{Option set and cost ordering}: Create a combined option set (SE and TR) with their unit variable costs, and sort options by increasing cost to prioritize cheaper sources.
@@ -775,11 +726,8 @@ The algorithm conducts the search for the dynamic capacity planning scheme by gr
 	\item \textbf{Mixed-tech constraints}: If minimum deployment levels for SE and TR are required, reserve those minima, and apply the greedy allocation to remaining demand.
 	\item \textbf{Cost aggregation and logging}: For each stage compute variable and fixed costs, record the capacity assignments and total cost, and store the solution for subsequent feasibility screening and optimization.
 \end{itemize}
-
 the Stage-wise Extended Search Algorithm takes into account both the time schedule and resource constraints, gradually approaching the optimal solution space that meets the requirements.
-
 \subsection{Multi-objective Pareto Front Analysis}
-
 To assist in decision-making, the algorithm selects key solutions based on two target dimensions of time and cost. The specific implementation includes:
 \begin{itemize}
 	\item \textbf{Pareto-front filtering}: Retain nondominated solutions in the cost–time objective space to form the Pareto frontier, ensuring cost efficiency within specified time bounds.
