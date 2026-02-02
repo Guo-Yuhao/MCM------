@@ -387,15 +387,18 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 %3.5
 \subsubsection{最优分配比例}
 
-从工期角度考虑，最优分配比例$\alpha^*$满足两种运输方式的完成时间相等：
-\begin{equation}
-	\frac{\alpha^* M_{tot}}{\kappa_{SE,total}}=\frac{(1-\alpha^*) M_{tot}}{\kappa_{TR}}
-\end{equation}
+通过Pareto前沿分析，可计算得出仅时间最优分配比例$\alpha_{static}^*$以及时间成本双目标最优分配比例$\alpha_{static}^{knee}$：
 
-解得最优分配比例：
-\begin{equation}
-	\alpha^*=\frac{\kappa_{SE,total}}{\kappa_{SE,total}+\kappa_{TR}}=\frac{179000}{179000+25000} \approx 0.417
-\end{equation}
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+		\includegraphics[width=\textwidth]{img/Figure_342.png}
+		\caption*{}
+		\label{}
+	\end{subfigure}
+	\caption{342}\label{subfigure}
+\end{figure}
+
 
 \subsubsection{总成本}
 
@@ -756,7 +759,7 @@ TR-only和SE-only模型的策略不会发生变化，各自的环境影响系数
 \[E_{TR-only}=54.407B\]
 \[E_{SE-only}=-3B t + 1.05T\]
 
-而静态混合模型和动态模型在考虑环境影响系数后，最优策略\textbf{发生变化}，分别求解得：
+而静态混合模型和动态模型在考虑环境影响系数后，最优策略\textbf{发生变化}，分别求解并在三维目标下对比如图所示：
 
 \begin{figure}[htbp]
 	\centering
@@ -859,6 +862,17 @@ S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
 \end{itemize}
 
 \subsubsection{结果展示}
+
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+		\includegraphics[width=\textwidth]{img/Figure_613.png}
+		\caption*{}
+		\label{}
+	\end{subfigure}
+	\caption{613}\label{subfigure}
+\end{figure}
+
 \subsection{Robustness Analysis}
 
 鲁棒性分析目标：
