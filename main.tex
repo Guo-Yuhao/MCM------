@@ -160,7 +160,6 @@ Carbon dioxide ($CO_{2}$) emissions from rockets contribute negligibly to RF com
 Current global RF from rocket launches is estimated at 16±8$mWm^{-2}$, with BC accounting for 70 percents of this value.
 
 \subsection{Our work}%-----------------------------------------------------------
-We do such things as follows:
 \begin{figure}[htbp]
 	\centering
 	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
@@ -172,8 +171,8 @@ We do such things as follows:
 \end{figure}
 
 \begin{enumerate}[\bfseries 1.]
-	\item \textbf{We do model construction.} We build a series of mathematical models to analyze and optimize the lunar material delivery system. Starting from a static baseline model, we compare three transportation scenarios—Space Elevator only, Traditional Rocket only, and a hybrid strategy. On this basis, we further establish a dynamic extended model that allows the transportation ratio $\alpha_i$ to evolve over time, incorporating technical progress and cost reduction. Finally, we introduce stochastic elements, such as rocket launch failure and elevator tether swaying, to ensure the model reflects realistic uncertainty.
-	\item \textbf{We do extended tasks.} We integrate additional requirements into the core framework, including one-year water supply planning and environmental impact assessment. The water demand model quantifies the annual net water requirement under different recycling efficiencies, while the environmental impact model evaluates $CO_2$ and black carbon emissions from rockets, as well as energy use from the Space Elevator. This extension allows the model to balance cost, time, and ecological sustainability.
+	\item \textbf{We do model construction.} We build a series of mathematical models to analyze and optimize the lunar material delivery system. Starting from a static baseline model, we compare three transportation scenarios. On this basis, we further establish a dynamic extended model that allows the transportation ratio $\alpha_i$ to evolve over time, incorporating technical progress and cost reduction. Finally, we introduce stochastic elements to ensure the model reflects realistic uncertainty.
+	\item \textbf{We do extended tasks.} We integrate additional requirements into the core framework. The water demand model quantifies the annual net water requirement under different recycling efficiencies, while the environmental impact model evaluates $CO_2$ and black carbon emissions from rockets, as well as energy use from the Space Elevator. This extension allows the model to balance cost, time, and ecological sustainability.
 	\item \textbf{We do model solving and evaluation.} We design a Stage-wise Extended Search Algorithm (SESA) combined with a Greedy Marginal Cost Method (GMCM) to solve the nonlinear, multi-objective optimization problem. Pareto front analysis and knee-point detection are applied to identify optimal trade-offs between construction time, cost, and environmental impact. Additionally, sensitivity and robustness analyses verify model reliability and demonstrate that the dynamic hybrid strategy achieves the best performance among all schemes.
 \end{enumerate}
 %===========================第二部分==模型准备==========================================================
@@ -184,27 +183,12 @@ To simplify the problem, we made the following assumptions, each of which has a 
 \begin{itemize}
 	\item \textit{\textbf{Assumption 1:}}Consistency of materials: Materials are treated as quasi-continuous fluids and can be infinitely subdivided.
 	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}The project involves a large volume of materials, which are treated as fluids to align with scheduling logic.
-
-	\item \textit{\textbf{Assumption 2:}}$\alpha_i$ is a piecewise constant function: The total project duration is divided into 50 time intervals (each interval spanning 1–2 years), with $\alpha_i$ being a constant for each interval.
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Balancing computational accuracy and efficiency, tailored to meet the requirements of MCM competition solutions, easy to implement with intuitive results.
-
-	\item \textit{\textbf{Assumption 3:}}Water consumption: Daily per capita water usage of 0.35 tons, with a water recycling efficiency of $\gamma=0.95$.
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Referencing the water usage standards of the International Space Station, the recycling efficiency aligns with projected technological levels for 2050.
-
-	\item \textit{\textbf{Assumption 4:}}The space elevator's clean energy utilization rate is 0.3, and it will steadily increase with technological advancements until it reaches 100%.
+	\item \textit{\textbf{Assumption 2:}}The space elevator's clean energy utilization rate is 0.3, and it will steadily increase with technological advancements until it reaches 100%.
 	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Based on green science principles and reasonable scenario settings.
-
-	\item \textit{\textbf{Assumption 5:}}Imperfect state parameters: TR transmission failure probability of 1%, which will decrease to 0.1% with technological advancement.
+	\item \textit{\textbf{Assumption 3:}}Imperfect state parameters: TR transmission failure probability of 1%, which will decrease to 0.1% with technological advancement.
 	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Based on historical aerospace engineering data and the scenario of the question, a reasonable setting is established.
-
-	\item \textit{\textbf{Assumption 6:}}Cost Parameters: SE fixed cost: \$6.2 billion; Unit variable cost: \$250,000 per ton; TR single launch cost: \$67 million.
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Considering Falcon Heavy's current cost and future technological iteration trends, the scale is reasonable.
-
-	\item \textit{\textbf{Assumption 7:}}The cost of an apex rocket launch failure is not counted.
+	\item \textit{\textbf{Assumption 4:}}The cost of an apex rocket launch failure is not counted.
 	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Due to the unknown payload capacity of the apex stage rocket, cost fluctuations are factored into the original cost.
-
-	\item \textit{\textbf{Assumption 8:}}The original rocket launch center had zero startup costs.
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Given the existing launch site's sufficiently large daily throughput capacity, there should be no cost associated with its activation.
 \end{itemize}
 %这里只列出了主要的假设，其他假设会在专门的小节中单独讨论
 Additional assumptions are made to simplify analysis for individual sections. These assumptions will be discussed at the appropriate locations.
@@ -257,8 +241,7 @@ Table \ref{tb:notation} lists some important mathematical notations used in this
 %数据处理------------------------------------------------------------------------
 
 
-\subsection{Data}
-\subsubsection{Data Collection}
+\subsection{Data Collection}
 %下面列出了我们收集数据的来源网站
 Websites, where we collect data, are listed in Table \ref{tb:data}.
 
