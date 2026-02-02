@@ -4,6 +4,7 @@
 % ctexart支持中文编译文档
 %最后全部翻译成英文后可以选择改成article，然后用pdflatex编译，还可以检验一下是不是没有中文了嘿嘿( •̀ ω •́ )✧
 %官方要求字号不小于 12 号，此处选择 12 号字体
+\usepackage{makecell} % Added for \makecell support
 
 \CTEXsetup[format={\Large\bfseries}]{section} %在ctexart中，一级标题是居中的，这里改成左对齐
 
@@ -187,25 +188,31 @@ for implementation in the late 21st century.
 
 %地月运输
 In the literature\upcite{ishimatsu2016generalized}, a generalized multi-commodity network flow (GMCNF) model has been proposed to optimize logistics within the Earth–Moon–Mars system.
- It incorporates multi-commodity flows like propellant, crew, and equipment, with in-situ resource utilization (ISRU) such as lunar water production. Leveraging lunar resources reduces 
- total mass launched from Earth (TLMLEO) when combined with LOX/LH₂ propulsion and aerocapture. Sensitivity analysis shows lunar ISRU becomes economically viable above 1.8 kg/year/kg productivity, 
- supporting sustainable cislunar supply chains. This approach provides a foundational framework for efficient interplanetary transport networks.
+ It incorporates multi-commodity flows like propellant, crew, and equipment, with in-situ resource utilization (ISRU) such as lunar water production2. Leveraging lunar resources reduces 
+ total mass launched from Earth (TLMLEO) when combined with$LOX/LH_2$propulsion and aerocapture2. Sensitivity analysis shows lunar ISRU becomes economically viable above 1.8 kg/year/kg productivity, 
+ supporting sustainable cislunar supply chains2. This approach provides a foundational framework for efficient interplanetary transport networks2.
 
 %火箭污染
 A literatrue\upcite{ross2014radiative}shows:Rocket exhaust produces positive radiative forcing (RF), primarily due to black carbon (BC) and alumina particles.
-Carbon dioxide (CO₂) emissions from rockets contribute negligibly to RF compared to particulate emissions.
-Current global RF from rocket launches is estimated at 16 ± 8 mW m⁻², with BC accounting for 70 percents of this value.
-
-
+Carbon dioxide ($CO_{2}$) emissions from rockets contribute negligibly to RF compared to particulate emissions.
+Current global RF from rocket launches is estimated at 16±8$mWm^{-2}$, with BC accounting for 70 percents of this value.
 
 \subsection{Our work}%-----------------------------------------------------------
-We do such things ...
-这部分直接上图
+We do such things as follows:
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+		\includegraphics[width=\textwidth]{img/our_work.png}
+		\caption*{}
+		\label{}
+	\end{subfigure}
+	\caption{13}\label{subfigure}
+\end{figure}
 
 \begin{enumerate}[\bfseries 1.]
-	\item We do ...
-	\item We do ...
-	\item We do ...
+	\item \textbf{We do model construction.} We build a series of mathematical models to analyze and optimize the lunar material delivery system. Starting from a static baseline model, we compare three transportation scenarios—Space Elevator only, Traditional Rocket only, and a hybrid strategy. On this basis, we further establish a dynamic extended model that allows the transportation ratio $\alpha_i$ to evolve over time, incorporating technical progress and cost reduction. Finally, we introduce stochastic elements, such as rocket launch failure and elevator tether swaying, to ensure the model reflects realistic uncertainty.
+	\item \textbf{We do extended tasks.} We integrate additional requirements into the core framework, including one-year water supply planning and environmental impact assessment. The water demand model quantifies the annual net water requirement under different recycling efficiencies, while the environmental impact model evaluates $CO_2$ and black carbon emissions from rockets, as well as energy use from the Space Elevator. This extension allows the model to balance cost, time, and ecological sustainability.
+	\item \textbf{We do model solving and evaluation.} We design a Stage-wise Extended Search Algorithm (SESA) combined with a Greedy Marginal Cost Method (GMCM) to solve the nonlinear, multi-objective optimization problem. Pareto front analysis and knee-point detection are applied to identify optimal trade-offs between construction time, cost, and environmental impact. Additionally, sensitivity and robustness analyses verify model reliability and demonstrate that the dynamic hybrid strategy achieves the best performance among all schemes.
 \end{enumerate}
 %===========================第二部分==模型准备==========================================================
 \section{Preparation of the Models}
@@ -213,34 +220,33 @@ We do such things ...
 %为了简化问题，我们做出了以下假设，其中每一条都有对应的合理解释
 To simplify the problem, we made the following assumptions, each of which has a corresponding reasonable explanation.
 \begin{itemize}
-	\item \textit{\textbf{Assumption 1:}}物资分级连续性：分为关键物资（优先SE运输）和普通物资，均视为准连续流体。
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}工程中物资存在优先级，SE高可靠性适配关键物资，符合调度逻辑。
+	\item \textit{\textbf{Assumption 1:}}Consistency of materials: Materials are treated as quasi-continuous fluids and can be infinitely subdivided.
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}The project involves a large volume of materials, which are treated as fluids to align with scheduling logic.
 
-	\item \textit{\textbf{Assumption 2:}}$\alpha(t)$ 为分段常数函数：将总工期划分为50个时间区间（每区间1-2年），每个区间 $\alpha_i$ 为常数。
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}平衡计算精度与效率，适配MCM竞赛求解需求，易实现且结果直观。
+	\item \textit{\textbf{Assumption 2:}}$\alpha_i$ is a piecewise constant function: The total project duration is divided into 50 time intervals (each interval spanning 1–2 years), with $\alpha_i$ being a constant for each interval.
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Balancing computational accuracy and efficiency, tailored to meet the requirements of MCM competition solutions, easy to implement with intuitive results.
 
-	\item \textit{\textbf{Assumption 3:}}水资源消耗：人均日用水量吨，循环效率 $\gamma=$。
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}参考国际空间站用水标准，循环效率符合2050年技术水平预测。
+	\item \textit{\textbf{Assumption 3:}}Water consumption: Daily per capita water usage of 0.35 tons, with a water recycling efficiency of $\gamma=0.95$.
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Referencing the water usage standards of the International Space Station, the recycling efficiency aligns with projected technological levels for 2050.
 
-	\item \textit{\textbf{Assumption 4:}}太空电梯清洁能源使用率为，会随着技术进步不断升高直至100\%。
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}于绿色科学原理与题目场景合理设定
+	\item \textit{\textbf{Assumption 4:}}The space elevator's clean energy utilization rate is 0.3, and it will steadily increase with technological advancements until it reaches 100%.
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Based on green science principles and reasonable scenario settings.
 
-	\item \textit{\textbf{Assumption 5:}}非完美状态参数：TR发射失败概率\%，会随着技术的进步不断降低至阈值。
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}基于航天工程历史数据与题目场景合理设定。
+	\item \textit{\textbf{Assumption 5:}}Imperfect state parameters: TR transmission failure probability of 1%, which will decrease to 0.1% with technological advancement.
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Based on historical aerospace engineering data and the scenario of the question, a reasonable setting is established.
 
-	\item \textit{\textbf{Assumption 6:}}成本参数：SE固定成本亿美元，单位可变成本美元/吨；TR单次发射成本亿美元。
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}参考Falcon Heavy当前成本与未来技术迭代趋势，量级合理。
+	\item \textit{\textbf{Assumption 6:}}Cost Parameters: SE fixed cost: \$6.2 billion; Unit variable cost: \$250,000 per ton; TR single launch cost: \$67 million.
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Considering Falcon Heavy's current cost and future technological iteration trends, the scale is reasonable.
 
-	\item \textit{\textbf{Assumption 7:}}顶端火箭发射失败时成本不计。
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}由于顶端火箭载荷量未知，成本波动计入原成本内。
+	\item \textit{\textbf{Assumption 7:}}The cost of an apex rocket launch failure is not counted.
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Due to the unknown payload capacity of the apex stage rocket, cost fluctuations are factored into the original cost.
 
-	\item \textit{\textbf{Assumption 8:}}原有的火箭发射中心启用时成本为零。
-	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}现有发射场启用时不应有成本。
+	\item \textit{\textbf{Assumption 8:}}The original rocket launch center had zero startup costs.
+	\\$\hookrightarrow$ \textit{\textbf{Explanation:}}Given the existing launch site's sufficiently large daily throughput capacity, there should be no cost associated with its activation.
 \end{itemize}
 %这里只列出了主要的假设，其他假设会在专门的小节中单独讨论
 Additional assumptions are made to simplify analysis for individual sections. These assumptions will be discussed at the appropriate locations.
 
-\newpage
 \subsection{Notations}%-----------------------------------------------------------------------------------
 % 三线表（可以直接在excel里编辑好然后用excel2latex插件插入）
 
@@ -253,27 +259,27 @@ Table \ref{tb:notation} lists some important mathematical notations used in this
 			\multicolumn{1}{m{4cm}}{\centering \textbf{Symbol}}
 			                      & \multicolumn{1}{m{10cm}}{\textbf{ Description} }                       \\
 			\midrule
-			$\alpha_i$            & 第i个时间区间的SE运输比例（ $\alpha(t)$ 分段常数）                      \\
-			$q_i$                 & 第i个时间区间的平均运力                                                      \\
-			$M_{tot}$             & 建设物资总量                                                           \\
-			$\kappa_{SE,total}$   & SE系统总年运力                                                         \\
-			$m_{load}$            & TR单次payload基准值                                                    \\
-			$f_{TR}(j)$           & 第j个TR发射场年最大发射频次                                            \\
-			$C_{fix}^{SE}$        & SE系统总固定成本                                                       \\
-			$c_{var}^{SE}$        & SE单位可变成本+顶端火箭单位质量发射成本                                \\
-			$c_{launch}$          & TR单次发射成本                                                         \\
-			$P_{pop}$             & 月球殖民地人口                                                         \\
-			$w_{per}$             & 人均日用水量                                                           \\
-			$\gamma$              & 水资源循环效率                                                         \\
-			$\eta_{clean}$        & 清洁能源使用率                                                         \\
-			$Q_{SE}(i)$           & 前i个区间SE累积运输量                                                  \\
-			$Q_{TR}(i)$           & 前i个区间TR累积运输量                                                  \\
-			$D(i)$                & 第i个区间SE累积损坏因子                                                \\
-			$\kappa_{SE}'(i)$     & 第i个区间SE有效运力（非完美状态）                                     \\
-			$\kappa_{TR}'(i)$     & 第i个区间TR有效运力（非完美状态）                                     \\
-			$f_{cost}$            & 全生命周期总成本                                                       \\
-			$f_{time}$            & 总工期                                                                 \\
-			$f_{env}$             & 综合环境影响指数                                                       \\
+			$\alpha_i$            & SE transport proportion interval at stage i(piecewise constant $\alpha(t)$)                      \\
+			$q_i$                 & Average capacity at stage i                                                  \\
+			$M_{tot}$             & Total Construction Materials                                                           \\
+			$\kappa_{SE,total}$   & SE System Total Annual Capacity                                                         \\
+			$m_{load}$            & TR Single-Payload Benchmark Value                                                    \\
+			$f_{TR}(j)$           & Annual maximum launch frequency of the j-th TR launch site                                            \\
+			$C_{fix}^{SE}$        & SE system total fixed cost                                                       \\
+			$c_{var}^{SE}$        & SE unit variable cost + apex rocket unit mass launch cost                                \\
+			$c_{launch}$          & TR single launch cost                                                         \\
+			$P_{pop}$             & Lunar colony population                                                         \\
+			$w_{per}$             & Daily per capita water consumption                                                           \\
+			$\gamma$              & Water Resource Cycle Efficiency                                                         \\
+			$\eta_{clean}$        & Clean Energy Utilization Rate                                                         \\
+			$Q_{SE}(i)$           & Cumulative transport volume for the previous i intervals                                                  \\
+			$Q_{TR}(i)$           & Cumulative transport volume for the previous i intervals of TR                                                  \\
+			$D(i)$                & Cumulative damage factor for the i-th interval of SE                                                \\
+			$\kappa_{SE}'(i)$     & Effective transport capacity of SE in the i-th interval (non-perfect state)                                     \\
+			$\kappa_{TR}'(i)$     & Effective transport capacity of TR in the i-th interval (non-perfect state)                                     \\
+			$f_{cost}$            & Total lifecycle cost                                                       \\
+			$T$            & Total construction period                                                                 \\
+			$E$             & Comprehensive Environmental Impact Index                                                       \\
 			\bottomrule[1.5pt]
 		\end{tabular}\label{tb:notation}
 		\begin{tablenotes}
@@ -853,65 +859,52 @@ The solutions are obtained separately, and the comparison under the three-dimens
 
 %===========================================第五部分====================================================================
 \newpage
-\section{上述模型的求解}
-为解决上述非线性、多目标、多阶段的优化问题，我们采用逐阶段扩展搜索算法（Stage-wise Extended Search Algorithm, SESA）。该算法结合动态规划和启发式搜索的优势，适用于复杂的决策问题。并采用贪心变动成本法（Greedy Marginal Cost Method, GMCM）对模型进行求解和优化。为求解多目标优化问题，我们采用帕累托前沿分析（Pareto Front Analysis）方法，识别在工期、成本和环境影响之间的最佳权衡方案。
-\subsection{决策变量}
+\section{The solution of the aforementioned model}
+To address the aforementioned nonlinear, multi-objective, and multi-stage optimization challenges, we propose a hybrid solution framework comprising three complementary components: (1) the Stage-wise Extended Search Algorithm (SESA), which integrates dynamic programming principles with heuristic search strategies to enhance computational efficiency and solution robustness in sequential decision-making contexts; (2) the Greedy Marginal Cost Method (GMCM), employed for efficient model solving and local optimization; and (3) Pareto Front Analysis, applied to systematically identify non-dominated trade-off solutions across the competing objectives of project duration, total cost, and environmental impact.
+\subsection{Decision Variables}
 
-算法中的核心决策变量为各阶段、各技术模式下的产能分配量。具体而言：
+The core decision variables in the algorithm are the production capacity allocation amounts for each stage and each technical mode. Specifically:
 \begin{itemize}
-	\item \( x_{i}^{SE} \)：第 \(i\) 阶段采用 SE 技术分配的产能（吨）。
-	\item \( x_{i}^{TR} \)：第 \(i\) 阶段采用 TR 技术分配的产能（吨）。
+	\item \( x_{i}^{SE} \)：Production capacity allocated using SE technology at stage \(i\) (tons).
+	\item \( x_{i}^{TR} \)：Production capacity allocated using TR technology at stage \(i\) (tons).
 \end{itemize}
 
-这些变量受各阶段技术对应的最大产能容量约束限制，即：
+These variables are subject to the constraints imposed by the maximum production capacity corresponding to each stage of technology, namely:
 
 \begin{equation}
 0 \leq x_{i}^{SE} \leq C_{i}^{SE}, \quad 0 \leq x_{i}^{TR} \leq C_{i}^{TR}
 \end{equation}
 
-满足总需求约束：
+Satisfy the overall demand constraint:
 \begin{equation}
 \sum_{i=1}^{K} (x_{i}^{SE} + x_{i}^{TR}) \geq M_{tot}
 \end{equation}
 
-其中，\(K\) 表示考虑的最大时间阶段数量，动态变化。
-\subsection{逐阶段扩展搜索算法}
+Among them, \(K\) represents the maximum number of time stages to be considered and it varies dynamically.
+\subsection{ Stage-wise Extended Search Algorithm}
 
-算法通过从早期阶段开始，逐步增加考虑的时间区间长度，实现对动态产能建设计划的搜索：
+The algorithm conducts the search for the dynamic capacity planning scheme by gradually increasing the length of the considered time interval from the early stage:
 
 \begin{enumerate}
-	\item \textbf{阶段容量累积验证}：在每一轮迭代中，计算截止当前阶段的总可用产能（SE和TR两种模式）之和，判断是否足以满足总需求，若不足则直接跳过，避免无效计算。
-	\item \textbf{方案选项构造与排序}：对每个阶段的两种技术产能与对应单位变动成本进行整合，形成供分配的选项集合，按单位成本升序排列，确保优先利用成本较低的产能资源。
-	\item \textbf{贪心填充分配}：按照排序后的选项，逐项分配产能以满足当前阶段的需求，优先消耗低成本产能，直至需求满足或资源耗尽。
-	\item \textbf{混合技术约束处理}：在分配过程中，若需保证两种技术均有投入，先为每种技术预留最小需求量，之后对剩余需求执行贪心分配，确保方案符合混合使用的业务规则。
-	\item \textbf{成本累计和记录}：计算当前阶段的总变，加上可能存在的固定成本，保存当前阶段对应的可行方案及成本信息，供后续筛选。
+	\item \textbf{Cumulative capacity check}: At each iteration, sum available SE and TR capacity up to the current stage; terminate the iteration if this cumulative capacity cannot meet total demand.
+	\item \textbf{Option set and cost ordering}: Create a combined option set (SE and TR) with their unit variable costs, and sort options by increasing cost to prioritize cheaper sources.
+	\item \textbf{Greedy allocation}: Fulfill stage demand by allocating sequentially from the lowest-cost option until the demand is met or capacity is exhausted.
+	\item \textbf{Mixed-technology constraints}: If minimum deployment levels for SE and TR are required, reserve those minima first, then apply the greedy allocation to remaining demand.
+	\item \textbf{Cost aggregation and logging}: For each stage compute variable and fixed costs, record the capacity assignments and total cost, and store the solution for subsequent feasibility screening and optimization.
 \end{enumerate}
-这种逐阶段动态搜索方式兼顾了时间进度与资源约束，逐步逼近满足需求的最优方案空间。
 
-\subsection{多目标前沿判定}
+the Stage-wise Extended Search Algorithm takes into account both the time schedule and resource constraints, gradually approaching the optimal solution space that meets the requirements.
 
-为辅助决策，算法在时间和成本两个目标维度上筛选关键方案，具体实现包括：
+\subsection{Multi-objective Pareto Front Analysis}
+
+To assist in decision-making, the algorithm selects key solutions based on two target dimensions of time and cost. The specific implementation includes:
 \begin{enumerate}
-	\item \textbf{帕累托前沿筛选}：从所有可行方案中筛选不被其他方案在成本和时间上同时优越的非劣解，形成方案的 Pareto 前沿，保证所选方案在一定的时间范围内成本最优。
-	\item \textbf{Knee 点识别}：对 Pareto 前沿方案进行归一化处理，将时间和成本标准化至相同尺度后，计算曲线与两端连接直线的垂直距离。最大距离点即为 Knee 点，通常代表成本效益显著改善的折中方案。
-	\item \textbf{关键方案输出}：同时记录最短可行方案（Star 点），用于比较Knee点与Star点的差异，为决策者提供更全面的参考信息。
-	\item \textbf{可视化展示}：将帕累托前沿以图形方式展示，直观反映不同方案在多目标空间中的分布情况。
+	\item \textbf{Pareto-front filtering}: Retain nondominated solutions in the cost–time objective space to form the Pareto frontier, ensuring cost efficiency within specified time bounds.
+	\item \textbf{Knee-point detection}: Normalize objectives and compute perpendicular distances from each frontier point to the line connecting the endpoints; the point of maximal distance is the knee, representing a high-value cost–time tradeoff.
+	\item \textbf{Star-point reporting}: Also record the minimum-time feasible solution (Star point) to facilitate comparison with the Knee point for decision support.
+	\item \textbf{Visualization}: Plot the Pareto frontier and annotate the Knee and Star points to visually convey multi-objective tradeoffs.
 \end{enumerate}
 
-
-
-
-
-\newpage
-
-Respected Lunar Base Management (LBM) Agency:
-Greetings! Regarding your agency's planned construction and operation task of a 100,000-person lunar base to be launched in 2050, based on multi-dimensional modeling analysis and feasibility demonstration, we aim to recommend a comprehensive action plan that balances efficiency, economy, and robustness to contribute to the success of the task.
-Firstly, through modeling analysis, a single-mode transportation scheme would result in a relatively long construction period. The optimal transportation strategy is a hybrid dynamic transportation mode, wherein 41.7\% of construction materials are transported via SE and 58.3\% via TR. This approach can shorten the total construction period to approximately 232 years while achieving a significant cost reduction compared to the sole use of TR. Furthermore, a dynamic adjustment mechanism has been established, incorporating a time-adaptive dynamic expansion model. The total construction period is divided into multiple time intervals, and the α(i) allocation ratio is real-time optimized to maximize the cost advantages brought by technological iteration.
-Secondly, considering the potential failure risks of the transportation system, the proposed plan includes correction strategies. On one hand, accounting for the launch failure probability of TR, the model reliability is ensured through effective payload expectation calculation, risk cost superposition, and transportation capacity reduction. On the other hand, addressing the tether sway control of SE, a Weibull distribution wind field model is adopted to set critical swing angles and safe wind speed thresholds. Combined with the maintenance downtime coefficient and the launch success rate of the top rocket, the annual transportation capacity of SE remains stable after correction.
-Thirdly, in accordance with the water use standards of the International Space Station and 2050 technological forecasts, the annual net water demand of the 100,000-person base is [to be supplemented]. We recommend adopting a "transportation + recycling" mode, integrating the net water demand into the hybrid transportation plan, and calculating the additional transportation costs to achieve cost reduction and efficiency improvement.
-Finally, considering the potential impacts of the overall plan on the Earth's ecological environment, the optimal comprehensive objective function is achieved through Pareto frontier analysis and Knee point identification.
-The proposed plan boasts the following core advantages: Firstly, strong feasibility— the hybrid dynamic mode breaks through the efficiency bottleneck of a single transportation method; Secondly, high robustness— the correction model incorporating risk factors ensures uninterrupted transportation tasks under extreme scenarios; Thirdly, excellent sustainability— ecological impacts are actively considered, aligning with the concept of low-carbon space development.
-This plan is derived from mathematical modeling and validated through multiple rounds of sensitivity and robustness tests to ensure scientific reliability. If your agency requires further refinement of the model, please feel free to contact us. We will make every effort to contribute to the cause of human space exploration.
 %===============================================第六部分=============================================
 \section{Test the Model}
 \subsection{Sensitivity  Analysis}
@@ -1014,18 +1007,18 @@ S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
 %==============================================第七部分================================================
 \section{Conclusion}
 \subsection{Summary of Results}
-\begin{table}[htbp]
+\begin{table}[hbtp]
   \centering
   \caption{results}
   \label{tab:results}
-  \begin{tabular}{lcccc}
+   \begin{tabular}{lcccc}
     \toprule
     参数 & TR-Only & SE-Only & Static Mixing & Dynamic Mixing \\
     \midrule
-    $\alpha \in (0,1)$ & 0 & 1 & Constant & Constant on 50 Intervals \\
+    $\alpha \in (0,1)$ & 0 & 1 & Constant & \makecell{Constant on\\50 Intervals} \\
     Durations(year) & & & & \\
     Cost(BD) & & & & \\
-    Cost of maintaining water supply(BD) & & & & \\
+	\makecell{Cost of maintaining water supply (BD)} & & & & \\
     Environmental Impact & 4 & 3 & 2 & 1 \\
     Robustness(rank) & 4 & 3 & 2 & 1 \\
     \bottomrule
@@ -1051,16 +1044,23 @@ S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
 \subsection{Strengths}%------------------优点----------------
 \begin{itemize}
 	%1. 有灵敏度分析与稳健性分析
-	\item The sensitivity analysis of the model demonstrates the effectiveness of the model under different parameter combinations and prove the robustness of the mod
-	\item Second one ...
+	\item The dynamic extended model introduces a time‑adaptive parameter $\alpha(i)$, enabling flexible adjustment of transport ratios as costs and technologies evolve. This reflects real world decision making more accurately than a static model.
+	\item Each assumption is supported by engineering or physical rationale, such as launch constraints, cost parameters, and wind‑induced tether oscillation, making the model well‑grounded in existing aerospace technology trends.
+	\item Separate robustness and sensitivity analyses prove that the proposed dynamic hybrid model maintains stable performance under parameter uncertainties and technological disturbances.
+	\item By incorporating cost, duration, and environmental impact simultaneously, and using Pareto front analysis with knee‑point detection, the model identifies balanced solutions between economic efficiency and sustainability.
 \end{itemize}
 
 \subsection{Weaknesses and Improvements}%---------------缺点与改进---------------------
+\subsubsection{Weaknesses}
 \begin{itemize}
-	\item The analysis of fish migration can be more accurate if we have more complete data;
-	\item Some approximate analysis methods are applied to model the management of fishing
-	      companies, which may lead to a situation contrary to the actual one  in extreme cases.
-	\item 此处引用了LLM.\upcite{openai2024chatgpt}
+	\item Some key parameters—such as future clean‑energy ratios, launch frequencies, or failure probabilities—are based on extrapolated or idealized assumptions due to lack of available long‑term empirical data.
+	\item The stochastic simulations use simplified Poisson and exponential distributions, which may not fully reflect correlated failures or cumulative maintenance effects.
+\end{itemize}
+\subsubsection{Improvements}
+\begin{itemize}
+	\item Expand environmental metrics to include life‑cycle assessment (LCA) indicators, planetary protection concerns, and secondary atmospheric chemistry impacts.
+	\item Compare model projections against historical or simulated mission baselines to validate feasibility and adjust cost–time coefficients empirically.
+	\item Combine the Stage‑wise Extended Search Algorithm (SESA) with metaheuristics such as Particle Swarm Optimization or NSGA‑II to improve convergence speed and optimize over higher‑dimensional objectives.
 \end{itemize}
 
 
@@ -1071,21 +1071,24 @@ S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
 % 请在第二个花括号内填写标题，如「信件」（Letter）或「备忘录」（Memorandum）
 \begin{letter}{Memorandum}
 	\begin{flushleft}  % 左对齐环境，无首行缩进
-		\textbf{To:} Heishan Yan\\
-		\textbf{From:} Team 1234567\\
-		\textbf{Date:} October 1st, 2019\\
-		\textbf{Subject:} A better choice than MS Word: \LaTeX
+		\textbf{To:} Moon Base Management (MCM) Agency\\
+		\textbf{From:} Team 2615409\\
+		\textbf{Date:} February 1st, 2026\\
+		\textbf{Subject:} Proposal for the 2050 Lunar Base Construction and Operation Mission
 	\end{flushleft}
 
-	In the memo, we want to introduce you to an alternate typesetting program to the prevailing MS Word: \textbf{\LaTeX}. In fact, the history of \LaTeX\ is even longer than that of MS Word. In the 1970s, the famous computer scientist Donald Knuth first came out with a typesetting program,  named \TeX\ \ldots
+Greetings. Based on multi-dimensional modeling and feasibility analysis, we hereby recommend a comprehensive strategy for the 100,000-person lunar base, balancing efficiency, cost-effectiveness, robustness, and environmental sustainability.
 
-	Firstly, \ldots
+\begin{enumerate}
+	\item Optimization: Our \textbf{Hybrid Dynamic Transportation Mode}, integrated with a \textbf{Time-Adaptive Dynamic Expansion Model} to optimize $\alpha(i)$ allocation, outperforms static and single-mode approaches. This strategy compresses the timeline to approximately 380 years while significantly reducing costs.This approach demonstrates superior performance over single or static transportation modes when evaluated under the dual-objective constraints of time and cost.
+	\item Robustness: We incorporate \textbf{rigorous risk correction}. Transfer Rocket (TR) capacity is derated for launch failure probabilities. Space Elevator (SE) stability is secured via a Weibull distribution wind model to establish oscillation thresholds. By integrating maintenance downtime coefficients and apical rocket launch success rates, the corrected model ensures a \textbf{stable and reliable} supply chain.
+	\item Resources: Addressing the projected 638.75k-ton annual water demand, we recommend a \textbf{"Transportation + Recycling"} model to maximize cost-efficiency.
+	\item Futhermore: Pareto Frontier Analysis is employed to optimize trade-offs between operational goals and \textbf{Earth's ecological preservation}, achieving a global optimum for the comprehensive objective function.
+\end{enumerate}
 
-	Secondly, \ldots
+This proposal offers superior feasibility, verified robustness, and low-carbon sustainability. We remain at your disposal for further model refinement and are dedicated to advancing human space exploration.
 
-	Lastly, \ldots
 
-	According to all those mentioned above, it is really worth to have a try on \LaTeX!
 \end{letter}
 
 %=================================================================================================================
