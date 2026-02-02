@@ -387,7 +387,7 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 %3.5
 \subsubsection{最优分配比例}
 
-通过Pareto前沿分析，可计算得出仅时间最优分配比例$\alpha_{static}^*$以及时间成本双目标最优分配比例$\alpha_{static}^{knee}$：
+通过Pareto前沿分析，可计算得出仅时间最优分配比例$\alpha_{static}^*=0.499$以及时间成本双目标最优分配比例$\alpha_{static}^{knee}=0.750$：
 
 \begin{figure}[htbp]
 	\centering
@@ -418,9 +418,9 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	
 	\item \textbf{仅TR模式}：需约4000年完成物资运输，在项目工期和成本约束下经济上不可行。
 	
-	\item \textbf{混合最优模式}（$\alpha^* \approx 0.417$）：采用最优分配比例，工期约为$\max\left(\frac{0.417 \times 10^8}{179000}, \frac{0.583 \times 10^8}{25000}\right) \approx 232$年，在基础设施固定成本和按次发射成本间实现平衡。
+	\item \textbf{工期最优模式}（$\alpha^* \approx 0.499$）：采用最优分配比例，工期约为$\max\left(\frac{0.417 \times 10^8}{179000}, \frac{0.583 \times 10^8}{25000}\right) \approx 232$年，在基础设施固定成本和按次发射成本间实现平衡。
 	
-	\item \textbf{决策选择}：三种方案的优劣取决于对工期最小化或成本最小化的优先级权重。
+	\item \textbf{平衡最优选择}：三种方案的优劣取决于对工期最小化或成本最小化的优先级权重。
 \end{itemize}
 
 \begin{figure}[htbp]
@@ -567,8 +567,7 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	c'_{\mathrm{launch}} = c_{\mathrm{launch}} + P_{\mathrm{fail}} \cdot (c_{\mathrm{launch}} + c_{\mathrm{cargo\_loss}})
 \end{equation}
 
-其中$c_{\mathrm{cargo\_loss}}$为货物损失成本。
-$c_{cargo\_loss}$ 无法查询到准确信息，通过搜集资料触发失败后一般是提供一次\textbf{Reflight（再飞）且客户无需再支付该次发射服务费}（相当于“用服务替代现金赔付”，覆盖的是发射服务成本），也就是可以认为上面公式可以写成：
+其中$c_{\mathrm{cargo\_loss}}$为货物损失成本。触发失败后一般是提供一次再飞且客户无需再支付该次发射服务费，也就是可以认为上面公式可以写成：
 
 \begin{equation}
 	c'_{\mathrm{launch}} = c_{\mathrm{launch}} + P_{\mathrm{fail}} \cdot c_{\mathrm{launch}} = c_{\mathrm{launch}} (1 + 2 P_{\mathrm{fail}})
@@ -615,7 +614,7 @@ $c_{cargo\_loss}$ 无法查询到准确信息，通过搜集资料触发失败�
 \theta(t) = k \cdot v_{wind}(t)^2
 \]
 
-通过查找资料，常规地面系绳可拟合出 $k$ 约为 0.019，来自 \href{https://www3.eng.cam.ac.uk/~hemh1/SPICE/papers/Coulombe-Pontbriand_2005_MastersThesis.pdf}{Simulation and Experimental Validation of Tethered Aerostat Model}，但是显然不符合当前系绳材质与高空环境，当前为强约束/高张力/高抗风设计，通过查找资料，可以确定 $\theta_{\mathrm{crit}}$ 为 $0.1\ \mathrm{rad}$ ($5.73^\circ$), $v_{\mathrm{safe}}$ 确定为 $15\ \mathrm{m/s}$，进而反解出当前 $k$ 为 $4.44\times10^{-4}$，即当 $v_{wind}(t) = v_{\mathrm{safe}}$ 时，$\theta(t) \approx \theta_{\mathrm{crit}}$，设计点是一致的。可以合并为单一阈值影响，故下文仅讨论风速的影响。
+常规地面系绳可拟合出 $k$ 约为 0.019，，不符合当前系绳材质与高空环境，当前为强约束/高张力/高抗风设计，可以通过高度确定 $\theta_{\mathrm{crit}}$ 为 $0.1\ \mathrm{rad}$, $v_{\mathrm{safe}}$ 为 $15\ \mathrm{m/s}$，进而反解出当前 $k$ 为 $4.44\times10^{-4}$，即当 $v_{wind}(t) = v_{\mathrm{safe}}$ 时，$\theta(t) \approx \theta_{\mathrm{crit}}$，可以合并为单一阈值影响。
 
 \begin{equation}
 	\eta_{SE}(t)=
@@ -635,12 +634,7 @@ $c_{cargo\_loss}$ 无法查询到准确信息，通过搜集资料触发失败�
 
 其中极端期的开始阶段建模为泊松过程，持续过程建模为指数分布
 
-先建立低频背景可用度年代可变率：
-\begin{equation}
-	\eta_\mathrm{base}(i)=\mu+A\sin\left(\frac{2\pi(i-1)}{P}\right)
-\end{equation}
-
-建立极端期示性变量$I_{ext}$表示是否处于极端状态
+极端期示性变量$I_{ext}$表示是否处于极端状态
 \begin{equation}
 	\bar{\eta}_{SE}(i)=\mathrm{clip}\left(\eta_{\mathrm{base}}(i)-\Delta\cdot I_{\mathrm{ext}}(i),0,1\right)
 \end{equation}
@@ -873,6 +867,16 @@ S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
 	\caption{613}\label{subfigure}
 \end{figure}
 
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+		\includegraphics[width=\textwidth]{img/Figure_6132.png}
+		\caption*{}
+		\label{}
+	\end{subfigure}
+	\caption{6132}\label{subfigure}
+\end{figure}
+
 \subsection{Robustness Analysis}
 
 鲁棒性分析目标：
@@ -906,13 +910,16 @@ S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
 \end{itemize}
 
 \subsubsection{结果展示}
-\begin{itemize}
-	\item 各模型的目标偏离度排名
-	\item 各模型的最坏情况性能下降幅度排名（其实基本就是鲁棒性排名）
-\end{itemize}
-\texttt{这部分很重要，不能缺！}
 
-
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+		\includegraphics[width=\textwidth]{img/Figure_624.png}
+		\caption*{}
+		\label{}
+	\end{subfigure}
+	\caption{624}\label{subfigure}
+\end{figure}
 
 
 
