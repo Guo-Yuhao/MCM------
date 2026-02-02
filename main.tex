@@ -876,7 +876,40 @@ S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
 %==============================================第七部分================================================
 \section{Conclusion}
 \subsection{Summary of Results}
-
+\begin{table}[htbp]
+  \centering
+  \caption{results}
+  \label{tab:results}
+  \begin{tabular}{lcccc}
+    \toprule
+    参数 & TR-Only & SE-Only & Static Mixing & Dynamic Mixing \\
+    \midrule
+    $\alpha \in (0,1)$ & 0 & 1 & Constant & Constant on 50 Intervals \\
+    Durations(year) & & & & \\
+    Cost(BD) & & & & \\
+    Cost of maintaining water supply(BD) & & & & \\
+    Environmental Impact & 4 & 3 & 2 & 1 \\
+    Robustness(rank) & 4 & 3 & 2 & 1 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\begin{table}[htbp]
+  \centering
+  \caption{sensitivity} % 可自定义表格标题
+  \label{tab:sensitivity} % 可自定义引用标签，用于\ref{}引用
+  \begin{tabular}{lcccc} % 列格式：l=左对齐（参数列），cccc=居中对齐（4个对比列）
+    \toprule % 顶部粗线
+    参数 & TR-Only & SE-Only & Static Mixing & Dynamic Mixing \\
+    \midrule % 中间细线
+    $c_{launch}$ & +++ & $\pm$ & ++ & + \\
+    $\kappa_{se\_total}$ & - - & ++ & - & - - \\
+    $\eta_{se}$ & - & ++ & - & - - \\
+    $m_{load}$ & $\pm$ & $\pm$ & - - - & - - \\
+    $\eta_{clean}$ & $\pm$ & ++ & - & - - \\
+    $\text{c}_{var}^{SE}$ & $\pm$ & $\pm$ & - & + \\
+    \bottomrule % 底部粗线
+  \end{tabular}
+\end{table}
 \subsection{Strengths}%------------------优点----------------
 \begin{itemize}
 	%1. 有灵敏度分析与稳健性分析
