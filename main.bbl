@@ -10,14 +10,14 @@ David Smitherman, Jr.
 \newblock Space elevators-building a permanent bridge for space exploration and economic development.
 \newblock In {\em Space 2000 Conference and Exposition}, page 5294, 2000.
 
+\bibitem{ishimatsu2016generalized}
+Takuto Ishimatsu, Olivier~L de~Weck, Jeffrey~A Hoffman, Yoshiaki Ohkami, and Robert Shishko.
+\newblock Generalized multicommodity network flow model for the earth--moon--mars logistics system.
+\newblock {\em Journal of Spacecraft and Rockets}, 53(1):25--38, 2016.
+
 \bibitem{ross2014radiative}
 Martin~N Ross and Patti~M Sheaffer.
 \newblock Radiative forcing caused by rocket engine emissions.
 \newblock {\em Earth's Future}, 2(4):177--196, 2014.
-
-\bibitem{openai2024chatgpt}
-OpenAI.
-\newblock Chatgpt: Optimizing language models for dialogue, Feb 2024.
-\newblock Available online: \url{https://openai.com/chatgpt} (accessed on February 2$^{nd}$, 2024).
 
 \end{thebibliography}
