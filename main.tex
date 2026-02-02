@@ -131,7 +131,7 @@ Current global RF from rocket launches is estimated at 16±8$mWm^{-2}$, with BC 
 \subsection{Our work}%-----------------------------------------------------------
 \begin{figure}[htbp]
 	\centering
-	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+	\begin{subfigure}[b]{.8\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
 		\includegraphics[width=\textwidth]{img/our_work.png}
 		\caption*{}
 		\label{}
@@ -221,7 +221,6 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 			NASA & \href{https://www.nasa.gov}{https://www.nasa.gov} \\
 			USGS & \href{https://www.usgs.gov}{https://www.usgs.gov} \\
 			Nature & \href{https://www.nature.com}{https://www.nature.com} \\
-			UNFAO & \href{https://www.fao.org}{https://www.fao.org} \\
 			MSCI & \href{https://www.msci-institute.com}{https://www.msci-institute.com} \\
 			NREL & \href{https://docs.nrel.gov}{https://www.nrel.gov} \\
 			\bottomrule[1.5pt]
@@ -233,31 +232,15 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 %=================================第三部分====================================================================
 \section{Model 1: Static Benchmark Model}
 \subsection{Model Overview}
-
 %静态基准模型在完美工作状态下分析三种运输场景，为比较不同物资运输方案的可行性、经济性和工期提供基础。
 The static benchmark model analyzes three transportation scenarios under perfect operating 
-conditions, providing a foundation for comparing the feasibility, economy, and construction 
-duration of different material transportation schemes.
+conditions, comparing different material transportation schemes.
 \subsection{Scenario 1: SE-Only Mode}
-
 %\subsubsection{Transportation Capacity under Perfect Conditions}
 %太空电梯系统的年运输能力为：
-
-The annual transportation capacity of the Space Elevator (SE) system is:
-\begin{equation}
-	\kappa_{SE,total}=179,000 \text{ tons/year}
-\end{equation}
-
-%\subsubsection{Project Duration}
-%物资全部运输所需的总工期为：
-
-The total duration required to transport all materials is:
-\begin{equation}
-	T_{SE}=\frac{M_{tot}}{\kappa_{SE,total}}=\frac{1 \times 10^8}{179000} \approx 558.7 \text{ years}
-\end{equation}
-
+The annual capacity of the Space Elevator (SE) is:\quad$\kappa_{SE,total}=179,000 \text{ tons/year}$.\\
+The total duration required to transport all materials is:\quad$T_{SE}=\frac{M_{tot}}{\kappa_{SE,total}} \approx 558.7 \text{ years}$.\\
 %\subsubsection{Total Cost}
-
 %全生命周期成本包括固定基础设施成本和可变运营成本：
 The life-cycle cost includes fixed infrastructure costs and variable operational costs:
 \begin{equation}
@@ -266,29 +249,17 @@ The life-cycle cost includes fixed infrastructure costs and variable operational
 %其中 \(C_{f i x}^{S E}\) 为太空电梯系统的总固定成本, \(c_{v a r}^{S E}\) 为单位可变成本(美元/吨)｡
 Whree $C_{fix}^{SE}$ denotes the total fixed cost of the SE system, 
 and $c_{var}^{SE}$ represents the variable cost per unit (USD/ton).
-
 \subsection{Scenario 2: TR-Only Mode}
-
 %\subsubsection{Transportation Capacity under Perfect Conditions}
-
 %启用全球10个发射场时，传统火箭系统的年运输能力为：
 When 10 global launch sites are activated, the annual transportation capacity of 
-the Traditional Rocket (TR) system is:
-\begin{equation}
-	\kappa_{TR}=10 \cdot f_{TR}(j) \cdot m_{load}=10 \times 20 \times 150=30,000 \text{ tons/year}
-\end{equation}
-
+the Traditional Rocket (TR) system is:\quad$\kappa_{TR}=10 \cdot f_{TR}(j) \cdot m_{load}=30,000 \text{ tons/year}$.\\
 %其中$f_{TR}(j)$为单个发射场年最大发射频次（20次/年），$m_{load}$为单次发射的基准载荷（150吨）。
 Where $f_{TR}(j)$is the maximum annual launch frequency of a single launch site (20 launches/year), 
 and $m_{load}$ is the baseline payload per launch (150 tons).
-
 %\subsubsection{Project Duration}
-
 %物资全部运输所需的总工期为：
-The total duration required to transport all materials is:
-\begin{equation}
-	T_{TR}=\frac{M_{tot}}{\kappa_{TR}}=\frac{1 \times 10^8}{30000}=3333.3\text{ years}
-\end{equation}
+The total duration required to transport all materials is:\quad$T_{TR}=\frac{M_{tot}}{\kappa_{TR}}=3333.3\text{ years}$.\\	
 
 %\subsubsection{Total Cost}
 
@@ -715,29 +686,36 @@ Satisfy the overall demand constraint:
 \end{equation}
 Among them, \(K\) represents the maximum number of time stages to be considered and it varies dynamically.
 \subsection{ Stage-wise Extended Search Algorithm}
-The algorithm conducts the search for the dynamic capacity planning scheme by gradually increasing the length of the considered time interval from the early stage:
+This algorithm finds dynamic capacity planning solutions by progressively extending time intervals, with core steps as follows:
 \begin{itemize}
-	\item \textbf{Cumulative capacity check}: At each iteration, sum available SE and TR capacity up to the current stage; terminate the iteration if this cumulative capacity cannot meet total demand.
-	\item \textbf{Option set and cost ordering}: Create a combined option set (SE and TR) with their unit variable costs, and sort options by increasing cost to prioritize cheaper sources.
-	\item \textbf{Greedy allocation}: Fulfill stage demand by allocating sequentially from the lowest-cost option until the demand is met or capacity is exhausted.
-	\item \textbf{Mixed-tech constraints}: If minimum deployment levels for SE and TR are required, reserve those minima, and apply the greedy allocation to remaining demand.
-	\item \textbf{Cost aggregation and logging}: For each stage compute variable and fixed costs, record the capacity assignments and total cost, and store the solution for subsequent feasibility screening and optimization.
+	\item \textbf{Cumulative capacity check}: At each iteration, aggregate the available capacity for the current phase. If total demand cannot be met, terminate the iteration.
+	\item \textbf{Option set and cost ordering}: Consolidate capacity options and sort them in ascending order of cost, prioritizing lower-cost sources.
+	\item \textbf{Greedy allocation}: Allocate resources sequentially starting from the lowest-cost option until demand is satisfied or capacity is exhausted.
+	\item \textbf{Mixed-tech constraints}: If minimum deployment requirements exist, reserve the minimum capacity first, then perform greedy allocation on the remaining demand.
+	\item \textbf{Cost aggregation and logging}: Calculate costs for each phase, logging capacity allocations and total costs for subsequent feasibility screening and optimization.
 \end{itemize}
-the Stage-wise Extended Search Algorithm takes into account both the time schedule and resource constraints, gradually approaching the optimal solution space that meets the requirements.
 \subsection{Multi-objective Pareto Front Analysis}
 To assist in decision-making, the algorithm selects key solutions based on two target dimensions of time and cost. The specific implementation includes:
 \begin{itemize}
 	\item \textbf{Pareto-front filtering}: Retain nondominated solutions in the cost–time objective space to form the Pareto frontier, ensuring cost efficiency within specified time bounds.
 	\item \textbf{Knee-point detection}: Normalize objectives and compute perpendicular distances from each frontier point to the line connecting the endpoints; the point of maximal distance is the knee, representing a high-value cost–time tradeoff.
 	\item \textbf{Star-point reporting}: Also record the minimum-time feasible solution (Star point) to facilitate comparison with the Knee point for decision support.
-	\item \textbf{Visualization}: Plot the Pareto frontier and annotate the Knee and Star points to visually convey multi-objective tradeoffs.
 \end{itemize}
 
 %===============================================第六部分=============================================
 \section{Test the Model}
 \subsection{Sensitivity Analysis}
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[b]{0.8\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+		\includegraphics[width=\textwidth]{img/Figure_6132.png}
+		\caption*{}
+		\label{}
+	\end{subfigure}
+	\caption{6132}\label{subfigure}
+\end{figure}
 \paragraph{Parameter selection}
-According to the model, the following parameters are selected for sensitivity analysis
+According to the model, the following parameters are selected for sensitivity analysis:
 \begin{itemize}
 	\item SE system annual capacity $\kappa_{SE,total}$
 	\item TR single effective payload $m_{load}$
@@ -746,7 +724,6 @@ According to the model, the following parameters are selected for sensitivity an
 	\item Clean energy usage rate $\eta_{clean}$
 \end{itemize}
 \paragraph{Analysis Method}
-Using \textbf{one-factor sensitivity analysis} + \textbf{multi-factor interaction analysis}:
 \begin{itemize}
 	\item \textbf{one-factor sensitivity analysis}：Each time, only change the value of one parameter (±5\%, ±10\%, ±20\%), keep other parameters unchanged, and calculate the change rate of the objective function:
 \[
@@ -760,7 +737,7 @@ As shown in Figure 10, the impact of the dynamic $\alpha$ strategy on sensitivit
 
 \begin{figure}[htbp]
 	\centering
-	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
+	\begin{subfigure}[b]{0.95\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
 		\includegraphics[width=\textwidth]{img/Figure_613.png}
 		\caption*{}
 		\label{}
@@ -768,40 +745,18 @@ As shown in Figure 10, the impact of the dynamic $\alpha$ strategy on sensitivit
 	\caption{613}\label{subfigure}
 \end{figure}
 
-\begin{figure}[htbp]
-	\centering
-	\begin{subfigure}[b]{0.8\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
-		\includegraphics[width=\textwidth]{img/Figure_6132.png}
-		\caption*{}
-		\label{}
-	\end{subfigure}
-	\caption{6132}\label{subfigure}
-\end{figure}
-
 \subsection{Robustness Analysis}
-
-Robustness analysis objective:
-\begin{itemize}
-	\item Determine the magnitude of error in the original scheme's objective values when input parameters have uncertainty fluctuations;
-	\item Identify which transportation strategy (SE-only, TR-only, mixed mode, dynamic mode) is least sensitive to disturbances.
-\end{itemize}
 \paragraph{Uncertainty Modeling}
 Based on the original parameters, the following uncertainties can be identified:
-\begin{itemize}
-	\item \textbf{Rocket failure probability fluctuations}: Modeled as a Beta distribution (biased towards the mean but with risk at extreme values).
-	\item \textbf{Cost fluctuations}: Assuming future prices are influenced by inflation and technological progress, costs follow a normal distribution.
-	\item \textbf{Technological improvement rate fluctuations}: Parameters in the $c_{var}^{SE}$ formula follow a normal distribution, affecting the decline rate of $c_{var}^{SE}$.
-\end{itemize}
+\textbf{Rocket failure probability fluctuations}: Modeled as a Beta distribution (biased towards the mean but with risk at extreme values).
+\textbf{Cost fluctuations}: Assuming future prices are influenced by inflation and technological progress, costs follow a normal distribution.
+\textbf{Technological improvement rate fluctuations}: Parameters in the $c_{var}^{SE}$ formula follow a normal distribution, affecting the decline rate of $c_{var}^{SE}$.
 \paragraph{Robustness evaluation metrics}
-\begin{itemize}
-	\item Objective function deviation: Measures the degree of change in the objective function value after perturbation relative to the baseline value:\[
-	R = \frac{|f_{\mathrm{perturbed}} - f_{\mathrm{baseline}}|}{f_{\mathrm{baseline}}}
-	\]
-	\item Worst-case performance degradation: Takes the worst 5\% of the sample results for risk assessment.
-\end{itemize}
+\textbf{Objective function deviation}: Measures the degree of change in the objective function value after perturbation relative to the baseline value:\quad$R = \frac{|f_{\mathrm{perturbed}} - f_{\mathrm{baseline}}|}{f_{\mathrm{baseline}}}$.\quad
+\textbf{Worst-case performance degradation}: Takes the worst 5\% of the sample results for risk assessment.
 \paragraph{Analysis Method}
-First, use the original parameters to obtain the baseline duration $T_0$, baseline cost $f_0$, and baseline environmental impact $E_0$.
-Then perform simulations with perturbations:
+Use the original parameters to obtain the baseline duration $T_0$, baseline cost $f_0$, and baseline environmental impact $E_0$.
+，and perform simulations with perturbations:
 \begin{itemize}
 	\item Randomly sample different perturbation combinations:
 	\item Use the scheme obtained with the original parameters to run the model for each combination, recording various indicators.
@@ -827,6 +782,7 @@ As shown in the figure, it is a comparison of the robustness analysis of the fou
 %==============================================第七部分================================================
 \section{Conclusion}
 \subsection{Summary of Results}
+Models performance is shown in Tables 3 and 4.
 \begin{table}[hbtp]
   \centering
   \caption{results}
@@ -877,8 +833,7 @@ As shown in the figure, it is a comparison of the robustness analysis of the fou
 \paragraph{Improvements}
 \begin{itemize}
 	\item Expand environmental metrics to include life‑cycle assessment (LCA) indicators, planetary protection concerns, and secondary atmospheric chemistry impacts.
-	\item Compare model projections against historical or simulated mission baselines to validate feasibility and adjust cost–time coefficients empirically.
-	\item Combine the Stage‑wise Extended Search Algorithm (SESA) with metaheuristics such as Particle Swarm Optimization or NSGA‑II to improve convergence speed and optimize over higher‑dimensional objectives.
+	\item Combine the Stage‑wise Extended Search Algorithm with metaheuristics to improve convergence speed and optimize over higher‑dimensional objectives.
 \end{itemize}
 % 参考文献，直接把bib格式粘贴到References.bib里面，此处无需改动！！！！！！！！！！！！！！！！！！
 \bibliographystyle{unsrt} %规定了参考文献的格式
