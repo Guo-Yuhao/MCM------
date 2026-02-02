@@ -768,49 +768,50 @@ TR-only和SE-only模型的策略不会发生变化，各自的环境影响系数
 
 %===========================================第五部分====================================================================
 \newpage
-\section{上述模型的求解}
-为解决上述非线性、多目标、多阶段的优化问题，我们采用逐阶段扩展搜索算法（Stage-wise Extended Search Algorithm, SESA）。该算法结合动态规划和启发式搜索的优势，适用于复杂的决策问题。并采用贪心变动成本法（Greedy Marginal Cost Method, GMCM）对模型进行求解和优化。为求解多目标优化问题，我们采用帕累托前沿分析（Pareto Front Analysis）方法，识别在工期、成本和环境影响之间的最佳权衡方案。
-\subsection{决策变量}
+\section{The solution of the aforementioned model}
+To address the aforementioned nonlinear, multi-objective, and multi-stage optimization challenges, we propose a hybrid solution framework comprising three complementary components: (1) the Stage-wise Extended Search Algorithm (SESA), which integrates dynamic programming principles with heuristic search strategies to enhance computational efficiency and solution robustness in sequential decision-making contexts; (2) the Greedy Marginal Cost Method (GMCM), employed for efficient model solving and local optimization; and (3) Pareto Front Analysis, applied to systematically identify non-dominated trade-off solutions across the competing objectives of project duration, total cost, and environmental impact.
+\subsection{Decision Variables}
 
-算法中的核心决策变量为各阶段、各技术模式下的产能分配量。具体而言：
+The core decision variables in the algorithm are the production capacity allocation amounts for each stage and each technical mode. Specifically:
 \begin{itemize}
-	\item \( x_{i}^{SE} \)：第 \(i\) 阶段采用 SE 技术分配的产能（吨）。
-	\item \( x_{i}^{TR} \)：第 \(i\) 阶段采用 TR 技术分配的产能（吨）。
+	\item \( x_{i}^{SE} \)：Production capacity allocated using SE technology at stage \(i\) (tons).
+	\item \( x_{i}^{TR} \)：Production capacity allocated using TR technology at stage \(i\) (tons).
 \end{itemize}
 
-这些变量受各阶段技术对应的最大产能容量约束限制，即：
+These variables are subject to the constraints imposed by the maximum production capacity corresponding to each stage of technology, namely:
 
 \begin{equation}
 0 \leq x_{i}^{SE} \leq C_{i}^{SE}, \quad 0 \leq x_{i}^{TR} \leq C_{i}^{TR}
 \end{equation}
 
-满足总需求约束：
+Satisfy the overall demand constraint:
 \begin{equation}
 \sum_{i=1}^{K} (x_{i}^{SE} + x_{i}^{TR}) \geq M_{tot}
 \end{equation}
 
-其中，\(K\) 表示考虑的最大时间阶段数量，动态变化。
-\subsection{逐阶段扩展搜索算法}
+Among them, \(K\) represents the maximum number of time stages to be considered and it varies dynamically.
+\subsection{ Stage-wise Extended Search Algorithm}
 
-算法通过从早期阶段开始，逐步增加考虑的时间区间长度，实现对动态产能建设计划的搜索：
+The algorithm conducts the search for the dynamic capacity planning scheme by gradually increasing the length of the considered time interval from the early stage:
 
 \begin{enumerate}
-	\item \textbf{阶段容量累积验证}：在每一轮迭代中，计算截止当前阶段的总可用产能（SE和TR两种模式）之和，判断是否足以满足总需求，若不足则直接跳过，避免无效计算。
-	\item \textbf{方案选项构造与排序}：对每个阶段的两种技术产能与对应单位变动成本进行整合，形成供分配的选项集合，按单位成本升序排列，确保优先利用成本较低的产能资源。
-	\item \textbf{贪心填充分配}：按照排序后的选项，逐项分配产能以满足当前阶段的需求，优先消耗低成本产能，直至需求满足或资源耗尽。
-	\item \textbf{混合技术约束处理}：在分配过程中，若需保证两种技术均有投入，先为每种技术预留最小需求量，之后对剩余需求执行贪心分配，确保方案符合混合使用的业务规则。
-	\item \textbf{成本累计和记录}：计算当前阶段的总变，加上可能存在的固定成本，保存当前阶段对应的可行方案及成本信息，供后续筛选。
+	\item \textbf{Cumulative capacity check}: At each iteration, sum available SE and TR capacity up to the current stage; terminate the iteration if this cumulative capacity cannot meet total demand.
+	\item \textbf{Option set and cost ordering}: Create a combined option set (SE and TR) with their unit variable costs, and sort options by increasing cost to prioritize cheaper sources.
+	\item \textbf{Greedy allocation}: Fulfill stage demand by allocating sequentially from the lowest-cost option until the demand is met or capacity is exhausted.
+	\item \textbf{Mixed-technology constraints}: If minimum deployment levels for SE and TR are required, reserve those minima first, then apply the greedy allocation to remaining demand.
+	\item \textbf{Cost aggregation and logging}: For each stage compute variable and fixed costs, record the capacity assignments and total cost, and store the solution for subsequent feasibility screening and optimization.
 \end{enumerate}
-这种逐阶段动态搜索方式兼顾了时间进度与资源约束，逐步逼近满足需求的最优方案空间。
 
-\subsection{多目标前沿判定}
+the Stage-wise Extended Search Algorithm takes into account both the time schedule and resource constraints, gradually approaching the optimal solution space that meets the requirements.
 
-为辅助决策，算法在时间和成本两个目标维度上筛选关键方案，具体实现包括：
+\subsection{Multi-objective Pareto Front Analysis}
+
+To assist in decision-making, the algorithm selects key solutions based on two target dimensions of time and cost. The specific implementation includes:
 \begin{enumerate}
-	\item \textbf{帕累托前沿筛选}：从所有可行方案中筛选不被其他方案在成本和时间上同时优越的非劣解，形成方案的 Pareto 前沿，保证所选方案在一定的时间范围内成本最优。
-	\item \textbf{Knee 点识别}：对 Pareto 前沿方案进行归一化处理，将时间和成本标准化至相同尺度后，计算曲线与两端连接直线的垂直距离。最大距离点即为 Knee 点，通常代表成本效益显著改善的折中方案。
-	\item \textbf{关键方案输出}：同时记录最短可行方案（Star 点），用于比较Knee点与Star点的差异，为决策者提供更全面的参考信息。
-	\item \textbf{可视化展示}：将帕累托前沿以图形方式展示，直观反映不同方案在多目标空间中的分布情况。
+	\item \textbf{Pareto-front filtering}: Retain nondominated solutions in the cost–time objective space to form the Pareto frontier, ensuring cost efficiency within specified time bounds.
+	\item \textbf{Knee-point detection}: Normalize objectives and compute perpendicular distances from each frontier point to the line connecting the endpoints; the point of maximal distance is the knee, representing a high-value cost–time tradeoff.
+	\item \textbf{Star-point reporting}: Also record the minimum-time feasible solution (Star point) to facilitate comparison with the Knee point for decision support.
+	\item \textbf{Visualization}: Plot the Pareto frontier and annotate the Knee and Star points to visually convey multi-objective tradeoffs.
 \end{enumerate}
 
 %===============================================第六部分=============================================
