@@ -140,9 +140,9 @@ Current global RF from rocket launches is estimated at 16±8$mWm^{-2}$, with BC 
 \end{figure}
 
 \begin{enumerate}[\bfseries 1.]
-	\item \textbf{Model construction.} We develop a suite of mathematical models to analyze and optimize the lunar material delivery system. A static baseline is first used to compare three transportation scenarios, followed by a dynamic extension in which the transportation ratio $\alpha_i$ evolves over time to reflect technological progress and cost reduction, with stochastic terms added to capture uncertainty.
-	\item \textbf{Extended tasks.} Additional modules are integrated into the core framework. A water demand model estimates annual net water requirements under varying recycling efficiencies, while an environmental impact model evaluates rocket-related $CO_2$ and black carbon emissions and Space Elevator energy consumption, enabling joint consideration of cost, time, and sustainability.
-	\item \textbf{Model solving and evaluation.} The nonlinear multi-objective problem is solved using a Stage-wise Extended Search Algorithm (SESA) combined with a Greedy Marginal Cost Method (GMCM). Pareto-front analysis and knee-point identification determine optimal trade-offs, and sensitivity and robustness analyses confirm model reliability, showing the dynamic hybrid strategy to be superior.
+	\item \textbf{Model construction.} We formulate mathematical models for lunar material delivery, comparing three scenarios with a static baseline and extending to a dynamic model where the transport ratio $\alpha_i$ evolves with technological progress, cost reduction, and stochastic uncertainty.
+	\item \textbf{Extended tasks.} The framework incorporates a water demand model for annual net requirements under different recycling efficiencies and an environmental impact model accounting for rocket $CO_2$/black carbon emissions and Space Elevator energy use.
+	\item \textbf{Model solving and evaluation.} The resulting nonlinear multi-objective problem is solved via SESA–GMCM, with Pareto-front and knee-point analyses identifying optimal trade-offs; sensitivity and robustness tests verify reliability and demonstrate the superiority of the dynamic hybrid strategy.
 \end{enumerate}
 %===========================第二部分==模型准备==========================================================
 \section{Preparation of the Models}
@@ -695,9 +695,7 @@ The solutions are obtained separately, and the comparison under the three-dimens
 	\end{subfigure}
 	\caption{472}\label{subfigure}
 \end{figure}
-
 %===========================================第五部分====================================================================
-\newpage
 \section{The solution of the aforementioned model}
 To address the aforementioned nonlinear, multi-objective, and multi-stage optimization challenges, we propose a hybrid solution framework comprising three complementary components: (1) the Stage-wise Extended Search Algorithm (SESA), which integrates dynamic programming principles with heuristic search strategies to enhance computational efficiency and solution robustness in sequential decision-making contexts; (2) the Greedy Marginal Cost Method (GMCM), employed for efficient model solving and local optimization; and (3) Pareto Front Analysis, applied to systematically identify non-dominated trade-off solutions across the competing objectives of project duration, total cost, and environmental impact.
 \subsection{Decision Variables}
