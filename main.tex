@@ -822,33 +822,28 @@ To assist in decision-making, the algorithm selects key solutions based on two t
 
 %===============================================第六部分=============================================
 \section{Test the Model}
-\subsection{Sensitivity  Analysis}
-敏感性分析目标：  
+
+\subsubsection{Parameter selection}
+According to the model, the following parameters are selected for sensitivity analysis
 \begin{itemize}
-	\item 量化参数对目标函数的影响程度；
-	\item 识别关键参数，指导决策和优化；
+	\item SE system annual capacity $\kappa_{SE,total}$
+	\item TR single effective payload $m_{load}$
+	\item SE cable swing induced availability $\eta_{SE}$ 
+	\item Cost parameters $c_{var}^{SE}$, $c'_{launch}$
+	\item Clean energy usage rate $\eta_{clean}$
 \end{itemize}
-\subsubsection{选取参数}
-根据模型，选取以下参数进行敏感性分析：
+\subsubsection{Analysis Method}
+Using \textbf{one-factor sensitivity analysis} + \textbf{multi-factor interaction analysis}:
 \begin{itemize}
-	\item SE系统年运力 $\kappa_{SE,total}$
-	\item TR单次有效载荷 $m_{load}$
-	\item SE缆绳摆动导致的可用度 $\eta_{SE}$ 
-	\item 成本参数 $c_{var}^{SE}$、$c'_{launch}$
-	\item 清洁能源使用率 $\eta_{clean}$
-\end{itemize}
-\subsubsection{分析方法}
-采用\textbf{单因素敏感性分析} + \textbf{多因素交互分析}：
-\begin{itemize}
-	\item \textbf{单因素}：每次只改变一个参数的值（±5\%、±10\%、±20\%），保持其他参数不变，计算目标函数的变化率：
+	\item \textbf{one-factor sensitivity analysis}：Each time, only change the value of one parameter (±5\%, ±10\%, ±20\%), keep other parameters unchanged, and calculate the change rate of the objective function:
 \[
 S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
 \]
-其中 $f$ 是目标函数值（工期、成本），$x$ 是参数值。
-	\item \textbf{多因素}：用拉丁超立方抽样（LHS）方法，在参数的可能范围内随机采样，运行模型，计算 Sobol 灵敏度指数，分析交互效应。
+where $f$ is the objective function value (duration, cost), and $x$ is the parameter value.
+	\item \textbf{multi-factor interaction analysis}：Use Latin Hypercube Sampling (LHS) method to randomly sample within the possible range of parameters, run the model, calculate Sobol sensitivity indices, and analyze interaction effects.
 \end{itemize}
 
-\subsubsection{结果展示}
+\subsubsection{Results Presentation}
 
 \begin{figure}[htbp]
 	\centering
