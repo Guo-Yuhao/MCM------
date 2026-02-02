@@ -5,6 +5,9 @@
 %最后全部翻译成英文后可以选择改成article，然后用pdflatex编译，还可以检验一下是不是没有中文了嘿嘿( •̀ ω •́ )✧
 %官方要求字号不小于 12 号，此处选择 12 号字体
 \usepackage{makecell} % Added for \makecell support
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{background}
 
 \CTEXsetup[format={\Large\bfseries}]{section} %在ctexart中，一级标题是居中的，这里改成左对齐
 
@@ -35,7 +38,7 @@
 
 % ----------------------------------------------文档开始---------------------------------------------------------
 \begin{document}
-
+\backgroundsetup{contents={}} 
 % 此处填写摘要内容-----------摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要
 \begin{abstract}
 	%第一段：2句话背景+2句话概括全文完成的任务
@@ -1021,9 +1024,18 @@ As shown in the figure, it is a comparison of the robustness analysis of the fou
 	\item Combine the Stage‑wise Extended Search Algorithm (SESA) with metaheuristics such as Particle Swarm Optimization or NSGA‑II to improve convergence speed and optimize over higher‑dimensional objectives.
 \end{itemize}
 
+\newpage
+%===============================================第八部分=============================================
 
 
-
+\backgroundsetup{
+  color=white,        % 图片背景设白色底色，避免干扰图片显示
+  contents={\includegraphics[width=\paperwidth,height=\paperheight]{img/background_letter.png}}, % 图片路径（你后续替换），铺满整页
+  scale=1,            % 图片缩放比例固定1，不拉伸
+  angle=0,            % 图片旋转角度0，不旋转
+  opacity=0.22           % 图片透明度1（完全不透明，需调淡可改0.8/0.9）
+}
+\BgThispage % 核心命令：仅将上述背景应用于「当前备忘录页面」
 
 % 以下为信件/备忘录部分，不需要可自行去掉========================================================================
 % 如有需要可将整个 letter 环境移动到文章开头或中间
@@ -1052,6 +1064,9 @@ This proposal offers superior feasibility, verified robustness, and low-carbon s
 
 %=================================================================================================================
 
+\newpage
+%===============================================参考文献部分=============================================
+\backgroundsetup{contents={}} 
 
 % 参考文献，直接把bib格式粘贴到References.bib里面，此处无需改动！！！！！！！！！！！！！！！！！！
 \bibliographystyle{unsrt} %规定了参考文献的格式
