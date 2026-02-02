@@ -40,60 +40,23 @@
 \begin{abstract}
 	%第一段：2句话背景+2句话概括全文完成的任务
 
-	Introduction of the background and the mission we accomplished.
+	\textbf{The construction of a lunar colony} supporting 100,000 inhabitants by 2050 poses significant challenges in transporting massive construction materials from Earth. Efficient, cost-effective, and environmentally sustainable delivery methods are essential. 
+	Our mission focused on analyzing and optimizing transport strategies combining Space Elevator technology and traditional rocket launches to fulfill these requirements.
 
-	Global warming, El Niño... With the emergence of various extreme climates,\textbf{Austral-ia's wildfires} occur more frequently. The greenhouse gases emitted after combustion have exacerbated global warming, which seems to have entered an endless loop. At the same time, hundreds of millions of lives have been killed in the fire, which makes us sad. To better control wildfires, we modeled the \textbf{distribution of drones} assisting in the observation to achieve the best balance between economy and efficiency.
+	%第二段：总结我们用了什么模型	
+	We developed three models. \textbf{Model I} is a static benchmark that uses data on payload capacities, launch frequencies, and costs to evaluate three scenarios: \textbf{Space Elevator only}, \textbf{Traditional Rocket only}, and a \textbf{static hybrid mode}. This model provides baseline comparisons of duration and costs, showing hybrid strategies improve feasibility and efficiency over single-mode approaches. Compared to the pure space elevator mode, it reduces construction time by 25\%, while cutting costs by 63.4\% relative to the pure traditional rocket mode.
 
-	%第二段：总结我们用了什么模型
+	\textbf{Model II} extends to a \textbf{dynamic adjusted} framework, modeling transport ratios as piecewise constants over 50 intervals, incorporating technological progress and cost reductions. Using a \textbf{Stage-wise Extended Search Algorithm} and \textbf{Greedy Marginal Cost Method}, this model optimizes allocation dynamically, achieving better balance among time, cost, and environmental impact， which gains the smallest composite score (0.471).
 
-	This is our models.
-
-	Several models are established: Model I: Rasterized Multi-Objective Optimization Model; Model II: Model Verification Simulated by Poisson Process; Model III: Hovering Model Based on Tabu Search, etc.
-
-	%接下来分别介绍模型与结果
-	For Model I:
-	Firstly,%首先，我们从哪里收集到了什么样的数据
-	We find data。。。
-	Then,%然后，基于什么样的原因，我们建立了什么模型
-	we establish \textbf{model}。。。
-	Next,%我们选择或者设计了什么算法
-	we use Algorithm。。。
-	Finally,%我们得到了什么样的结果
-	%数值直接写出来，大量数据（表）或图片则说请参见(are shown in ...)图几
-	%注意要用文字，不要使用符号
-	it can be seen that。。。
-
-	For Model II:
-	Firstly,%首先，我们从哪里收集到了什么样的数据
-	We find data。。。
-	Then,%然后，基于什么样的原因，我们建立了什么模型
-	we establish model。。。
-	Next,%我们选择或者设计了什么算法
-	we use Algorithm。。。
-	Finally,%我们得到了什么样的结果
-	%数值直接写出来，大量数据（表）或图片则说请参见(are shown in ...)图几
-	%注意要用文字，不要使用符号
-	it can be seen that。。。
-
-	For Model III:
-	Firstly,%首先，我们从哪里收集到了什么样的数据
-	We find data。。。
-	Then,%然后，基于什么样的原因，我们建立了什么模型
-	we establish model。。。
-	Next,%我们选择或者设计了什么算法
-	we use Algorithm。。。
-	Finally,%我们得到了什么样的结果
-	%数值直接写出来，大量数据（表）或图片则说请参见(are shown in ...)图几
-	%注意要用文字，不要使用符号
-	it can be seen that。。。
+	\textbf{Model III} incorporates \textbf{stochastic} uncertainties such as rocket launch failures and tether sway using probabilistic approaches to adjust effective capacities and costs, enhancing model realism and robustness.
 
 	%灵敏度与稳健性分析
-	Finally, sensitivity analysis 。。。 Meanwhile, robustness
+	Finally, \textbf{sensitivity} and \textbf{robustness} analyses quantify the effect of key parameters including system capacity, failure probabilities, and clean energy use. Results validate that the dynamic hybrid approach consistently offers superior performance across efficiency, cost, and sustainability objectives, recommending it as the optimal strategy for lunar material transportation.
 
 	% 美赛论文中无需注明关键词。若一定要使用，
 	% 请将以下两行的注释号 '%' 去除，以使其生效
 	\vspace{5pt}
-	\textbf{Keywords}: MATLAB, mathematics, LaTeX.
+	\textbf{Keywords}: Space Elevator, Rocket, Hybrid Transport Strategy, Dynamic Optimization, Pareto Frontier Analysis, Stochastic Modeling, Sensitivity Analysis.
 
 \end{abstract}
 
@@ -449,7 +412,7 @@ The static benchmark model provides the following key insights:
 
 	\item \textbf{Time-Optimal Mode}（$\alpha^* \approx 0.499$）：
 	%采用最优分配比例，工期约为$\max\left(\frac{0.417 \times 10^8}{179000}, \frac{0.583 \times 10^8}{25000}\right) \approx 232$年，在基础设施固定成本和按次发射成本间实现平衡。
-	Adopting the optimal allocation ratio, the duration is approximately $\max\left(\frac{0.417 \times 10^8}{179000}, \frac{0.583 \times 10^8}{25000}\right) \approx 232$ years, 
+	Adopting the optimal allocation ratio, the duration is approximately $\max\left(\frac{0.499 \times 10^8}{179000}, \frac{0.501 \times 10^8}{25000}\right) \approx 278.6$ years, 
 	achieving a balance between fixed infrastructure costs and per-launch costs.
 	\item \textbf{Balanced Optimal Choice}：
 	%三种方案的优劣取决于对工期最小化或成本最小化的优先级权重。
@@ -1013,11 +976,11 @@ S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
   \label{tab:results}
    \begin{tabular}{lcccc}
     \toprule
-    参数 & TR-Only & SE-Only & Static Mixing & Dynamic Mixing \\
+    parameters & TR-Only & SE-Only & Static Mixing & Dynamic Mixing \\
     \midrule
     $\alpha \in (0,1)$ & 0 & 1 & Constant & \makecell{Constant on\\50 Intervals} \\
     Durations(year) &4000 &558.7 &419 &380 \\
-    Cost(TD) &64.667 &8.125 &23.7 &27.99 \\
+    Cost(TD) &64.67 &23.46 &23.7 &27.99 \\
 	\makecell{Cost of maintaining water supply (BD)} &417.2 &159.7 &224.1 &159.7 \\
     Environmental Impact & 4 & 3 & 2 & 1 \\
     Robustness(rank) & 4 & 3 & 2 & 1 \\
@@ -1030,7 +993,7 @@ S_x = \frac{\Delta f}{f} \cdot \frac{x}{\Delta x}
   \label{tab:sensitivity} % 可自定义引用标签，用于\ref{}引用
   \begin{tabular}{lcccc} % 列格式：l=左对齐（参数列），cccc=居中对齐（4个对比列）
     \toprule % 顶部粗线
-    参数 & TR-Only & SE-Only & Static Mixing & Dynamic Mixing \\
+    parameters & TR-Only & SE-Only & Static Mixing & Dynamic Mixing \\
     \midrule % 中间细线
     $c_{launch}$ & +++ & $\pm$ & ++ & + \\
     $\kappa_{se\_total}$ & - - & ++ & - & - - \\
