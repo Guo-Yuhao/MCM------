@@ -322,79 +322,95 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 \vspace{-1cm}%在\end{table}下加一行\vspace{-1cm} 其中-1的作用是缩短与下方文字距离的 切记！必须是负数
 %\subsubsection{Data Processing}
 %=================================第三部分====================================================================
-\section{Model 1: 静态基准模型}
-\subsection{模型概述}
+\section{Model 1: Static Benchmark Model}
+\subsection{Model Overview}
 
-静态基准模型在完美工作状态下分析三种运输场景，为比较不同物资运输方案的可行性、经济性和工期提供基础。
+%静态基准模型在完美工作状态下分析三种运输场景，为比较不同物资运输方案的可行性、经济性和工期提供基础。
+The static benchmark model analyzes three transportation scenarios under perfect operating 
+conditions, providing a foundation for comparing the feasibility, economy, and construction 
+duration of different material transportation schemes.
+\subsection{Scenario 1: SE-Only Mode}
 
-\subsection[场景一：仅SE模式]{场景一：仅SE模式}
+\subsubsection{Transportation Capacity under Perfect Conditions}
+%太空电梯系统的年运输能力为：
 
-\subsubsection{完美状态运力}
-
-太空电梯系统的年运输能力为：
+The annual transportation capacity of the Space Elevator (SE) system is:
 \begin{equation}
-	\kappa_{SE,total}=179,000 \text{ 吨/年}
+	\kappa_{SE,total}=179,000 \text{ tons/year}
 \end{equation}
 
-\subsubsection{项目工期}
+\subsubsection{Project Duration}
+%物资全部运输所需的总工期为：
 
-物资全部运输所需的总工期为：
+The total duration required to transport all materials is:
 \begin{equation}
-	T_{SE}=\frac{M_{tot}}{\kappa_{SE,total}}=\frac{1 \times 10^8}{179000} \approx 558.7 \text{ 年}
+	T_{SE}=\frac{M_{tot}}{\kappa_{SE,total}}=\frac{1 \times 10^8}{179000} \approx 558.7 \text{ years}
 \end{equation}
 
-\subsubsection{总成本}
+\subsubsection{Total Cost}
 
-全生命周期成本包括固定基础设施成本和可变运营成本：
+%全生命周期成本包括固定基础设施成本和可变运营成本：
+The life-cycle cost includes fixed infrastructure costs and variable operational costs:
 \begin{equation}
 	C_{SE}=C_{fix}^{SE}+M_{tot} \cdot c_{var}^{SE}
 \end{equation}
+%其中 \(C_{f i x}^{S E}\) 为太空电梯系统的总固定成本, \(c_{v a r}^{S E}\) 为单位可变成本(美元/吨)｡
+Whree $C_{fix}^{SE}$ denotes the total fixed cost of the SE system, 
+and $c_{var}^{SE}$ represents the variable cost per unit (USD/ton).
 
-其中$C_{fix}^{SE}$为太空电梯系统的总固定成本，$c_{var}^{SE}$为单位可变成本（美元/吨）。
+\subsection{Scenario 2: TR-Only Mode}
 
-\subsection[场景二：仅TR模式]{场景二：仅TR模式}
+\subsubsection{Transportation Capacity under Perfect Conditions}
 
-\subsubsection{完美状态运力}
-
-启用全球10个发射场时，传统火箭系统的年运输能力为：
+%启用全球10个发射场时，传统火箭系统的年运输能力为：
+When 10 global launch sites are activated, the annual transportation capacity of 
+the Traditional Rocket (TR) system is:
 \begin{equation}
-	\kappa_{TR}=10 \cdot f_{TR}(j) \cdot m_{load}=10 \times 20 \times 150=30,000 \text{ 吨/年}
+	\kappa_{TR}=10 \cdot f_{TR}(j) \cdot m_{load}=10 \times 20 \times 150=30,000 \text{ tons/year}
 \end{equation}
 
-其中$f_{TR}(j)$为单个发射场年最大发射频次（20次/年），$m_{load}$为单次发射的基准载荷（150吨）。
+%其中$f_{TR}(j)$为单个发射场年最大发射频次（20次/年），$m_{load}$为单次发射的基准载荷（150吨）。
+Where $f_{TR}(j)$is the maximum annual launch frequency of a single launch site (20 launches/year), 
+and $m_{load}$ is the baseline payload per launch (150 tons).
 
-\subsubsection{项目工期}
+\subsubsection{Project Duration}
 
-物资全部运输所需的总工期为：
+%物资全部运输所需的总工期为：
+The total duration required to transport all materials is:
 \begin{equation}
-	T_{TR}=\frac{M_{tot}}{\kappa_{TR}}=\frac{1 \times 10^8}{30000}=3333\text{ 年}
+	T_{TR}=\frac{M_{tot}}{\kappa_{TR}}=\frac{1 \times 10^8}{30000}=3333\text{ years}
 \end{equation}
 
-\subsubsection{总成本}
+\subsubsection{Total Cost}
 
-成本由所需发射次数决定：
+%成本由所需发射次数决定：
+The cost is determined by the number of launches required:
 \begin{equation}
 	C_{TR}=\frac{M_{tot}}{m_{load}} \cdot c_{launch}
 \end{equation}
 
-其中$c_{launch}$为单次发射成本（美元/次）。
+%其中$c_{launch}$为单次发射成本（美元/次）。
+where $c_{launch}$ represents the cost per launch (USD/launch).
 
-\subsection[场景三：混合静态模式]{场景三：混合静态模式}
+\subsection{Scenario 3: Static Hybrid Mode}
 
-混合策略结合太空电梯和传统火箭两种运输方式，以优化项目工期和成本。
+%混合策略结合太空电梯和传统火箭两种运输方式，以优化项目工期和成本。
+The hybrid strategy combines SE and TR transportation methods to optimize project duration and cost.
 
-\subsubsection{项目工期}
+\subsubsection{Project Duration}
 
-混合运输的工期由两种运输方式中耗时较长的决定：
+%混合运输的工期由两种运输方式中耗时较长的决定：
+The duration of hybrid transportation is determined by the longer time-consuming of the two methods:
 \begin{equation}
 	T_C(\alpha)=\max\left( \frac{\alpha M_{tot}}{\kappa_{SE,total}}, \frac{(1-\alpha) M_{tot}}{\kappa_{TR}} \right)
 \end{equation}
 
 %3.5
-\subsubsection{最优分配比例}
+\subsubsection{Optimal Allocation Ratio}
 
-通过Pareto前沿分析，可计算得出仅时间最优分配比例$\alpha_{static}^*=0.499$以及时间成本双目标最优分配比例$\alpha_{static}^{knee}=0.750$：
-
+%通过Pareto前沿分析，可计算得出仅时间最优分配比例$\alpha_{static}^*=0.499$以及时间成本双目标最优分配比例$\alpha_{static}^{knee}=0.750$：
+Through Pareto Frontier Analysis, the time-optimal allocation ratio $\alpha_{static}^*=0.499$ 
+and the time-cost bi-objective optimal allocation ratio $\alpha_{static}^{knee}=0.750$ can be calculated:
 \begin{figure}[htbp]
 	\centering
 	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
@@ -406,27 +422,38 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 \end{figure}
 
 
-\subsubsection{总成本}
+\subsubsection{Total Cost}
 
-混合策略的全生命周期成本为：
+%混合策略的全生命周期成本为：
+The life-cycle cost of the hybrid strategy is:
 \begin{equation}
 	C_C=\frac{(1-\alpha) M_{tot}}{m_{load}} \cdot c_{launch}+C_{fix}^{SE}+\alpha M_{tot} \cdot c_{var}^{SE}
 \end{equation}
 
-该成本包括太空电梯固定基础设施成本（一次性）、太空电梯运营可变成本和传统火箭发射成本。
+%该成本包括太空电梯固定基础设施成本（一次性）、太空电梯运营可变成本和传统火箭发射成本。
+This cost includes the one-time fixed infrastructure cost of the SE, the variable 
+operational cost of the SE, and the launch cost of traditional rockets.
 
-\subsection{三种场景的比较分析}
+\subsection{Comparative Analysis of the Three Scenarios}
 
-静态基准模型提供以下重要洞察：
+%静态基准模型提供以下重要洞察：
+The static benchmark model provides the following key insights:
 
 \begin{itemize}
-	\item \textbf{仅SE模式}：需约558.7年完成物资运输，一旦基础设施建成后，运营成本最低。
-	
-	\item \textbf{仅TR模式}：需约4000年完成物资运输，在项目工期和成本约束下经济上不可行。
-	
-	\item \textbf{工期最优模式}（$\alpha^* \approx 0.499$）：采用最优分配比例，工期约为$\max\left(\frac{0.417 \times 10^8}{179000}, \frac{0.583 \times 10^8}{25000}\right) \approx 232$年，在基础设施固定成本和按次发射成本间实现平衡。
-	
-	\item \textbf{平衡最优选择}：三种方案的优劣取决于对工期最小化或成本最小化的优先级权重。
+	\item \textbf{SE-Only Mode}：%需约558.7年完成物资运输，一旦基础设施建成后，运营成本最低。
+	Approximately 558.7 years are required to complete material transportation; 
+	once the infrastructure is built, the operational cost is the lowest.
+	\item \textbf{TR-Only Mode}：%需约4000年完成物资运输，在项目工期和成本约束下经济上不可行。
+	Approximately 4000 years are needed for material transportation, 
+	which is economically unfeasible under project duration and cost constraints.
+
+	\item \textbf{Time-Optimal Mode}（$\alpha^* \approx 0.499$）：
+	%采用最优分配比例，工期约为$\max\left(\frac{0.417 \times 10^8}{179000}, \frac{0.583 \times 10^8}{25000}\right) \approx 232$年，在基础设施固定成本和按次发射成本间实现平衡。
+	Adopting the optimal allocation ratio, the duration is approximately $\max\left(\frac{0.417 \times 10^8}{179000}, \frac{0.583 \times 10^8}{25000}\right) \approx 232$ years, 
+	achieving a balance between fixed infrastructure costs and per-launch costs.
+	\item \textbf{Balanced Optimal Choice}：
+	%三种方案的优劣取决于对工期最小化或成本最小化的优先级权重。
+	The superiority of the three schemes depends on the priority weight assigned to minimizing duration or cost.
 \end{itemize}
 
 \begin{figure}[htbp]
@@ -438,59 +465,66 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	\end{subfigure}
 	\caption{35}\label{subfigure}
 \end{figure}
-\newpage
+
 %===========================================第四部分====================================================================
-\section[Model 2: Dynamic Extended Model]{Model 2: 动态扩展模型（时间自适应策略）}
+\section[Model 2: Dynamic Extended Model]{Model 2: Dynamic Extended Model (Time-Adaptive Strategy)}
 
-\subsection[Dynamic Adjustment Logic]{动态调整逻辑}
+\subsection[Dynamic Adjustment Logic]{Dynamic Adjustment Logic}
 
-由于工期极长，随着材料科学、能源系统和自动化维护技术的提升，若仍以静态的$\alpha$案进行规划，将无法反映运输方案在不同阶段的经济性演化，导致早期或后期资源配置严重失衡。随着时间的推移和技术的发展，太空电梯系统的单位可变成本$c_{var}^{SE}$逐渐下降。采用如下理想化模型表示这一过程：
-
+%由于工期极长，随着材料科学、能源系统和自动化维护技术的提升，若仍以静态的$\alpha$案进行规划，将无法反映运输方案在不同阶段的经济性演化，导致早期或后期资源配置严重失衡。随着时间的推移和技术的发展，太空电梯系统的单位可变成本$c_{var}^{SE}$逐渐下降。采用如下理想化模型表示这一过程：
+Due to the extremely long construction period, with the advancement of materials science, 
+energy systems, and automated maintenance technologies, relying on a static $\alpha$ scheme 
+for planning will fail to reflect the economic evolution of transportation solutions at different stages, 
+leading to severe resource allocation imbalances in the early or late phases. As time progresses and technology develops, 
+the unit variable cost $c_{var}^{SE}$ of the Space Elevator (SE) system gradually decreases. This process is represented by the following idealized model:
 \begin{equation}
 	c_{var}^{SE}=0.8c_0+0.2c_0\exp(-0.0139i)
 \end{equation}
 
-其中$c_0$为初始成本，25个时间区间后成本降至原值的0.9倍。
-
+%其中$c_0$为初始成本，25个时间区间后成本降至原值的0.9倍。
+where $c_0$ is the initial cost, 
+ and the cost drops to 0.9 times the original value after 25 time intervals.
 %4.2
 
-\subsection{动态目标函数}
+\subsection{Dynamic Objective Functions}
 
-\subsubsection{目标1：总项目工期}
+\subsubsection{Objective 1: Total Project Duration}
 
-总工期是使累积运输量达到要求的最小时间区间数：
+%总工期是使累积运输量达到要求的最小时间区间数：
+The total duration is the minimum number of time intervals required for the cumulative transportation volume to meet the demand:
 
 \begin{equation}
 	T= \min \left\{ k \cdot \Delta t \mid \sum_{i=1}^k q_i \geq M_{tot} \right\}
 \end{equation}
 
-其中累积运输量递推关系为：
+%其中累积运输量递推关系为：
+where the recursive relationship of cumulative transportation volume is:
 \begin{align}
 	Q_{SE}(i) &= Q_{SE}(i-1)+\alpha_i \cdot q(i) \cdot \Delta t \\
 	Q_{TR}(i) &= Q_{TR}(i-1)+(1-\alpha_i) \cdot q(i) \cdot \Delta t
 \end{align}
 
-时间区间长度$\Delta t = 10$年，可根据需要调整。
+%时间区间长度$\Delta t = 10$年，可根据需要调整。
+The length of each time interval $\Delta t = 10$ years, which can be adjusted as needed.
+\subsubsection{Objective 2: Life-Cycle Cost (Piecewise Summation)}
 
-\subsubsection{目标2：全生命周期成本（分段求和）}
-
-全生命周期总成本为：
-
+%全生命周期总成本为：
+The total life-cycle cost is:
 \begin{equation}
 	f_{cost} = \mathbb{I}\left( \sum_{i=1}^{k} \alpha_i > 0 \right) \cdot C_{fix}^{SE} + \sum_{i=1}^{k} \left[ q_{SE}(i) \cdot c_{var}^{SE}(i) + q_{TR}(i) \cdot c_{TR}(i) \right]\cdot \Delta t
 \end{equation}
-
-其中：
+where:
 \begin{equation}
 	c_{TR}(i)=\frac{c_{launch}}{m_{load}}
 \end{equation}
 
-指示函数$\mathbb{I}$确保太空电梯固定成本仅在使用太空电梯时计入一次。
+%指示函数$\mathbb{I}$确保太空电梯固定成本仅在使用太空电梯时计入一次。
+The indicator function $\mathbb{I}$ ensures that the fixed cost of the SE is counted only once when the SE is used.
 
-\subsection{动态约束条件}
+\subsection{Dynamic Constraints}
 
-优化问题受以下约束条件限制：
-
+%优化问题受以下约束条件限制：
+The optimization problem is subject to the following constraints:
 \begin{equation}
 	\begin{cases}
 		0 \leq \alpha_i \leq 1, \quad \forall i=1,2,\ldots,50 \\[6pt]
@@ -500,16 +534,17 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	\end{cases}
 \end{equation}
 
-约束条件的含义分别为：
+%约束条件的含义分别为：
+The meanings of the constraints are as follows:
 
 \begin{itemize}
-	\item 分配比例$\alpha_i$必须在有效范围内
+	\item The allocation ratio $\alpha_i$ must be within a valid range.%分配比例$\alpha_i$必须在有效范围内
 	
-	\item 每个时间区间太空电梯的运输量不能超过其有效运力$\kappa_{SE}'(i)$
+	\item The transportation volume of the SE in each time interval cannot exceed its effective capacity $\kappa_{SE}'(i)$.%每个时间区间太空电梯的运输量不能超过其有效运力$\kappa_{SE}'(i)$
 	
-	\item 每个时间区间传统火箭系统的运输量不能超过其有效运力$\kappa_{TR}'(i)$
+	\item The transportation volume of the TR in each time interval cannot exceed its effective capacity $\kappa_{TR}'(i)$.%每个时间区间传统火箭系统的运输量不能超过其有效运力$\kappa_{TR}'(i)$
 	
-	\item 第50个区间结束时，累积运输总量必须达到所需的全部物资
+	\item At the end of the 50th time interval, the cumulative transportation volume must reach the required total amount.
 \end{itemize}
 
 \begin{figure}[htbp]
@@ -523,18 +558,22 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 \end{figure}
 
 %4.4================================动态模型特点====================================================================
-\subsection{模型特点}
+\subsection{Model Features}
 
-动态$\alpha(t)$扩展模型相比静态基准模型的主要优势为：
-
+%动态$\alpha(t)$扩展模型相比静态基准模型的主要优势为：
+Compared with the static benchmark model, the dynamic $\alpha(t)$ expansion model has the following key advantages:
 \begin{enumerate}
-	\item \textbf{时间自适应}：根据技术发展动态调整运输方式比例，充分利用成本下降机遇
+	\item \textbf{Time-Adaptive}：Dynamically adjusts the proportion of transportation methods based on technological 
+	development to fully leverage the opportunities brought by cost reduction.%根据技术发展动态调整运输方式比例，充分利用成本下降机遇
 	
-	\item \textbf{成本优化}：通过实时比较两种运输方式的单位成本，在成本均衡区间内进行精细优化
+	\item \textbf{Cost Optimization}：Achieves refined optimization within the cost balance interval by real-time 
+	comparing the unit costs of the two transportation methods.%通过实时比较两种运输方式的单位成本，在成本均衡区间内进行精细优化
 	
-	\item \textbf{分段规划}：将总工期划分为50个区间，每个区间独立决策，便于实施和调整
+	\item \textbf{Segmented Planning}：Divides the total construction period into 50 intervals, with independent 
+	decision-making for each interval, facilitating implementation and adjustment.%将总工期划分为50个区间，每个区间独立决策，便于实施和调整
 	
-	\item \textbf{多目标平衡}：同时考虑工期、成本和环境影响，寻求综合最优方案
+	\item \textbf{Multi-Objective Balance}：Simultaneously considers duration, cost, and environmental impact 
+	to seek a comprehensive optimal solution.%同时考虑工期、成本和环境影响，寻求综合最优方案
 \end{enumerate}
 
 \begin{figure}[htbp]
@@ -553,60 +592,68 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 
 %\section{Model 3: 随机扰动的修正模型}
 
-\subsection{随机扰动下的模型修正}
+\subsection{Model Correction Under Random Disturbances}
 
-\subsubsection{火箭发射失败的修正}
+\subsubsection{Correction for Rocket Launch Failures}
 
-\paragraph{失败概率与有效载荷}
+\paragraph{Failure Probability and Effective Payload}
 
-传统火箭系统存在发射失败的风险。引入发射失败概率$P_{\mathrm{fail}}$，有效载荷的期望值为：
-
+%传统火箭系统存在发射失败的风险。引入发射失败概率$P_{\mathrm{fail}}$，有效载荷的期望值为：
+The TR system faces the risk of launch failures. Introducing the launch failure probability $P_{\mathrm{fail}}$, 
+the expected value of the effective payload is:
 \begin{equation}
 	E[m] = m_{\mathrm{load}} \cdot (1 - P_{\mathrm{fail}})
 \end{equation}
 
-\paragraph{发射成本调整}
+\paragraph{Launch Cost Adjustment}
 
-考虑失败风险导致的成本增加：
+%考虑失败风险导致的成本增加：
+Considering the cost increase caused by failure risks:
 
 \begin{equation}
 	c'_{\mathrm{launch}} = c_{\mathrm{launch}} + P_{\mathrm{fail}} \cdot (c_{\mathrm{launch}} + c_{\mathrm{cargo\_loss}})
 \end{equation}
 
-其中$c_{\mathrm{cargo\_loss}}$为货物损失成本。触发失败后一般是提供一次再飞且客户无需再支付该次发射服务费，也就是可以认为上面公式可以写成：
+%其中$c_{\mathrm{cargo\_loss}}$为货物损失成本。触发失败后一般是提供一次再飞且客户无需再支付该次发射服务费，也就是可以认为上面公式可以写成：
+where $c_{\mathrm{cargo\_loss}}$ is the cargo loss cost. Typically, a re-launch is provided at no additional cost to the customer in the event of a failure, so the formula can be simplified as:
 
 \begin{equation}
 	c'_{\mathrm{launch}} = c_{\mathrm{launch}} + P_{\mathrm{fail}} \cdot c_{\mathrm{launch}} = c_{\mathrm{launch}} (1 + 2 P_{\mathrm{fail}})
 \end{equation}
 
-\paragraph{修正运力}
+\paragraph{Corrected Capacity}
 
-火箭系统的实际运力上限应为：
+%火箭系统的实际运力上限应为：
+The actual capacity limit of the TR system should be:
 \begin{equation}
 	\kappa'_{TR}(i) = \kappa_{TR} \cdot (1 - P_{\mathrm{fail}}(i))
 \end{equation}
 
-其中 $P_{\mathrm{fail}}(i)$ 为经15个时间间隔（即150年）从 1\% 下降至 0.1\% 的学习曲线，呈负指数形状。
+%其中 $P_{\mathrm{fail}}(i)$ 为经15个时间间隔（即150年）从 1\% 下降至 0.1\% 的学习曲线，呈负指数形状。
+where $P_{\mathrm{fail}}(i)$ follows a negative exponential learning curve, decreasing from 1\% to 0.1\% over 15 time intervals (i.e., 150 years):
 \begin{equation}
 	P_{\mathrm{fail}}(i) = 0.01 \cdot \exp(-\frac{\ln(10)}{15} \cdot i)
 \end{equation}
 
 
-\paragraph{修正成本公式}
+\paragraph{Corrected Cost Formula}
 
-成本公式中，TR 的单位成本 $c_{TR}(i)$ 应改为：
+%成本公式中，TR 的单位成本 $c_{TR}(i)$ 应改为：
+In the cost formula, the unit cost of TR $c_{TR}(i)$ should be revised to:
 \begin{equation}
 	c_{TR}(i) = \frac{c'_{\mathrm{launch}}}{m_{load}} = \frac{c_{\mathrm{launch}} (1 + 2 P_{\mathrm{fail}}(i))}{m_{load}}
 \end{equation}
 
-这样将发射失败的风险成本纳入总成本计算。
+%这样将发射失败的风险成本纳入总成本计算。
+This incorporates the risk cost of launch failures into the total cost calculation.
 
-\subsubsection{系绳摇晃的科里奥利力与风切变扰动}
+\subsubsection{Tether Sway Disturbances from Coriolis Force and Wind Shear}
 
-\paragraph{瞬时可用度函数}
+\paragraph{Instantaneous Availability Function}
 
-太空电梯系统的可用性受摆动幅度和风速的影响。定义瞬时可用度函数为：
-
+%太空电梯系统的可用性受摆动幅度和风速的影响。定义瞬时可用度函数为：
+The availability of the SE system is affected by sway amplitude and wind speed. 
+The instantaneous availability function is defined as:
 \begin{equation}
 	\eta_{SE}(t) = 
 	\begin{cases}
@@ -615,12 +662,21 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	\end{cases}
 \end{equation}
 
-其中系绳横向受风截，通过物理低阶近似，我们不妨将偏转角拟合为
+%其中系绳横向受风截，通过物理低阶近似，我们不妨将偏转角拟合为
+where the tether is subjected to lateral wind loads. 
+Through low-order physical approximation, the deflection angle is fitted as:
 \[
 \theta(t) = k \cdot v_{wind}(t)^2
 \]
 
-常规地面系绳可拟合出 $k$ 约为 0.019，，不符合当前系绳材质与高空环境，当前为强约束/高张力/高抗风设计，可以通过高度确定 $\theta_{\mathrm{crit}}$ 为 $0.1\ \mathrm{rad}$, $v_{\mathrm{safe}}$ 为 $15\ \mathrm{m/s}$，进而反解出当前 $k$ 为 $4.44\times10^{-4}$，即当 $v_{wind}(t) = v_{\mathrm{safe}}$ 时，$\theta(t) \approx \theta_{\mathrm{crit}}$，可以合并为单一阈值影响。
+%常规地面系绳可拟合出 $k$ 约为 0.019，，不符合当前系绳材质与高空环境，当前为强约束/高张力/高抗风设计，可以通过高度确定 $\theta_{\mathrm{crit}}$ 为 $0.1\ \mathrm{rad}$, $v_{\mathrm{safe}}$ 为 $15\ \mathrm{m/s}$，进而反解出当前 $k$ 为 $4.44\times10^{-4}$，即当 $v_{wind}(t) = v_{\mathrm{safe}}$ 时，$\theta(t) \approx \theta_{\mathrm{crit}}$，可以合并为单一阈值影响。
+Conventional ground-based tethers can be fitted with $k$ approximately 0.019, 
+which does not match the current tether material and high-altitude environment. 
+The current design is for strong constraint/high tension/high wind resistance. 
+$\theta_{\mathrm{crit}}$ can be determined as $0.1\ \mathrm{rad}$ and $v_{\mathrm{safe}}$ 
+as $15\ \mathrm{m/s}$ based on altitude. Furthermore, the current $k$ is back-calculated 
+as $4.44\times10^{-4}$. This means that when $v_{wind}(t) = v_{\mathrm{safe}}$, 
+$\theta(t) \approx \theta_{\mathrm{crit}}$. This can be combined into a single threshold effect.
 
 \begin{equation}
 	\eta_{SE}(t)=
@@ -630,44 +686,60 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	\end{cases}
 \end{equation}
 
-其中风场满足参数为$k=3$，$\lambda=8$的韦布尔分布。其次同时还要建立年代系统受风影响的的状态转变，将风环境抽象为两类状态：
+%其中风场满足参数为$k=3$，$\lambda=8$的韦布尔分布。其次同时还要建立年代系统受风影响的的状态转变，将风环境抽象为两类状态：
+The wind field follows a Weibull distribution with parameters $k=3$ and $\lambda=8$. 
+Furthermore, we need to establish the state transitions of the era system affected by wind, 
+abstracting the wind environment into two categories of states:
 
 \begin{itemize}
-	\item \textbf{Normal State (正常状态)}：可用度围绕一个低频背景缓慢波动；
-	\item \textbf{Extreme State (极端状态)}：代表长期风暴年代/异常环流时期，可用度显著降低并持续若干区间。
+	\item \textbf{Normal State}：Availability fluctuates slowly around a low-frequency baseline.
+	\item \textbf{Extreme State}：Represents long-term storm eras or abnormal circulation periods, 
+	with significantly reduced availability lasting for several intervals.
 \end{itemize}
 
+The onset of extreme periods is modeled as a Poisson process, and the duration is modeled 
+as an exponential distribution. 
 
-其中极端期的开始阶段建模为泊松过程，持续过程建模为指数分布
-
-极端期示性变量$I_{ext}$表示是否处于极端状态
+The indicator variable $I_{ext}$ denotes whether the system is in an extreme state:
+%其中极端期的开始阶段建模为泊松过程，持续过程建模为指数分布
+%极端期示性变量$I_{ext}$表示是否处于极端状态
 \begin{equation}
 	\bar{\eta}_{SE}(i)=\mathrm{clip}\left(\eta_{\mathrm{base}}(i)-\Delta\cdot I_{\mathrm{ext}}(i),0,1\right)
 \end{equation}
 
-其中 clip 是为了保证 [0,1]合理范围。
+where the clip function ensures the value is within the valid range [0,1].
+%是为了保证 [0,1]合理范围。
 
-\paragraph{顶端火箭发射失败概率}
+\paragraph{Launch Failure Probability of Apex Rockets}
 
-由于太空电梯顶端仍需火箭发射将货物送入轨道，存在失败概率$P_{\mathrm{fail}}'$。
+%由于太空电梯顶端仍需火箭发射将货物送入轨道，存在失败概率$P_{\mathrm{fail}}'$。
+Rockets at the apex of the SE are still required to deliver cargo to orbit, 
+with a failure probability of $P_{\mathrm{fail}}'$.
 
-\paragraph{修正后的年有效运力}
-综合考虑摆动限制、维护停机和火箭发射失败，太空电梯的修正后年有效运力为：
-
+\paragraph{Corrected Annual Effective Capacity}
+%综合考虑摆动限制、维护停机和火箭发射失败，太空电梯的修正后年有效运力为：
+Considering sway constraints, maintenance downtime, and apex rocket launch failures,
+ the corrected annual effective capacity of the SE is:
 \begin{equation}
 	\kappa_{SE}^{\prime}=\kappa_{SE}\cdot\bar{\eta}_{SE}\cdot(1-\beta_{\mathrm{maint}})\cdot(1-P_{\mathrm{fail}})
 \end{equation}
 
-其中：
+where：
 \begin{itemize}
-	\item $\bar{\eta}_{SE}$为太空电梯系统的平均可用度
-	\item $\beta_{\mathrm{maint}}$为维护停机系数，在本工作中维护停机系数简化为$\beta_{maint}=0$
-	\item $P_{\mathrm{fail}}$为顶端火箭发射失败概率，取常数$P_{fail}=0.005$
+	\item $\bar{\eta}_{SE}$is the average availability of the SE system.
+%为太空电梯系统的平均可用度
+	\item $\beta_{\mathrm{maint}}$ is the maintenance downtime coefficient, 
+	simplified to $\beta_{maint}=0$ in this study.
+	%为维护停机系数，在本工作中维护停机系数简化为$\beta_{maint}=0$
+%为顶端火箭发射失败概率，取常数$P_{fail}=0.005$
+	\item $P_{\mathrm{fail}}$ is the launch failure probability of apex rockets, taken as a constant $P_{fail}=0.005$.
+%为顶端火箭发射失败概率，取常数$P_{fail}=0.005$
 \end{itemize}
 
-\subsubsection{模型求解}
-基于上述修正，动态扩展模型的实际运力和实际成本作出相应调整，并通过求解得到时间自适应的最优运输比例$\alpha_i$如下图所示：
-
+\subsubsection{Model Solution}
+%基于上述修正，动态扩展模型的实际运力和实际成本作出相应调整，并通过求解得到时间自适应的最优运输比例$\alpha_i$如下图所示：
+Based on the above corrections, the actual capacity and cost of the dynamic expansion model are adjusted accordingly. 
+The time-adaptive optimal transportation ratio $\alpha_i$ is obtained through solution, as shown in the following figure:
 \begin{figure}[htbp]
 	\centering
 	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
@@ -679,11 +751,12 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 \end{figure}
 
 
-\subsection{一年用水需求下的运输成本}
+\subsection{Transportation Cost Under One-Year Water Demand}
 
-\subsubsection{月球殖民地年净用水需求}
+\subsubsection{Annual Net Water Demand of the Lunar Colony}
 
-月球殖民地一年的净用水需求（考虑水资源循环）为：
+%月球殖民地一年的净用水需求（考虑水资源循环）为：
+The annual net water demand of the lunar colony (considering water recycling) is:
 
 \begin{equation}
 	M_{net}=M_{gross}\cdot(1-\gamma)=365P_{pop}\cdot w_{per}\cdot(1-\gamma)
@@ -691,15 +764,16 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 
 其中：
 \begin{itemize}
-	\item $M_{gross}$为年总用水量
-	\item $\gamma=$为水资源循环效率
-	\item $P_{pop}=10$万人为月球殖民地人口
-	\item $w_{per}=$吨/(人·天)为人均日用水量
+	\item $M_{gross}$  is the annual total water consumption.%为年总用水量
+	\item $\gamma=0.95$ is the water recycling efficiency.%为水资源循环效率
+	\item $P_{pop}=100000$ is the population of the lunar colony.%万人为月球殖民地人口
+	\item $w_{per}=0.35$ is the daily water consumption per person (tons/(person·day)).%吨/(人·天)为人均日用水量
 \end{itemize}
 
-\subsubsection{额外运输成本}
+\subsubsection{Additional Cost on Transportation}
 
-在此视角下，不同策略的成本如下：
+%在此视角下，不同策略的成本如下：
+From this perspective, the costs of different strategies are as follows:
 \begin{equation}
     C_{SEonly}=M_{net}c_{var}^{SE}=159.7 \text{ Billion USD}  
 \end{equation}
@@ -710,7 +784,9 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 	 C_{static}=\alpha\cdot M_{net}c_{var}^{SE}+(1-\alpha)M_{net}c'_{launch}/m_{load}= 224.1 \text{ Billion USD} 
 \end{equation}
     
-在工期尾部阶段，动态模型的$\alpha_i$取值基本为1，其成本
+%在工期尾部阶段，动态模型的$\alpha_i$取值基本为1，其成本
+In the later stages of the construction period, the $\alpha_i$ value of the dynamic model is basically 1, so its cost is:
+
 \begin{equation}
 	C_{dynamic}=C_{SEonly}=159.7 \text{ Billion USD}
 \end{equation}
@@ -726,25 +802,31 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 \end{figure}
 
     
-\subsection{环境影响模型}
-\subsubsection{环境影响系数的建立}
-TR-only模型的主要环境污染在于火箭发射产生的二氧化碳排放 以及黑碳和氧化铝对臭氧层的破坏，这些排放量均与火箭发射次数成正比，\textbf{环境影响系数}为:
-
+\subsection{Environmental Impact Model}
+\subsubsection{Establishment of Environmental Impact Coefficients}
+%TR-only模型的主要环境污染在于火箭发射产生的二氧化碳排放 以及黑碳和氧化铝对臭氧层的破坏，这些排放量均与火箭发射次数成正比，\textbf{环境影响系数}为:
+The main environmental pollution of the TR-only model stems from carbon dioxide emissions from rocket launches and ozone layer damage 
+caused by black carbon (BC) and alumina particles. 
+These emissions are proportional to the number of rocket launches, and the environmental impact coefficient is:
 \[ E_{TR-only} = M_{tot} \cdot (\omega_{CO_{2}}\cdot \epsilon_{CO_{2}}+\omega_{BC}\cdot \epsilon_{BC}+\omega_{Al_2 O_3}\cdot \epsilon_{Al_2 O_3})/m_{load}\]
 
-SE-only模型的主要环境污染在于运送货物时耗费的电力，这些电力可能来自于非清洁能源，在生产电力的过程中造成污染，\textbf{环境影响系数}为：
-
+%SE-only模型的主要环境污染在于运送货物时耗费的电力，这些电力可能来自于非清洁能源，在生产电力的过程中造成污染，\textbf{环境影响系数}为：
+The main environmental pollution of the SE-only model comes from the electricity consumed during cargo transportation, 
+which may be derived from non-clean energy sources, causing pollution during power generation. 
+The environmental impact coefficient is:
 \[ E_{SE-only} = M_{tot} \cdot e_{per}\cdot (1-\eta_{clean})\cdot\epsilon_{coal}\]
-其中$\eta_{clean}$为清洁能源的使用率，$\epsilon_{coal}$为燃煤发电时每千瓦时释放的CO$_2$。
+where $\eta_{clean}$ is the clean energy utilization rate, and $\epsilon_{coal}$ is 
+the CO$_2$ emission factor for coal-fired power generation (per kilowatt-hour).
 
-静态混合模型的环境污染同时来自于两种污染，\textbf{环境影响系数}为：
+The environmental pollution of the static hybrid model comes from both sources, with the environmental impact coefficient:
 \begin{equation}
 \begin{split}
 	E_{static} = &M_{tot}\cdot (1-\alpha) \cdot (\omega_{CO_{2}}\cdot \epsilon_{CO_{2}}+\omega_{BC}\cdot \epsilon_{BC}+\omega_{Al_2 O_3}\cdot \epsilon_{Al_2 O_3})/m_{load}\\
 	&+{M_{tot}\cdot \alpha \cdot e_{per}\cdot (1-\eta_{clean})}\cdot\epsilon_{coal}
 \end{split}
 \end{equation}
-而动态模型的\textbf{环境影响系数}类似于上面的式子：
+%而动态模型的\textbf{环境影响系数}类似于上面的式子：
+The environmental impact coefficient of the dynamic model is similar to the above formula:
 \begin{equation}
 \begin{split}
 	E_{dynamic} = &\sum_{i=1}^{K} \left[ (1-\alpha_i) \cdot (\omega_{CO_{2}}\cdot \epsilon_{CO_{2}}+\omega_{BC}\cdot \epsilon_{BC}+\omega_{Al_2 O_3}\cdot \epsilon_{Al_2 O_3})/m_{load} \right.\\
@@ -752,15 +834,18 @@ SE-only模型的主要环境污染在于运送货物时耗费的电力，这些�
 \end{split}
 \end{equation}
 
-其中$\eta_{clean}$考虑到未来清洁能源比例的提升，假设其随时间线性增长，从初始的0.3增长到1，历时30个时间间隔，也即300年后达到100\%清洁能源。
-
-\subsubsection{环境影响系数对最优策略的影响}
-TR-only和SE-only模型的策略不会发生变化，各自的环境影响系数为:
+%其中$\eta_{clean}$考虑到未来清洁能源比例的提升，假设其随时间线性增长，从初始的0.3增长到1，历时30个时间间隔，也即300年后达到100\%清洁能源。
+Considering the future increase in the proportion of clean energy, $\eta_{clean}$ is assumed to 
+grow linearly from an initial value of 0.3 to 1 over 30 time intervals (i.e., 300 years), achieving 100\% clean energy utilization.
+\subsubsection{Impact of Environmental Impact Coefficients on Optimal Strategies}
+%TR-only和SE-only模型的策略不会发生变化，各自的环境影响系数为:
+The strategies of the TR-only and SE-only models remain unchanged, with their respective environmental impact coefficients:
 \[E_{TR-only}=54.407B\]
 \[E_{SE-only}=-3B t + 1.05T\]
 
-而静态混合模型和动态模型在考虑环境影响系数后，最优策略\textbf{发生变化}，分别求解并在三维目标下对比如图所示：
-
+%而静态混合模型和动态模型在考虑环境影响系数后，最优策略\textbf{发生变化}，分别求解并在三维目标下对比如图所示：
+In contrast, the optimal strategies of the static hybrid model and dynamic model change after considering environmental impact coefficients. 
+The solutions are obtained separately, and the comparison under the three-dimensional objectives (time-cost-environment) is shown in the following figure:
 \begin{figure}[htbp]
 	\centering
 	\begin{subfigure}[b]{1\textwidth} %设置缩放比例，这里的.5代表缩放为原来的50%
