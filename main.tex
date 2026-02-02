@@ -864,25 +864,22 @@ As shown in the figure, it is a comparison of the robustness analysis of the fou
 \subsection{Strengths}%------------------优点----------------
 \begin{itemize}
 	%1. 有灵敏度分析与稳健性分析
-	\item The dynamic extended model introduces a time‑adaptive parameter $\alpha(i)$, enabling flexible adjustment of transport ratios as costs and technologies evolve. This reflects real world decision making more accurately than a static model.
+	\item The dynamic extended model introduces a time-adaptive parameter $\alpha$(i), enablingflexible adjustment of transport ratios, and using Pareto front analysis with knee-point detection, the model identifies balanced solutions between economic efficiency and sustainability.
 	\item Each assumption is supported by engineering or physical rationale, such as launch constraints, cost parameters, and wind‑induced tether oscillation, making the model well‑grounded in existing aerospace technology trends.
 	\item Separate robustness and sensitivity analyses prove that the proposed dynamic hybrid model maintains stable performance under parameter uncertainties and technological disturbances.
-	\item By incorporating cost, duration, and environmental impact simultaneously, and using Pareto front analysis with knee‑point detection, the model identifies balanced solutions between economic efficiency and sustainability.
 \end{itemize}
-
 \subsection{Weaknesses and Improvements}%---------------缺点与改进---------------------
-\subsubsection{Weaknesses}
+\paragraph{Weaknesses}
 \begin{itemize}
 	\item Some key parameters—such as future clean‑energy ratios, launch frequencies, or failure probabilities—are based on extrapolated or idealized assumptions due to lack of available long‑term empirical data.
 	\item The stochastic simulations use simplified Poisson and exponential distributions, which may not fully reflect correlated failures or cumulative maintenance effects.
 \end{itemize}
-\subsubsection{Improvements}
+\paragraph{Improvements}
 \begin{itemize}
 	\item Expand environmental metrics to include life‑cycle assessment (LCA) indicators, planetary protection concerns, and secondary atmospheric chemistry impacts.
 	\item Compare model projections against historical or simulated mission baselines to validate feasibility and adjust cost–time coefficients empirically.
 	\item Combine the Stage‑wise Extended Search Algorithm (SESA) with metaheuristics such as Particle Swarm Optimization or NSGA‑II to improve convergence speed and optimize over higher‑dimensional objectives.
 \end{itemize}
-
 % 参考文献，直接把bib格式粘贴到References.bib里面，此处无需改动！！！！！！！！！！！！！！！！！！
 \bibliographystyle{unsrt} %规定了参考文献的格式
 \begin{center}
