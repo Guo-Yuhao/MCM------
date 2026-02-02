@@ -307,6 +307,8 @@ Websites, where we collect data, are listed in Table \ref{tb:data}.
 			USGS & \href{https://www.usgs.gov}{https://www.usgs.gov} \\
 			Nature & \href{https://www.nature.com}{https://www.nature.com} \\
 			UNFAO & \href{https://www.fao.org}{https://www.fao.org} \\
+			MSCI & \href{https://www.msci-institute.com}{https://www.msci-institute.com} \\
+			NREL & \href{https://docs.nrel.gov}{https://www.nrel.gov} \\
 			\bottomrule[1.5pt]
 		\end{tabular}\label{tb:data}
 	\end{center}
@@ -682,23 +684,23 @@ $c_{cargo\_loss}$ 无法查询到准确信息，通过搜集资料触发失败�
 
 在此视角下，不同策略的成本如下：
 \begin{equation}
-    C_{SEonly}=M_{net}c_{var}^{SE}=  
+    C_{SEonly}=M_{net}c_{var}^{SE}=159.7 \text{ Billion USD}  
 \end{equation}
 \begin{equation} 
-	C_{TRonly}=M_{net}c'_{launch}/m_{load}=
+	C_{TRonly}=M_{net}c'_{launch}/m_{load}=417.2 \text{ Billion USD}  
 \end{equation}
 \begin{equation} 
-	 C_{static}=\alpha\cdot M_{net}c_{var}^{SE}+(1-\alpha)M_{net}c'_{launch}/m_{load}= 
+	 C_{static}=\alpha\cdot M_{net}c_{var}^{SE}+(1-\alpha)M_{net}c'_{launch}/m_{load}= 224.1 \text{ Billion USD} 
 \end{equation}
     
 在工期尾部阶段，动态模型的$\alpha_i$取值基本为1，其成本
 \begin{equation}
-	C_{dynamic}=C_{SEonly}=
+	C_{dynamic}=C_{SEonly}=159.7 \text{ Billion USD}
 \end{equation}
     
 \subsection{环境影响模型}
 \subsubsection{环境影响系数的建立}
-TR-only模型的主要环境污染在于火箭发射产生的二氧化碳排放 以及 ⿊碳和氧化铝对臭氧层的破坏，这些排放量均与火箭发射次数成正比，\textbf{环境影响系数}为:
+TR-only模型的主要环境污染在于火箭发射产生的二氧化碳排放 以及黑碳和氧化铝对臭氧层的破坏，这些排放量均与火箭发射次数成正比，\textbf{环境影响系数}为:
 
 \[ E_{TR-only} = M_{tot} \cdot (\omega_{CO_{2}}\cdot \epsilon_{CO_{2}}+\omega_{BC}\cdot \epsilon_{BC}+\omega_{Al_2 O_3}\cdot \epsilon_{Al_2 O_3})/m_{load}\]
 
@@ -721,10 +723,13 @@ SE-only模型的主要环境污染在于运送货物时耗费的电力，这些�
 	&\left. +{\alpha_i \cdot e_{per}\cdot (1-\eta_{clean})}\cdot\epsilon_{coal} \right] \cdot q(i) \cdot \Delta t
 \end{split}
 \end{equation}
+
+其中$\eta_{clean}$考虑到未来清洁能源比例的提升，假设其随时间线性增长，从初始的0.3增长到1，历时30个时间间隔，也即300年后达到100\%清洁能源。
+
 \subsubsection{环境影响系数对最优策略的影响}
 TR-only和SE-only模型的策略不会发生变化，各自的环境影响系数为:
-\[E_{TR-only}=\]
-\[E_{SE-only}=\]
+\[E_{TR-only}=54.407B\]
+\[E_{SE-only}=-3B t + 1.05T\]
 
 而静态混合模型和动态模型在考虑环境影响系数后，最优策略\textbf{发生变化}，分别求解得：
 
